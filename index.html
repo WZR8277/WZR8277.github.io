@@ -21,6 +21,40 @@
     .index{font-size:12px}.copy p{font-size:15px}.more{font-size:12px}.mini-flow i,.visual.knowledge .stack span,.visual.repo .nodes span,.opensource-visual .loop span{font-size:12px}.hero-image{cursor:zoom-in}.star b{font-size:12px;letter-spacing:.08em}.star h4{font-size:16px}.star p,.bullet-list li{font-size:15px}.metric span{font-size:12px}.tags span{font-size:12px;padding:7px 10px}.modal-link{font-size:14px}#image-viewer{width:100vw;height:100vh;max-width:none;max-height:none;background:rgba(15,16,18,.96);border-radius:0}#image-viewer img{width:100%;height:100%;object-fit:contain;padding:34px}#image-viewer .close{position:fixed;right:22px;top:18px;z-index:4;font-size:22px}
     @media(max-width:720px){nav div{gap:12px}header{grid-template-columns:1fr;gap:34px;padding:58px 0}.profile{border:0;padding:0;grid-template-columns:1fr 1fr}.strip{gap:12px;flex-wrap:wrap}.filters{flex-wrap:wrap;margin-bottom:60px}.timeline:before{left:8px}.entry,.entry:nth-child(even){width:calc(100% - 28px);align-self:flex-end}.entry:after,.entry:nth-child(even):after{left:-27px;right:auto}.single .card{grid-template-columns:1fr}.single .visual{min-height:210px}.education,.star,.awards,.footer-main{grid-template-columns:1fr}.school+.school{border-left:0;border-top:1px solid #ccd5de}.metrics{grid-template-columns:1fr 1fr}.modal-body{padding:20px}.visual{height:190px}.section{padding-bottom:74px}}
   </style>
+  <style>
+    /* Entry-page visual system: readable, restrained, and independent from modal typography. */
+    :root{--muted:#5f5e59;--line:#d6d3ca}
+    body{font-size:16px;line-height:1.6}
+    .wrap{width:min(1120px,calc(100% - 56px))}
+    nav{height:76px}nav strong{font-size:20px}nav div{gap:28px}nav a{font-size:14px;font-weight:500;padding:8px 0;border-bottom:1px solid transparent}nav a:hover{color:var(--ink);border-color:var(--ink)}
+    header{padding:74px 0 58px;grid-template-columns:minmax(0,1fr);gap:38px;align-items:start}
+    .eyebrow{font-size:14px;line-height:1.5;letter-spacing:.055em;color:#5b5a55}
+    h1{font-size:clamp(52px,6vw,76px);margin:12px 0 22px}
+    header p{max-width:820px;font-size:17px;line-height:1.78;color:#343431}
+    .profile{border-left:0;border-top:1px solid var(--line);padding:22px 0 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+    .profile div{padding-right:24px;border-right:1px solid var(--line)}.profile div:last-child{border-right:0}
+    .profile span{font-size:13px;margin-bottom:7px;color:#686762}.profile strong{font-size:15px;line-height:1.5}
+    .strip{padding:18px 0;font-size:13px;letter-spacing:.015em;color:#5f5e59}
+    main{padding:68px 0 112px}.intro-title{margin-bottom:26px}.intro-title h2,.section-head h2{font-size:34px}.intro-title span{font-size:14px;color:#5f5e59}
+    .filters{justify-content:flex-start;gap:0;margin:0 0 86px;border-bottom:1px solid var(--line)}
+    .filters a{background:transparent;border:0;border-radius:0;padding:13px 22px 12px;font:500 14px/1.4 inherit;color:#55544f;position:relative}
+    .filters a:first-child{padding-left:0}.filters a:hover{color:var(--ink)}.filters a:after{content:"";position:absolute;left:22px;right:22px;bottom:-1px;height:2px;background:transparent}.filters a:first-child:after{left:0}.filters a:hover:after{background:var(--ink)}
+    .section{padding-bottom:104px;scroll-margin-top:24px}.section-head{margin-bottom:38px}.section-head .eyebrow{margin-bottom:9px}.section-head p{font-size:14px}
+    .card{border-radius:10px;box-shadow:0 10px 28px rgba(25,25,20,.04)}.visual{height:210px}
+    .mini-flow{gap:7px;padding:0 22px;max-width:100%}.mini-flow i{width:64px;height:38px;font-size:10px;white-space:nowrap}.mini-flow b{width:20px;flex:0 0 20px}
+    .visual.knowledge .stack{width:min(230px,calc(100% - 52px))}.visual.knowledge .stack span{width:100%;padding:9px 11px;font-size:10px;line-height:1.35;white-space:normal}
+    .visual.repo .nodes{grid-template-columns:repeat(3,64px);gap:8px}.visual.repo .nodes span{height:42px;font-size:10px}
+    .opensource-visual .loop span{font-size:10px;line-height:1.35}
+    .copy{padding:25px 26px 26px}.index{font-size:11px;letter-spacing:.035em}h3{font-size:25px;margin:10px 0}.copy p{font-size:15px;line-height:1.72;color:#55534e}.more{font-size:12px;margin-top:20px}
+    .education{border-radius:10px}.school{padding:32px}.school h3{font-size:27px}.school p{font-size:15px;color:#55544f}
+    .awards{padding-top:34px}.award{font-size:15px}.award span{color:#5d5c57}
+    @media(max-width:720px){
+      .wrap{width:min(100% - 32px,1120px)}nav{height:auto;min-height:68px;gap:16px}nav div{gap:14px;overflow-x:auto}nav a{font-size:13px;white-space:nowrap}
+      header{padding:52px 0 44px}.profile{grid-template-columns:1fr;gap:0}.profile div{border-right:0;border-bottom:1px solid var(--line);padding:13px 0}.profile div:last-child{border-bottom:0}
+      .strip{font-size:12px}.intro-title{align-items:flex-start;gap:12px}.filters{overflow-x:auto;justify-content:flex-start;margin-bottom:64px}.filters a{white-space:nowrap;padding-inline:15px}.filters a:first-child{padding-left:0}
+      .section{padding-bottom:78px}.visual{height:195px}.mini-flow{transform:scale(.92)}.timeline{gap:38px}
+    }
+  </style>
 </head>
 <body>
   <nav class="wrap"><strong>WZR.</strong><div><a href="#work">公司经历</a><a href="#research">论文</a><a href="#opensource">开源</a><a href="#contact">联系</a></div></nav>
