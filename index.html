@@ -3,89 +3,71 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="王昭容的 Agent 工程师个人主页：生产级 Agent、Agentic RAG、Agent Memory、SFT/GRPO 与开源 Agent Harness。">
   <title>王昭容 · Agent Engineer</title>
+  <meta name="description" content="王昭容，Agent 开发工程师。生产级 Agent、Agentic RAG、Agent Memory 与 Agent Harness。">
   <style>
-    :root{--ink:#171714;--paper:#f1efe8;--acid:#d8ff54;--orange:#ff5c35;--line:rgba(23,23,20,.2)}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:var(--paper);font-family:Arial,"PingFang SC","Microsoft YaHei",sans-serif}a{color:inherit;text-decoration:none}.shell{width:min(1180px,calc(100% - 48px));margin:auto}
-    nav{height:82px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.brand{display:flex;align-items:center;gap:10px;font:800 20px monospace}.brand i{width:9px;height:9px;background:var(--orange);border-radius:50%}.links{display:flex;align-items:center;gap:28px;font:700 11px monospace;letter-spacing:.08em}.links a:hover{opacity:.55}.cta{border:1px solid var(--ink);padding:13px 16px}
-    .hero{padding:74px 0 80px}.kicker,.eyebrow,.head>span{font:700 11px/1.4 monospace;letter-spacing:.12em}.kicker{display:flex;gap:9px;align-items:center}.dot{width:8px;height:8px;border-radius:50%;background:#50a460;box-shadow:0 0 0 4px rgba(80,164,96,.14)}h1{margin:28px 0 52px;font:500 clamp(58px,9.1vw,132px)/.86 Georgia,"Songti SC",serif;letter-spacing:-.065em}h1 em,footer h2 em{font-weight:400;color:var(--orange)}.hero-bottom{margin-left:42%;display:grid;grid-template-columns:1fr auto;align-items:end;gap:42px}.hero-bottom p{max-width:650px;margin:0;font-size:18px;line-height:1.8}.actions{display:flex;flex-direction:column;gap:12px}.button{background:var(--ink);color:var(--paper);padding:16px 18px;font:700 12px monospace;text-align:center}
-    .metrics{display:grid;grid-template-columns:repeat(4,1fr);border-block:1px solid var(--ink)}.metric{padding:26px 22px;border-right:1px solid var(--line);display:grid;gap:8px}.metric:last-child{border:0}.metric strong{font:500 42px Georgia,serif}.metric span{font-size:13px;font-weight:700}.metric small{color:#6d6b64;font:11px monospace}
-    section.content{padding:118px 0}.head{display:grid;grid-template-columns:28% 1fr;margin-bottom:54px}.head h2{margin:0;font:500 clamp(36px,5.3vw,72px)/1.02 Georgia,"Songti SC",serif;letter-spacing:-.04em}.feature{display:grid;grid-template-columns:8% 1fr;border-top:1px solid var(--ink);padding-top:24px}.index{font:13px monospace;color:#6d6b64}.feature h3,.repo h3{font:500 clamp(36px,5vw,68px)/1.08 Georgia,"Songti SC",serif;margin:17px 0 22px}.lead{max-width:850px;font-size:19px;line-height:1.75}.flow{margin:44px 0;display:grid;grid-template-columns:repeat(5,1fr);background:var(--ink);color:var(--paper)}.step{padding:24px 16px;border-right:1px solid rgba(255,255,255,.17);font:700 11px monospace}.step:last-child{background:var(--acid);color:var(--ink)}.step span{display:block;color:#99978f;margin-bottom:28px}.cols,.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:34px}.cols>div{border-top:1px solid var(--line);padding-top:18px}.cols h4{margin:0 0 12px}.cols p,.cards p,.repo p,.research p{margin:0;color:#4d4b46;line-height:1.75}.cards{grid-template-columns:1fr 1fr;gap:18px;margin:72px 0 0 8%}.cards article{min-height:280px;padding:28px;border:1px solid var(--line)}.cards h3{font:500 30px Georgia,"Songti SC",serif;margin:55px 0 16px}
-    .dark{background:var(--ink);color:var(--paper);padding:118px 0}.dark .head h2{color:var(--acid)}.research{display:grid;grid-template-columns:1fr 1fr;gap:80px;border-top:1px solid #666;padding-top:30px}.research h3{font:500 40px/1.2 Georgia,"Songti SC",serif}.research p{color:#c9c6bd;margin-bottom:22px}
-    .repo{margin-left:28%;border-block:1px solid var(--ink);padding:32px 0;display:grid;grid-template-columns:1fr auto;gap:60px;transition:.2s}.repo:hover{padding-inline:24px;background:var(--acid)}.repo p{max-width:760px;font-size:17px}.arrow{font-size:48px}.skills{margin-left:28%;border-top:1px solid var(--ink)}.skill{display:grid;grid-template-columns:7% 31% 1fr;align-items:center;padding:24px 0;border-bottom:1px solid var(--line)}.skill span,.skill p{font:11px/1.6 monospace;color:#67645d}.skill h3{font:500 19px Georgia,serif}.edu{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--ink)}.edu>div{padding:32px 0 90px;display:grid;gap:10px}.edu strong{font:500 22px Georgia,"Songti SC",serif}.edu small{color:#64615b}
-    footer{background:#d8d2c5;padding:92px 0 26px}.foot{display:grid;grid-template-columns:1fr auto;align-items:end;gap:50px}footer h2{margin:20px 0 0;font:500 clamp(44px,6.8vw,92px)/.95 Georgia,"Songti SC",serif;letter-spacing:-.05em}.contact{display:grid;gap:15px;min-width:230px}.contact a{font:700 13px monospace;border-bottom:1px solid;padding-bottom:10px}.base{margin-top:84px;padding-top:22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font:10px monospace}
-    @media(max-width:820px){.shell{width:calc(100% - 30px)}.links a:not(.cta){display:none}.hero{padding:54px 0 60px}h1{font-size:clamp(50px,15vw,90px)}.hero-bottom{margin:0;grid-template-columns:1fr}.actions{flex-direction:row}.metrics{grid-template-columns:1fr 1fr}.metric:nth-child(2){border-right:0}.head,.feature,.research,.foot{grid-template-columns:1fr;gap:24px}.flow{grid-template-columns:1fr}.step{display:flex;gap:20px}.step span{margin:0}.cols,.cards{grid-template-columns:1fr}.cards,.repo,.skills{margin-left:0}.skill{grid-template-columns:12% 1fr}.skill p{grid-column:2}.edu{grid-template-columns:1fr}section.content,.dark{padding:82px 0}}
+    :root{--bg:#f7f6f2;--ink:#20201e;--muted:#77756f;--line:#d9d7d0;--card:#fff;--blue:#eaf0f6;--accent:#d8774d}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,Arial,"PingFang SC",sans-serif}a{color:inherit}.wrap{width:min(1060px,calc(100% - 40px));margin:auto}
+    nav{height:72px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}nav strong{font-family:Georgia,serif;font-size:20px}nav div{display:flex;gap:24px}nav a{text-decoration:none;font-size:13px;color:var(--muted)}
+    header{padding:88px 0 72px;display:grid;grid-template-columns:1fr 300px;gap:70px;align-items:end}.label{font:600 11px monospace;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}h1{font:500 clamp(48px,7vw,82px)/1.05 Georgia,"Songti SC",serif;margin:18px 0 28px;letter-spacing:-.035em}header p{font-size:17px;line-height:1.8;max-width:680px;margin:0}.quick{border-left:1px solid var(--line);padding-left:30px;display:grid;gap:18px}.quick div{display:grid;gap:5px}.quick span{font-size:12px;color:var(--muted)}.quick strong{font-size:14px}
+    .intro{border-block:1px solid var(--line);padding:22px 0;display:flex;justify-content:space-between;color:var(--muted);font-size:12px}
+    main{padding:70px 0 110px}.section-title{display:flex;justify-content:space-between;align-items:end;margin-bottom:24px}.section-title h2{font:500 34px Georgia,"Songti SC",serif;margin:0}.section-title span{font-size:12px;color:var(--muted)}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.project{background:var(--card);border:1px solid var(--line);border-radius:3px;overflow:hidden}.project:first-child{grid-column:1/-1}.project summary{list-style:none;cursor:pointer}.project summary::-webkit-details-marker{display:none}.cover{height:220px;background:#eceae4;overflow:hidden;position:relative}.project:first-child .cover{height:auto;min-height:160px;padding:34px;display:grid;grid-template-columns:1fr 1fr;gap:40px;background:var(--blue)}.cover img{width:100%;height:100%;object-fit:cover;display:block}.crop-1 img{width:300%;max-width:none;object-position:left}.crop-2 img{width:300%;max-width:none;transform:translateX(-33.333%)}.crop-3 img{width:300%;max-width:none;transform:translateX(-66.666%)}.paper img{object-position:top}.card-copy{padding:24px}.number{font:11px monospace;color:var(--muted)}h3{font:500 25px Georgia,"Songti SC",serif;margin:14px 0 10px}.card-copy p{margin:0;color:#62605b;font-size:14px;line-height:1.7}.open{display:flex;align-items:center;justify-content:space-between;margin-top:20px;font:600 11px monospace;color:var(--muted)}.open b{font-size:18px;transition:.2s}.project[open] .open b{transform:rotate(45deg)}
+    .detail{border-top:1px solid var(--line);padding:28px 24px 32px;background:#fbfaf7}.detail-grid{display:grid;grid-template-columns:150px 1fr;gap:30px}.detail h4{font-size:12px;margin:0;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}.detail p{margin:0 0 14px;line-height:1.75;font-size:14px}.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px}.fact{border-top:1px solid var(--line);padding-top:12px}.fact strong{display:block;font:500 21px Georgia,serif}.fact span{font-size:11px;color:var(--muted)}.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}.tags span{font:11px monospace;border:1px solid var(--line);border-radius:99px;padding:6px 9px}.external{display:inline-block;margin-top:12px;font-size:13px}
+    .education-cover h3{font-size:30px;margin:0 0 8px}.education-cover p{margin:0;color:var(--muted);font-size:14px}.education-cover>div{border-left:1px solid #cbd4db;padding-left:24px}.education-cover>div:first-child{border:0;padding:0}
+    .awards{margin-top:90px;border-top:1px solid var(--line);padding-top:28px;display:grid;grid-template-columns:1fr 2fr;gap:40px}.awards h2{font:500 30px Georgia,"Songti SC",serif;margin:0}.award-list{display:grid}.award{display:grid;grid-template-columns:1fr auto;gap:20px;padding:17px 0;border-bottom:1px solid var(--line);font-size:14px}.award span{color:var(--muted)}
+    footer{background:#22221f;color:#eee;padding:66px 0 24px}.footer-main{display:grid;grid-template-columns:1fr auto;gap:50px;align-items:end}.footer-main h2{font:500 clamp(36px,5vw,62px) Georgia,"Songti SC",serif;margin:12px 0}.contact{display:grid;gap:12px}.contact a{font-size:14px;color:#eee}.footnote{border-top:1px solid #4b4a46;margin-top:50px;padding-top:18px;display:flex;justify-content:space-between;font-size:11px;color:#aaa}
+    @media(max-width:760px){header{grid-template-columns:1fr;gap:40px;padding:60px 0}.quick{border:0;padding:0;grid-template-columns:1fr 1fr}.grid{grid-template-columns:1fr}.project:first-child{grid-column:auto}.project:first-child .cover{grid-template-columns:1fr}.detail-grid,.awards,.footer-main{grid-template-columns:1fr}.facts{grid-template-columns:1fr 1fr}.intro{gap:15px;flex-wrap:wrap}.cover{height:190px}}
   </style>
 </head>
 <body>
-  <nav class="shell">
-    <a class="brand" href="#top">WZR<i></i></a>
-    <div class="links"><a href="#work">WORK</a><a href="#research">RESEARCH</a><a href="#open-source">OPEN SOURCE</a><a class="cta" href="mailto:wzr8277@163.com">CONTACT ↗</a></div>
-  </nav>
+  <nav class="wrap"><strong>WZR.</strong><div><a href="#projects">项目</a><a href="#awards">教育与奖项</a><a href="#contact">联系</a></div></nav>
+  <header class="wrap">
+    <div><div class="label">Agent Engineer · Shanghai</div><h1>王昭容</h1><p>浙江大学电子信息硕士，现任携程火车票研发部后端开发工程师，专注生产级 Agent 系统。关注多工具调用、可验证推理、Agent Memory、策略训练与评测。</p></div>
+    <aside class="quick"><div><span>当前方向</span><strong>Agent 开发工程师</strong></div><div><span>工作状态</span><strong>开放求职机会</strong></div><div><span>邮箱</span><strong>wzr8277@163.com</strong></div></aside>
+  </header>
+  <div class="intro wrap"><span>LANGGRAPH / AGENTIC RAG / TOOL USE</span><span>SFT / GRPO / EVALUATION</span><span>MEMORY / HARNESS / RECOVERY</span></div>
 
-  <main>
-    <section class="hero shell" id="top">
-      <div class="kicker"><span class="dot"></span>OPEN TO AGENT ENGINEER ROLES · SHANGHAI</div>
-      <h1>I build agents that<br><em>reason with evidence.</em></h1>
-      <div class="hero-bottom">
-        <p>王昭容，浙江大学电子信息硕士，现专注于生产级 Agent 系统研发。我把多工具调用、可验证推理、策略训练与长期记忆，做成能在真实业务里稳定工作的系统。</p>
-        <div class="actions"><a class="button" href="#work">查看代表工作 ↓</a><a href="https://github.com/WZR8277">GitHub ↗</a></div>
-      </div>
-    </section>
+  <main class="wrap" id="projects">
+    <div class="section-title"><h2>经历与项目</h2><span>点击卡片查看详情</span></div>
+    <div class="grid">
+      <details class="project">
+        <summary>
+          <div class="cover education-cover"><div><span class="label">2022 — 2025</span><h3>浙江大学</h3><p>电子信息 · 硕士 · 人工智能 / 计算机视觉</p></div><div><span class="label">2018 — 2022</span><h3>北京科技大学</h3><p>智能科学与技术 · 本科</p></div></div>
+          <div class="card-copy"><span class="number">01 / EDUCATION</span><h3>教育经历</h3><p>从计算机视觉、小模型微调研究，逐步走向大模型 Agent 系统的研发与落地。</p><div class="open"><span>展开经历</span><b>＋</b></div></div>
+        </summary>
+        <div class="detail"><div class="detail-grid"><h4>Research path</h4><div><p>硕士期间研究人工智能与计算机视觉，完成医学图像处理方向 SCI 论文；本科阶段开展小模型微调研究并发表 SCI 论文。</p><p>这段训练形成了从问题定义、实验设计到结果验证的完整研究习惯，也成为后续构建 Agent 评测体系的基础。</p><div class="tags"><span>浙江大学</span><span>电子信息</span><span>人工智能</span><span>计算机视觉</span></div></div></div></div>
+      </details>
 
-    <section class="metrics shell">
-      <div class="metric"><strong>78.3%</strong><span>根因 Top-1 准确率</span><small>FROM 61.7%</small></div>
-      <div class="metric"><strong>86.4%</strong><span>关键证据 Recall@5</span><small>FROM 68.9%</small></div>
-      <div class="metric"><strong>4.8×</strong><span>平均工具调用</span><small>FROM 6.1×</small></div>
-      <div class="metric"><strong>7.1 min</strong><span>平均诊断耗时</span><small>FROM 12.4 MIN</small></div>
-    </section>
+      <details class="project">
+        <summary><div class="cover crop-1"><img src="assets/agent-projects.png" alt="订单排障 Agent 流程概念图"></div><div class="card-copy"><span class="number">02 / PRODUCTION AGENT</span><h3>出境订单排障 Agent</h3><p>围绕异常假设动态取证，输出根因候选、证据链和处置建议。</p><div class="open"><span>查看项目</span><b>＋</b></div></div></summary>
+        <div class="detail"><div class="detail-grid"><h4>What I built</h4><div><p>将订单、供应商请求与回调、调用链日志、错误码和历史工单封装为结构化只读 Tool，基于 LangGraph 实现 Router–Planner–Executor–Verifier–Synthesizer 闭环；证据不足时自动 replan。</p><p>从高质量排障记录与 gold hop 构造 ReAct 轨迹，先用 LoRA SFT 学习工具协议，再用 GRPO 优化工具选择、查询顺序和停止决策。</p><div class="facts"><div class="fact"><strong>78.3%</strong><span>根因 Top-1</span></div><div class="fact"><strong>86.4%</strong><span>证据 Recall@5</span></div><div class="fact"><strong>7.1 min</strong><span>平均诊断耗时</span></div></div><div class="tags"><span>LangGraph</span><span>ReAct</span><span>LoRA SFT</span><span>GRPO</span><span>Faithfulness</span></div></div></div></div>
+      </details>
 
-    <section class="content shell" id="work">
-      <div class="head"><span>01 / SELECTED WORK</span><h2>把 Agent 放进真实业务闭环</h2></div>
-      <article class="feature">
-        <div class="index">01</div>
-        <div>
-          <div class="eyebrow">PRODUCTION AGENT · CTRIP</div>
-          <h3>境外铁路订单排障 Agent</h3>
-          <p class="lead">面向订单、供应商请求、调用链日志、错误码与历史工单的多跳诊断系统。Agent 动态构造异常假设、调用只读工具取证，在证据不足时自动 replan，最终输出根因候选、证据链和可执行建议。</p>
-          <div class="flow"><div class="step"><span>01</span>ROUTER</div><div class="step"><span>02</span>PLANNER</div><div class="step"><span>03</span>EXECUTOR</div><div class="step"><span>04</span>VERIFIER</div><div class="step"><span>05</span>SYNTHESIZER</div></div>
-          <div class="cols">
-            <div><h4>策略训练</h4><p>以高质量排障记录与 gold hop 构造 ReAct 轨迹，LoRA SFT 学习工具协议，再用 GRPO 优化工具选择、查询顺序和停止决策。</p></div>
-            <div><h4>可验证评测</h4><p>同时评估根因正确率、证据召回、Faithfulness、无效调用和过早停止，将失败定位到检索、路径、证据或答案层。</p></div>
-            <div><h4>安全边界</h4><p>生产 Agent 只读取证；写操作仍由规则系统与人工审批负责。Reward 同时约束正确性、证据完整性、成本与安全升级。</p></div>
-          </div>
-        </div>
-      </article>
-      <div class="cards">
-        <article><span class="eyebrow">AGENTIC SEARCH</span><h3>业务与代码知识库</h3><p>以 ES 双索引平衡精确匹配与语义理解，使用 Agentic Search 连接代码证据与业务文档，常见问题定位准确率 80%+。</p></article>
-        <article><span class="eyebrow">MULTI-REPO SKILL</span><h3>需求调研 Skill</h3><p>设计 L1→L2→L3 渐进式检索与主-子 Agent 分仓协作，完成关键词提炼、跨仓检索与代码证据链构建，分析准确率 80%+。</p></article>
-      </div>
-    </section>
+      <details class="project">
+        <summary><div class="cover crop-2"><img src="assets/agent-projects.png" alt="业务与代码知识库概念图"></div><div class="card-copy"><span class="number">03 / AGENTIC SEARCH</span><h3>业务与代码知识库</h3><p>以代码知识为核心、文档知识为指南的出境后端知识库。</p><div class="open"><span>查看项目</span><b>＋</b></div></div></summary>
+        <div class="detail"><div class="detail-grid"><h4>Approach</h4><div><p>使用 Elasticsearch 双索引（doc_index / chunk_index）分离精确匹配与语义理解，并基于 Agentic Search 完成代码仓库知识检索。</p><p>覆盖出境业务常见问题定位场景，准确率达到 80% 以上。</p><div class="tags"><span>Elasticsearch</span><span>Agentic Search</span><span>Code Retrieval</span></div></div></div></div>
+      </details>
 
-    <section class="dark" id="research"><div class="shell">
-      <div class="head"><span>02 / RESEARCH</span><h2>Memory should generalize,<br>not just remember.</h2></div>
-      <article class="research"><div><div class="eyebrow">MEMOWORLD · AAAI 2027 · CO-FIRST AUTHOR · UNDER REVIEW</div><h3>从任务记忆走向记忆依赖模体</h3></div><div><p>MemoWorld 将记忆泛化单元重新定义为记忆依赖模体，通过动态证据结构训练 Agent 完成写入、修订、分支与遗忘。</p><p>在相同交互预算下，模型在三项外部基准上的零样本成功率均获提升；缺失模体实验还能实现定向再生与局部能力恢复。</p></div></article>
-    </div></section>
+      <details class="project">
+        <summary><div class="cover crop-3"><img src="assets/agent-projects.png" alt="跨仓需求调研协作概念图"></div><div class="card-copy"><span class="number">04 / MULTI-REPO SKILL</span><h3>跨仓需求调研 Skill</h3><p>渐进式检索与主–子 Agent 分仓协作，形成可核验的代码证据链。</p><div class="open"><span>查看项目</span><b>＋</b></div></div></summary>
+        <div class="detail"><div class="detail-grid"><h4>Approach</h4><div><p>针对跨仓库需求调研耗时且易遗漏的问题，设计 L1→L2→L3 渐进式检索和主–子 Agent 分仓协作机制，完成需求关键词提炼与代码证据链构建。</p><p>跨仓分析准确率提升至 80% 以上，并缩短代码逻辑梳理时间。</p><div class="tags"><span>Multi-Agent</span><span>Repository Search</span><span>Evidence Chain</span></div></div></div></div>
+      </details>
 
-    <section class="content shell" id="open-source">
-      <div class="head"><span>03 / OPEN SOURCE</span><h2>不止调用模型，也构建 Agent Harness</h2></div>
-      <a class="repo" href="https://github.com/adongwanai/learn-workbuddy"><div><span class="eyebrow">CORE AUTHOR · PYTHON · 24 STARS / 1 FORK</span><h3>learn-workbuddy</h3><p>Provider-neutral Agent Loop、Session 与 Workspace Memory、JSONL 恢复、大工具输出外部化、权限门控与 hash-chain 审计。</p></div><div class="arrow">↗</div></a>
-    </section>
+      <details class="project">
+        <summary><div class="cover paper"><img src="assets/memoworld-paper.png" alt="MemoWorld 论文首页"></div><div class="card-copy"><span class="number">05 / RESEARCH</span><h3>MemoWorld</h3><p>面向持续演化记忆架构的失败条件化 Memory World 生成方法。</p><div class="open"><span>查看研究</span><b>＋</b></div></div></summary>
+        <div class="detail"><div class="detail-grid"><h4>AAAI 2027</h4><div><p>共同第一作者，在投。工作关注现有记忆控制器依赖固定任务流训练、容易产生“静态世界过拟合”的问题。</p><p>MemoWorld 将泛化单元从任务重新定义为记忆依赖模体，通过动态构造证据结构，训练智能体完成记忆写入、修订、分支与遗忘。</p><div class="tags"><span>Agent Memory</span><span>Memory Generalization</span><span>Failure Conditioning</span></div></div></div></div>
+      </details>
 
-    <section class="content shell">
-      <div class="head"><span>04 / CAPABILITIES</span><h2>Agent 工程能力矩阵</h2></div>
-      <div class="skills">
-        <div class="skill"><span>01</span><h3>Agent Orchestration</h3><p>LangGraph · ReAct · Router / Planner / Executor / Verifier</p></div>
-        <div class="skill"><span>02</span><h3>Retrieval & Memory</h3><p>Agentic RAG · Agent Memory · Elasticsearch · Context Engineering</p></div>
-        <div class="skill"><span>03</span><h3>Training & Evaluation</h3><p>LoRA SFT · GRPO · Reward Design · Trace-level Evaluation</p></div>
-        <div class="skill"><span>04</span><h3>Production Engineering</h3><p>Python · Java · Tool Use · Permission Gate · Audit & Recovery</p></div>
-      </div>
-    </section>
+      <details class="project">
+        <summary><div class="cover" style="display:grid;place-items:center;background:#e9ece8"><div style="font:500 38px Georgia,serif">learn-workbuddy</div></div><div class="card-copy"><span class="number">06 / OPEN SOURCE</span><h3>learn-workbuddy</h3><p>从 Agent Loop、记忆与恢复，到权限、安全与审计的开源 Agent Harness。</p><div class="open"><span>查看贡献</span><b>＋</b></div></div></summary>
+        <div class="detail"><div class="detail-grid"><h4>Core contributor</h4><div><p>作为核心参与者，参与设计 Provider-neutral Agent Loop，统一 Anthropic、OpenAI Responses / Chat、DeepSeek 与 Offline Mock 的工具协议。</p><p>围绕长任务补齐 Session、Workspace Memory、JSONL 恢复和大工具输出外部化，并参与 Permission Gate、cwd 实路径约束、fail-closed 与 hash-chain Audit 建设。</p><a class="external" href="https://github.com/adongwanai/learn-workbuddy" target="_blank" rel="noreferrer">在 GitHub 查看代码 ↗</a><div class="tags"><span>Agent Loop</span><span>Context Engineering</span><span>Recovery</span><span>Permission Gate</span><span>Audit</span></div></div></div></div>
+      </details>
+    </div>
 
-    <section class="edu shell"><div><span>EDUCATION</span><strong>浙江大学 · 电子信息硕士</strong><small>人工智能 / 计算机视觉 · 2022—2025</small></div><div><span>FOUNDATION</span><strong>北京科技大学 · 智能科学与技术</strong><small>国家奖学金 · 全国大学生数学竞赛一等奖</small></div></section>
+    <section class="awards" id="awards"><h2>教育与奖项</h2><div class="award-list"><div class="award"><strong>国家奖学金</strong><span>本科阶段</span></div><div class="award"><strong>全国大学生数学竞赛一等奖</strong><span>本科阶段</span></div><div class="award"><strong>SCI 论文两篇</strong><span>医学图像处理 / 小模型微调</span></div></div></section>
   </main>
 
-  <footer><div class="shell foot"><div><span class="eyebrow">LET'S BUILD RELIABLE AGENTS.</span><h2>一起把 Agent 做到<br><em>真实世界里。</em></h2></div><div class="contact"><a href="mailto:wzr8277@163.com">wzr8277@163.com ↗</a><a href="https://github.com/WZR8277">GitHub ↗</a><p>Shanghai, China · Available now</p></div></div><div class="shell base"><span>王昭容 / AGENT ENGINEER</span><span>© 2026</span></div></footer>
+  <footer id="contact"><div class="wrap footer-main"><div><span class="label">Contact</span><h2>一起构建可靠的 Agent。</h2></div><div class="contact"><a href="mailto:wzr8277@163.com">wzr8277@163.com</a><a href="https://github.com/WZR8277">github.com/WZR8277</a><span>上海 · 开放 Agent 开发岗位机会</span></div></div><div class="wrap footnote"><span>王昭容 · Agent Engineer</span><span>© 2026</span></div></footer>
 </body>
 </html>
