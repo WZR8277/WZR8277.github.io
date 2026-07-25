@@ -54,19 +54,32 @@
       .strip{font-size:12px}.intro-title{align-items:flex-start;gap:12px}.filters{overflow-x:auto;justify-content:flex-start;margin-bottom:64px}.filters a{white-space:nowrap;padding-inline:15px}.filters a:first-child{padding-left:0}
       .section{padding-bottom:78px}.visual{height:195px}.mini-flow{transform:scale(.92)}.timeline{gap:38px}
     }
+    nav a{font-size:15px}
+    header.hero{min-height:calc(100vh - 76px);padding:72px 0 86px;grid-template-columns:minmax(0,1.35fr) minmax(360px,.8fr);gap:76px;align-items:center}
+    .hero-badge{display:inline-flex;align-items:center;gap:9px;padding:8px 13px;border:1px solid var(--line);border-radius:99px;background:rgba(255,255,255,.72);font:600 12px/1 ui-monospace,monospace;letter-spacing:.06em;color:#5d5c57}
+    .hero-badge:before{content:"";width:7px;height:7px;border-radius:50%;background:#4caf75}
+    .hero-role{font:500 clamp(22px,2.5vw,31px)/1.35 Georgia,"Songti SC",serif;color:#52515e;margin:0 0 18px}
+    .hero-copy>p:last-of-type{font-size:16px;line-height:1.8;max-width:690px;color:#4d4c48}
+    .hero-action{display:inline-flex;margin-top:28px;padding:12px 18px;border-radius:8px;background:#272724;color:#fff;text-decoration:none;font-size:14px;font-weight:600}
+    .hero-points{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .hero-point{min-height:142px;padding:24px;background:rgba(255,255,255,.82);border:1px solid #e4e1d9;border-radius:14px;box-shadow:0 12px 30px rgba(30,30,25,.055)}
+    .hero-point strong{display:block;font:500 22px/1.25 Georgia,"Songti SC",serif;margin-bottom:10px}.hero-point span{font-size:14px;line-height:1.55;color:#65635e}
+    .strip{display:none}.intro-title{margin-top:8px}.filters{display:none}
+    .awards>div{display:flex;flex-wrap:wrap;gap:12px}.award{display:inline-flex;padding:10px 14px;border:1px solid var(--line);border-radius:99px;background:#fff;font-size:14px}.award span{display:none}
+    @media(max-width:820px){header.hero{min-height:auto;grid-template-columns:1fr;gap:42px}.hero-points{grid-template-columns:1fr 1fr}}
+    @media(max-width:520px){.hero-points{grid-template-columns:1fr}.hero-point{min-height:auto}.awards{gap:24px}.awards>div{display:flex}}
   </style>
 </head>
 <body>
-  <nav class="wrap"><strong>WZR.</strong><div><a href="#work">公司经历</a><a href="#research">论文</a><a href="#opensource">开源</a><a href="#contact">联系</a></div></nav>
-  <header class="wrap">
-    <div><div class="eyebrow">Agent Engineer · Shanghai</div><h1>王昭容</h1><p>浙江大学电子信息硕士，携程火车票研发部后端开发工程师。专注生产级 Agent 系统，关注多工具调用、可验证推理、Agent Memory、策略训练与评测。</p></div>
-    <aside class="profile"><div><span>求职方向</span><strong>Agent 开发工程师</strong></div><div><span>核心能力</span><strong>Agent · RAG · RL</strong></div><div><span>邮箱</span><strong>wzr8277@163.com</strong></div></aside>
+  <nav class="wrap"><strong>WZR.</strong><div><a href="#education">教育</a><a href="#work">公司经历</a><a href="#research">研究论文</a><a href="#opensource">开源项目</a></div></nav>
+  <header class="wrap hero">
+    <div class="hero-copy"><span class="hero-badge">AGENT ENGINEER · 2026</span><h1>王昭容</h1><p class="hero-role">面向真实业务问题，构建可检索、可验证、可迭代的 Agent。</p><p>浙江大学电子信息硕士，携程火车票研发部后端开发工程师。工作聚焦生产级 Agent、Agentic Search、工具调用、训练与评测。</p><a class="hero-action" href="#education">浏览经历与项目 ↓</a></div>
+    <aside class="hero-points"><div class="hero-point"><strong>Production Agent</strong><span>复杂业务排障与多工具协作</span></div><div class="hero-point"><strong>Agentic Search</strong><span>文档引导与多仓代码证据链</span></div><div class="hero-point"><strong>Training & Eval</strong><span>SFT、GRPO 与可归因评测</span></div><div class="hero-point"><strong>Agent Memory</strong><span>持续演化记忆与组合泛化研究</span></div></aside>
   </header>
   <div class="strip wrap"><span>LANGGRAPH / AGENTIC RAG / TOOL USE</span><span>SFT / GRPO / EVALUATION</span><span>MEMORY / HARNESS / RECOVERY</span></div>
 
   <main class="wrap">
     <div class="intro-title"><h2>经历与项目</h2><span>点击项目，打开完整案例</span></div>
-    <div class="filters"><a href="#education">教育</a><a href="#work">公司经历</a><a href="#research">研究论文</a><a href="#opensource">开源项目</a></div>
 
     <section class="section" id="education">
       <div class="section-head"><div class="eyebrow">Education · 2018 — 2025</div><h2>教育经历</h2></div>
@@ -92,7 +105,7 @@
       <article class="single"><button class="card" data-modal="open-case"><div class="visual opensource-visual"><div class="loop"><span>Agent Loop</span><span>Memory</span><span>Recovery</span><span>Safety</span></div></div><div class="copy"><span class="index">LEARN-WORKBUDDY</span><h3>开源 Agent Harness</h3><p>Provider-neutral Runtime、长任务上下文、恢复、权限与审计。</p><span class="more">查看核心贡献 <b>↗</b></span></div></button></article>
     </section>
 
-    <section class="awards"><h2>教育与奖项</h2><div><div class="award"><strong>国家奖学金</strong><span>本科阶段</span></div><div class="award"><strong>全国大学生数学竞赛一等奖</strong><span>本科阶段</span></div><div class="award"><strong>SCI 论文两篇</strong><span>医学图像处理 / 小模型微调</span></div></div></section>
+    <section class="awards"><h2>奖项与成果</h2><div><div class="award"><strong>国家奖学金</strong></div><div class="award"><strong>全国大学生数学竞赛一等奖</strong></div><div class="award"><strong>SCI 论文两篇</strong></div></div></section>
   </main>
 
   <dialog id="agent-case"><div class="modal-head"><strong>出境订单排障 Agent</strong><button class="close" aria-label="关闭">×</button></div><div class="modal-body"><img class="hero-image" src="assets/runtime-v3.png" alt="订单排障 Agent 完整流程图"><div class="star"><article><b>S · SITUATION</b><h4>人工排障需要跨多类证据反复核对</h4><p>订单、供应商请求/回调、调用链日志、错误码与历史工单分散，定位慢且容易漏证据。</p></article><article><b>T · TASK</b><h4>构建可验证、只读、安全的诊断闭环</h4><p>输出根因候选、证据链和处置建议；生产写操作仍由规则系统与人工审批。</p></article><article><b>A · ACTION</b><h4>Tool + LangGraph + SFT→GRPO</h4><p>实现 Router-Planner-Executor-Verifier-Synthesizer；构造多跳回放集，以 LoRA SFT 学协议、GRPO 优化工具路径与停止策略。</p></article><article><b>R · RESULT</b><h4>准确、快速、可归因</h4><p>将失败定位到检索、路径、证据或答案层，并保留逐轮调用与评测轨迹。</p></article></div><div class="metrics"><div class="metric"><strong>78.3%</strong><span>根因 Top-1</span></div><div class="metric"><strong>86.4%</strong><span>证据 Recall@5</span></div><div class="metric"><strong>7.1 min</strong><span>平均诊断耗时</span></div></div><div class="tags"><span>LangGraph</span><span>ReAct</span><span>LoRA SFT</span><span>GRPO</span><span>Faithfulness</span></div></div></dialog>
