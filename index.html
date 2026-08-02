@@ -2,131 +2,259 @@
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>王昭容 · Agent Engineer</title>
-  <meta name="description" content="王昭容，Agent 开发工程师。生产级 Agent、Agentic RAG、Agent Memory 与可验证训练评测。">
-  <style>
-    :root{--paper:#f7f6f2;--card:#fff;--ink:#20201e;--muted:#706e68;--line:#dcd9d0;--blue:#3568d4;--soft:#eef2f7;--orange:#d97745}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}button,a{font:inherit;color:inherit}.wrap{width:min(1080px,calc(100% - 40px));margin:auto}
-    nav{height:70px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}nav strong{font:600 19px Georgia,serif}nav div{display:flex;gap:24px}nav a{text-decoration:none;font-size:12px;color:var(--muted)}
-    header{padding:86px 0 68px;display:grid;grid-template-columns:1fr 310px;gap:80px;align-items:end}.eyebrow{font:600 13px/1.5 ui-monospace,monospace;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}h1{font:500 clamp(48px,6vw,72px)/1.04 Georgia,"Songti SC",serif;letter-spacing:-.035em;margin:16px 0 26px}header p{max-width:700px;margin:0;font-size:16px;line-height:1.85}.profile{border-left:1px solid var(--line);padding-left:28px;display:grid;gap:17px}.profile span{display:block;font-size:12px;color:var(--muted);margin-bottom:4px}.profile strong{font-size:14px}.strip{border-block:1px solid var(--line);padding:19px 0;display:flex;justify-content:space-between;font:12px ui-monospace,monospace;color:var(--muted)}
-    main{padding:76px 0 110px}.intro-title{display:flex;align-items:end;justify-content:space-between;margin-bottom:22px}.intro-title h2,.section-head h2{font:500 32px Georgia,"Songti SC",serif;margin:0}.intro-title span{font-size:13px;color:var(--muted)}.filters{display:flex;justify-content:center;gap:9px;margin-bottom:82px}.filters a{background:#fff;border:1px solid var(--line);border-radius:99px;padding:9px 14px;text-decoration:none;font:12px ui-monospace,monospace}
-    .section{padding:0 0 92px}.section-head{text-align:center;margin-bottom:34px}.section-head .eyebrow{margin-bottom:8px}.section-head p{font-size:13px;color:var(--muted);margin:10px 0 0}.timeline{position:relative;display:flex;flex-direction:column;gap:52px}.timeline:before{content:"";position:absolute;left:50%;top:22px;bottom:22px;width:1px;background:var(--line)}.entry{position:relative;width:46%}.entry:nth-child(even){align-self:flex-end}.entry:after{content:"";position:absolute;top:36px;right:-9.9%;width:8px;height:8px;background:var(--blue);border:4px solid var(--paper);border-radius:50%;box-shadow:0 0 0 1px var(--line)}.entry:nth-child(even):after{left:-9.9%;right:auto}
-    .card{width:100%;padding:0;border:1px solid var(--line);border-radius:8px;background:var(--card);overflow:hidden;text-align:left;cursor:pointer;box-shadow:0 12px 34px rgba(25,25,20,.045);transition:transform .2s,box-shadow .2s}.card:hover{transform:translateY(-3px);box-shadow:0 18px 42px rgba(25,25,20,.08)}.visual{height:205px;position:relative;overflow:hidden;background:#eef1f4;display:grid;place-items:center}.visual:before{content:"";position:absolute;inset:20px;background:linear-gradient(135deg,rgba(255,255,255,.92),rgba(255,255,255,.32));border:1px solid rgba(55,75,100,.1);border-radius:7px}.mini-flow{position:relative;z-index:1;display:flex;align-items:center;gap:8px}.mini-flow i{font-style:normal;width:54px;height:36px;border:1px solid #9eabc0;border-radius:6px;background:white;display:grid;place-items:center;font:8px ui-monospace,monospace;box-shadow:0 4px 12px rgba(40,60,90,.07)}.mini-flow b{width:24px;height:1px;background:#7c8da6;position:relative}.mini-flow b:after{content:"";position:absolute;right:-1px;top:-3px;border-left:5px solid #7c8da6;border-block:3px solid transparent}.visual.knowledge{background:#eef3ee}.visual.knowledge .stack{position:relative;z-index:1;display:grid;gap:8px}.visual.knowledge .stack span{width:178px;padding:9px 13px;background:#fff;border:1px solid #a9b8ab;border-radius:5px;font:9px ui-monospace,monospace}.visual.repo{background:#f1eef4}.visual.repo .nodes{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,58px);gap:10px}.visual.repo .nodes span{height:40px;background:#fff;border:1px solid #b3a8c0;border-radius:7px;display:grid;place-items:center;font:8px ui-monospace,monospace}.visual.repo .nodes span:last-child{grid-column:2}.copy{padding:23px 24px 24px}.index{font:9px ui-monospace,monospace;color:var(--muted)}h3{font:500 24px Georgia,"Songti SC",serif;margin:12px 0 9px}.copy p{font-size:13px;line-height:1.7;color:#66635d;margin:0}.more{display:flex;justify-content:space-between;align-items:center;margin-top:18px;font:600 10px ui-monospace,monospace;color:var(--muted)}.more b{font-size:17px;color:var(--blue)}
-    .single{width:min(680px,100%);margin:auto}.single .card{display:grid;grid-template-columns:42% 1fr}.single .visual{height:100%;min-height:260px}.paper-preview{padding:18px;background:#eceae5}.paper-preview img{position:relative;z-index:1;width:100%;height:100%;object-fit:contain}.opensource-visual{background:#eaf0ed}.opensource-visual .loop{position:relative;z-index:1;width:210px;display:grid;grid-template-columns:1fr 1fr;gap:9px}.opensource-visual .loop span{background:#fff;border:1px solid #9eb0a5;border-radius:6px;padding:11px;text-align:center;font:9px ui-monospace,monospace}
-    .education{border:1px solid var(--line);background:#edf2f7;border-radius:8px;display:grid;grid-template-columns:1fr 1fr;box-shadow:0 12px 32px rgba(25,25,20,.035)}.school{padding:30px}.school+ .school{border-left:1px solid #ccd5de}.school h3{font-size:27px;margin:10px 0 7px}.school p{font-size:13px;color:var(--muted);margin:0;line-height:1.7}
-    .awards{border-top:1px solid var(--line);padding-top:30px;display:grid;grid-template-columns:1fr 2fr;gap:45px}.awards h2{font:500 29px Georgia,"Songti SC",serif;margin:0}.award{display:flex;justify-content:space-between;gap:20px;padding:15px 0;border-bottom:1px solid var(--line);font-size:13px}.award span{color:var(--muted)}
-    dialog{width:min(900px,calc(100% - 32px));max-height:88vh;border:0;border-radius:12px;padding:0;background:#fff;color:var(--ink);box-shadow:0 30px 90px rgba(20,20,18,.22)}dialog::backdrop{background:rgba(28,29,30,.58);backdrop-filter:blur(3px)}.modal-head{position:sticky;top:0;z-index:3;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line);padding:18px 24px;display:flex;justify-content:space-between;align-items:center}.modal-head strong{font:500 22px Georgia,"Songti SC",serif}.close{border:1px solid var(--line);background:#fff;border-radius:50%;width:34px;height:34px;cursor:pointer}.modal-body{padding:30px}.hero-image{width:100%;max-height:490px;object-fit:contain;background:#f2f1ed;border:1px solid var(--line);border-radius:8px;padding:14px;margin-bottom:30px}.star{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.star article{border-top:2px solid var(--ink);padding:14px 4px}.star b{font:600 10px ui-monospace,monospace;letter-spacing:.12em;color:var(--blue)}.star h4{font-size:14px;margin:8px 0}.star p,.bullet-list li{font-size:13px;line-height:1.75;color:#5f5d57}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px}.metric{background:var(--soft);border-radius:7px;padding:16px}.metric strong{display:block;font:500 25px Georgia,serif}.metric span{font-size:10px;color:var(--muted)}.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:22px}.tags span{border:1px solid var(--line);border-radius:99px;padding:6px 9px;font:9px ui-monospace,monospace}.modal-link{display:inline-block;margin-top:20px;font-size:13px}
-    footer{background:#22221f;color:#eee;padding:62px 0 24px}.footer-main{display:grid;grid-template-columns:1fr auto;gap:50px;align-items:end}.footer-main h2{font:500 clamp(36px,5vw,58px) Georgia,"Songti SC",serif;margin:12px 0}.contact{display:grid;gap:11px}.contact a,.contact span{font-size:13px}.footnote{border-top:1px solid #484743;margin-top:44px;padding-top:17px;display:flex;justify-content:space-between;font-size:11px;color:#aaa}
-    .index{font-size:12px}.copy p{font-size:15px}.more{font-size:12px}.mini-flow i,.visual.knowledge .stack span,.visual.repo .nodes span,.opensource-visual .loop span{font-size:12px}.hero-image{cursor:zoom-in}.star b{font-size:12px;letter-spacing:.08em}.star h4{font-size:16px}.star p,.bullet-list li{font-size:15px}.metric span{font-size:12px}.tags span{font-size:12px;padding:7px 10px}.modal-link{font-size:14px}#image-viewer{width:100vw;height:100vh;max-width:none;max-height:none;background:rgba(15,16,18,.96);border-radius:0}#image-viewer img{width:100%;height:100%;object-fit:contain;padding:34px}#image-viewer .close{position:fixed;right:22px;top:18px;z-index:4;font-size:22px}
-    @media(max-width:720px){nav div{gap:12px}header{grid-template-columns:1fr;gap:34px;padding:58px 0}.profile{border:0;padding:0;grid-template-columns:1fr 1fr}.strip{gap:12px;flex-wrap:wrap}.filters{flex-wrap:wrap;margin-bottom:60px}.timeline:before{left:8px}.entry,.entry:nth-child(even){width:calc(100% - 28px);align-self:flex-end}.entry:after,.entry:nth-child(even):after{left:-27px;right:auto}.single .card{grid-template-columns:1fr}.single .visual{min-height:210px}.education,.star,.awards,.footer-main{grid-template-columns:1fr}.school+.school{border-left:0;border-top:1px solid #ccd5de}.metrics{grid-template-columns:1fr 1fr}.modal-body{padding:20px}.visual{height:190px}.section{padding-bottom:74px}}
-  </style>
-  <style>
-    /* Entry-page visual system: readable, restrained, and independent from modal typography. */
-    :root{--muted:#5f5e59;--line:#d6d3ca}
-    body{font-size:16px;line-height:1.6}
-    .wrap{width:min(1120px,calc(100% - 56px))}
-    nav{height:76px}nav strong{font-size:20px}nav div{gap:28px}nav a{font-size:14px;font-weight:500;padding:8px 0;border-bottom:1px solid transparent}nav a:hover{color:var(--ink);border-color:var(--ink)}
-    header{padding:74px 0 58px;grid-template-columns:minmax(0,1fr);gap:38px;align-items:start}
-    .eyebrow{font-size:14px;line-height:1.5;letter-spacing:.055em;color:#5b5a55}
-    h1{font-size:clamp(52px,6vw,76px);margin:12px 0 22px}
-    header p{max-width:820px;font-size:17px;line-height:1.78;color:#343431}
-    .profile{border-left:0;border-top:1px solid var(--line);padding:22px 0 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
-    .profile div{padding-right:24px;border-right:1px solid var(--line)}.profile div:last-child{border-right:0}
-    .profile span{font-size:13px;margin-bottom:7px;color:#686762}.profile strong{font-size:15px;line-height:1.5}
-    .strip{padding:18px 0;font-size:13px;letter-spacing:.015em;color:#5f5e59}
-    main{padding:68px 0 112px}.intro-title{margin-bottom:26px}.intro-title h2,.section-head h2{font-size:34px}.intro-title span{font-size:14px;color:#5f5e59}
-    .filters{justify-content:flex-start;gap:0;margin:0 0 86px;border-bottom:1px solid var(--line)}
-    .filters a{background:transparent;border:0;border-radius:0;padding:13px 22px 12px;font:500 14px/1.4 inherit;color:#55544f;position:relative}
-    .filters a:first-child{padding-left:0}.filters a:hover{color:var(--ink)}.filters a:after{content:"";position:absolute;left:22px;right:22px;bottom:-1px;height:2px;background:transparent}.filters a:first-child:after{left:0}.filters a:hover:after{background:var(--ink)}
-    .section{padding-bottom:104px;scroll-margin-top:24px}.section-head{margin-bottom:38px}.section-head .eyebrow{margin-bottom:9px}.section-head p{font-size:14px}
-    .card{border-radius:10px;box-shadow:0 10px 28px rgba(25,25,20,.04)}.visual{height:210px}
-    .mini-flow{gap:7px;padding:0 22px;max-width:100%}.mini-flow i{width:64px;height:38px;font-size:10px;white-space:nowrap}.mini-flow b{width:20px;flex:0 0 20px}
-    .visual.knowledge .stack{width:min(230px,calc(100% - 52px))}.visual.knowledge .stack span{width:100%;padding:9px 11px;font-size:10px;line-height:1.35;white-space:normal}
-    .visual.repo .nodes{grid-template-columns:repeat(3,64px);gap:8px}.visual.repo .nodes span{height:42px;font-size:10px}
-    .opensource-visual .loop span{font-size:10px;line-height:1.35}
-    .copy{padding:25px 26px 26px}.index{font-size:11px;letter-spacing:.035em}h3{font-size:25px;margin:10px 0}.copy p{font-size:15px;line-height:1.72;color:#55534e}.more{font-size:12px;margin-top:20px}
-    .education{border-radius:10px}.school{padding:32px}.school h3{font-size:27px}.school p{font-size:15px;color:#55544f}
-    .awards{padding-top:34px}.award{font-size:15px}.award span{color:#5d5c57}
-    @media(max-width:720px){
-      .wrap{width:min(100% - 32px,1120px)}nav{height:auto;min-height:68px;gap:16px}nav div{gap:14px;overflow-x:auto}nav a{font-size:13px;white-space:nowrap}
-      header{padding:52px 0 44px}.profile{grid-template-columns:1fr;gap:0}.profile div{border-right:0;border-bottom:1px solid var(--line);padding:13px 0}.profile div:last-child{border-bottom:0}
-      .strip{font-size:12px}.intro-title{align-items:flex-start;gap:12px}.filters{overflow-x:auto;justify-content:flex-start;margin-bottom:64px}.filters a{white-space:nowrap;padding-inline:15px}.filters a:first-child{padding-left:0}
-      .section{padding-bottom:78px}.visual{height:195px}.mini-flow{transform:scale(.92)}.timeline{gap:38px}
-    }
-    nav a{font-size:15px}
-    header.hero{min-height:calc(100vh - 76px);padding:72px 0 86px;grid-template-columns:minmax(0,1.35fr) minmax(360px,.8fr);gap:76px;align-items:center}
-    .hero-badge{display:inline-flex;align-items:center;gap:9px;padding:8px 13px;border:1px solid var(--line);border-radius:99px;background:rgba(255,255,255,.72);font:600 12px/1 ui-monospace,monospace;letter-spacing:.06em;color:#5d5c57}
-    .hero-badge:before{content:"";width:7px;height:7px;border-radius:50%;background:#4caf75}
-    .hero-role{font:500 clamp(22px,2.5vw,31px)/1.35 Georgia,"Songti SC",serif;color:#52515e;margin:0 0 18px}
-    .hero-copy>p:last-of-type{font-size:16px;line-height:1.8;max-width:690px;color:#4d4c48}
-    .hero-action{display:inline-flex;margin-top:28px;padding:12px 18px;border-radius:8px;background:#272724;color:#fff;text-decoration:none;font-size:14px;font-weight:600}
-    .hero-points{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-    .hero-point{min-height:142px;padding:24px;background:rgba(255,255,255,.82);border:1px solid #e4e1d9;border-radius:14px;box-shadow:0 12px 30px rgba(30,30,25,.055)}
-    .hero-point strong{display:block;font:500 22px/1.25 Georgia,"Songti SC",serif;margin-bottom:10px}.hero-point span{font-size:14px;line-height:1.55;color:#65635e}
-    .strip{display:none}.intro-title{margin-top:8px}.filters{display:none}
-    .awards>div{display:flex;flex-wrap:wrap;gap:12px}.award{display:inline-flex;padding:10px 14px;border:1px solid var(--line);border-radius:99px;background:#fff;font-size:14px}.award span{display:none}
-    .mini-flow i{width:74px;height:42px;font-size:12px}.mini-flow b{width:22px;flex-basis:22px}
-    .visual.knowledge .stack{width:min(260px,calc(100% - 40px))}.visual.knowledge .stack span{font-size:12px;padding:10px 12px}
-    .visual.repo .nodes{grid-template-columns:repeat(3,72px);gap:9px}.visual.repo .nodes span{height:46px;font-size:12px}
-    .opensource-visual .loop{width:232px}.opensource-visual .loop span{font-size:12px;padding:12px 10px}
-    .visual.card-art{padding:0;background:#faf7f1}.visual.card-art:before{display:none}.visual.card-art img{width:100%;height:100%;display:block;object-fit:contain;object-position:center}
-    .single .card{display:block}.single .visual{height:220px;min-height:220px}
-    @media(max-width:820px){header.hero{min-height:auto;grid-template-columns:1fr;gap:42px}.hero-points{grid-template-columns:1fr 1fr}}
-    @media(max-width:520px){.hero-points{grid-template-columns:1fr}.hero-point{min-height:auto}.awards{gap:24px}.awards>div{display:flex}}
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f7f4">
+  <meta name="description" content="王昭容的 Agent 开发工程师个人主页：生产级 Agent、Agentic Search、Memory、训练与评测。">
+  <link rel="canonical" href="https://wzr8277.github.io/">
+  <title>王昭容 · Agent 开发工程师</title>
+  <link rel="stylesheet" href="./styles.css">
 </head>
-<body>
-  <nav class="wrap"><strong>WZR.</strong><div><a href="#education">教育</a><a href="#work">公司经历</a><a href="#research">研究论文</a><a href="#opensource">开源项目</a></div></nav>
-  <header class="wrap hero">
-    <div class="hero-copy"><span class="hero-badge">AGENT ENGINEER · 2026</span><h1>王昭容</h1><p class="hero-role">面向真实业务问题，构建可检索、可验证、可迭代的 Agent。</p><p>浙江大学电子信息硕士，携程火车票研发部后端开发工程师。关注 Memory、生产级 Agent、Agentic Search、工具调用、训练与评测。</p><a class="hero-action" href="#education">浏览经历与项目 ↓</a></div>
-    <aside class="hero-points"><div class="hero-point"><strong>Production Agent</strong><span>复杂业务排障与多工具协作</span></div><div class="hero-point"><strong>Agentic Search</strong><span>文档引导与多仓代码证据链</span></div><div class="hero-point"><strong>Training & Eval</strong><span>SFT、GRPO 与可归因评测</span></div><div class="hero-point"><strong>Agent Memory</strong><span>持续演化记忆与组合泛化研究</span></div></aside>
+<body class="theme-agent">
+  <a class="skip-link" href="#main">跳到主要内容</a>
+
+  <header class="site-header" aria-label="主导航">
+    <a class="brand" href="#top" aria-label="返回首页">WZR</a>
+    <nav class="nav-links" aria-label="页面章节">
+      <a href="#education">教育</a>
+      <a href="#work">公司经历</a>
+      <a href="#research">研究论文</a>
+      <a href="#opensource">开源项目</a>
+      <a href="#honors">荣誉</a>
+    </nav>
+    <a class="edition-link" href="https://wzr8277.github.io/harness-portfolio/">Harness 版</a>
   </header>
-  <div class="strip wrap"><span>LANGGRAPH / AGENTIC RAG / TOOL USE</span><span>SFT / GRPO / EVALUATION</span><span>MEMORY / HARNESS / RECOVERY</span></div>
 
-  <main class="wrap">
-    <div class="intro-title"><h2>经历与项目</h2><span>点击项目，打开完整案例</span></div>
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span>Agent Engineer · Portfolio</p>
+        <h1 id="hero-title">王昭容</h1>
+        <p class="hero-role">让 Agent 在真实业务里，<em>找到证据</em>，再给结论。</p>
+        <p class="hero-intro">浙江大学电子信息硕士，曾任携程火车票研发部 Agent 开发工程师。关注 <strong>Memory</strong>、Agentic Search、工具调用、训练与评测，把模型能力组织成可检索、可验证、可迭代的系统。</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#work">查看代表经历 <span aria-hidden="true">↓</span></a>
+          <a class="button button-secondary" href="#research">查看研究</a>
+        </div>
+      </div>
 
-    <section class="section" id="education">
-      <div class="section-head"><div class="eyebrow">Education · 2018 — 2025</div><h2>教育经历</h2></div>
-      <div class="education"><article class="school"><div class="eyebrow">2022 — 2025</div><h3>浙江大学</h3><p>电子信息 · 硕士<br>人工智能 / 计算机视觉</p></article><article class="school"><div class="eyebrow">2018 — 2022</div><h3>北京科技大学</h3><p>智能科学与技术 · 本科<br>国家奖学金</p></article></div>
+      <div class="proof-grid" aria-label="代表性成果">
+        <article class="proof-card proof-featured">
+          <strong>78.3%</strong>
+          <span>根因 Top-1</span>
+          <small>61.7% → 78.3%</small>
+        </article>
+        <article class="proof-card">
+          <strong>86.4%</strong>
+          <span>Evidence Recall@5</span>
+          <small>240 条脱敏工单</small>
+        </article>
+        <article class="proof-card">
+          <strong>+12.2</strong>
+          <span>Zero-shot SSR</span>
+          <small>MemoWorld</small>
+        </article>
+        <article class="proof-card">
+          <strong>2</strong>
+          <span>AAAI 2027 在投</span>
+          <small>Memory · Verifier</small>
+        </article>
+      </div>
+
+      <a class="scroll-cue" href="#principles">Scroll <span aria-hidden="true">↓</span></a>
     </section>
 
-    <section class="section" id="work">
-      <div class="section-head"><div class="eyebrow">Ctrip · 2025 — Present</div><h2>公司经历</h2></div>
-      <div class="timeline">
-        <article class="entry"><button class="card" data-modal="agent-case"><div class="visual card-art"><img src="assets/card-runtime-v2.png" alt="出境订单排障 Agent 入口插图"></div><div class="copy"><span class="index">01 / PRODUCTION AGENT</span><h3>出境订单排障 Agent</h3><p>围绕异常假设动态取证，在证据不足时自动 replan。</p><span class="more">查看完整案例 <b>↗</b></span></div></button></article>
-        <article class="entry"><button class="card" data-modal="knowledge-case"><div class="visual card-art"><img src="assets/card-knowledge-v2.png" alt="业务文档引导多仓代码检索入口插图"></div><div class="copy"><span class="index">02 / AGENTIC SEARCH</span><h3>业务与代码知识库</h3><p>先以业务文档确定方向，再进入多仓库查找代码证据。</p><span class="more">查看完整案例 <b>↗</b></span></div></button></article>
-        <article class="entry"><button class="card" data-modal="repo-case"><div class="visual card-art"><img src="assets/card-multirepo-v2.png" alt="跨仓需求调研入口插图"></div><div class="copy"><span class="index">03 / MULTI-REPO SKILL</span><h3>跨仓需求调研 Skill</h3><p>渐进式检索与主-子 Agent 分仓协作，构建可核验证据链。</p><span class="more">查看完整案例 <b>↗</b></span></div></button></article>
+    <section class="principles reveal" id="principles" aria-labelledby="principles-title">
+      <div class="section-kicker">Engineering stance</div>
+      <h2 id="principles-title">我如何做 Agent</h2>
+      <div class="principle-grid">
+        <article><span>01</span><h3>证据先于结论</h3><p>检索、工具调用与最终回答之间保留可检查的证据链。</p></article>
+        <article><span>02</span><h3>状态支撑长任务</h3><p>用 Working Memory 记录假设、进度与已验证事实，避免重复和漂移。</p></article>
+        <article><span>03</span><h3>用评测推动迭代</h3><p>固定任务集、拆分指标与失败类型，让每次改动都能被比较。</p></article>
       </div>
     </section>
 
-    <section class="section" id="research">
-      <div class="section-head"><div class="eyebrow">Research · AAAI 2027 Submission</div><h2>研究论文</h2></div>
-      <article class="single"><button class="card" data-modal="paper-case"><div class="visual paper-preview"><img src="assets/memoworld-paper.png" alt="MemoWorld 论文首页预览"></div><div class="copy"><span class="index">CO-FIRST AUTHOR · IN SUBMISSION</span><h3>MemoWorld</h3><p>失败条件化的 Memory World 生成方法，面向持续演化记忆架构的组合泛化。</p><span class="more">查看论文与方法 <b>↗</b></span></div></button></article>
+    <section class="portfolio-section reveal" id="education" aria-labelledby="education-title">
+      <header class="section-heading">
+        <div><p class="section-kicker">Education · 2018—2025</p><h2 id="education-title">教育经历</h2></div>
+        <p>从智能科学与技术，到人工智能与计算机视觉研究训练。</p>
+      </header>
+      <div class="education-grid">
+        <button class="entry-card education-card" type="button" data-detail="zju" aria-label="查看浙江大学教育经历详情">
+          <span class="entry-meta">2022.09—2025.03 · 硕士</span>
+          <h3>浙江大学</h3>
+          <p class="entry-org">电子信息 · 全日制</p>
+          <p>人工智能 / 计算机视觉研究方向，完成医学图像处理相关 SCI 研究。</p>
+          <span class="entry-more">查看详情 <span aria-hidden="true">↗</span></span>
+        </button>
+        <button class="entry-card education-card" type="button" data-detail="ustb" aria-label="查看北京科技大学教育经历详情">
+          <span class="entry-meta">2018.09—2022.06 · 本科</span>
+          <h3>北京科技大学</h3>
+          <p class="entry-org">智能科学与技术 · 全日制</p>
+          <p>以机器学习与工程基础为主线，获得国家奖学金及数学竞赛一等奖。</p>
+          <span class="entry-more">查看详情 <span aria-hidden="true">↗</span></span>
+        </button>
+      </div>
     </section>
 
-    <section class="section" id="opensource">
-      <div class="section-head"><div class="eyebrow">Open Source · Core Contributor</div><h2>开源项目</h2></div>
-      <article class="single"><button class="card" data-modal="open-case"><div class="visual card-art"><img src="assets/card-workbuddy-v2.png" alt="learn-workbuddy Agent Harness 入口插图"></div><div class="copy"><span class="index">OPEN SOURCE · CORE CONTRIBUTOR</span><h3>learn-workbuddy</h3><p>Provider-neutral Runtime、长任务上下文、恢复、权限与审计。</p><span class="more">查看核心贡献 <b>↗</b></span></div></button></article>
+    <section class="portfolio-section reveal" id="work" aria-labelledby="work-title">
+      <header class="section-heading">
+        <div><p class="section-kicker">Work · Ctrip</p><h2 id="work-title">公司经历</h2></div>
+        <p>同一业务语境下的三项 Agent 工程实践：诊断、知识与跨仓调研。</p>
+      </header>
+      <div class="work-list">
+        <button class="entry-card project-card project-featured" type="button" data-detail="diagnosis" aria-label="查看出境订单排障 Agent 详情">
+          <span class="entry-meta">2025.05—至今 · 携程火车票研发部</span>
+          <div class="project-layout">
+            <div class="project-copy">
+              <p class="card-label">Production Agent</p>
+              <h3>出境订单排障 Agent</h3>
+              <p>把订单、供应商回调、调用链日志与历史工单组织成多步诊断；证据不足时重新规划，最终输出根因、证据链与处置建议。</p>
+              <div class="metric-row" aria-label="项目指标">
+                <span><strong>78.3%</strong> Top-1</span>
+                <span><strong>86.4%</strong> Recall@5</span>
+                <span><strong>7.1 min</strong> 平均耗时</span>
+              </div>
+              <span class="entry-more">打开项目详情 <span aria-hidden="true">↗</span></span>
+            </div>
+            <div class="mini-system mini-diagnosis" aria-hidden="true">
+              <div class="mini-node">异常输入</div><i></i><div class="mini-node">规划 / 工具</div><i></i><div class="mini-node">证据核验</div><i></i><div class="mini-node mini-accent">根因结论</div>
+              <span class="feedback-line">证据不足 · 重新规划</span>
+            </div>
+          </div>
+        </button>
+
+        <div class="support-grid">
+          <button class="entry-card project-card" type="button" data-detail="knowledge" aria-label="查看出境业务与代码仓库知识库详情">
+            <div class="project-visual compact-visual" aria-hidden="true">
+              <div class="visual-step"><b>01</b><span>文档指南</span></div><i></i><div class="visual-step"><b>02</b><span>多仓代码查找</span></div><i></i><div class="visual-step visual-step-accent"><b>03</b><span>代码证据链</span></div>
+            </div>
+            <p class="card-label">Knowledge & Search</p>
+            <h3>出境业务与代码仓库知识库</h3>
+            <p>先检索业务文档建立定位指南，再通过 Agentic Search 进入多代码仓库查找实现证据；分块信息不足时回退整篇文档。</p>
+            <div class="metric-row"><span><strong>80%+</strong> 场景准确率</span><span><strong>doc / chunk</strong> 双索引</span></div>
+            <span class="entry-more">查看检索链路 <span aria-hidden="true">↗</span></span>
+          </button>
+
+          <button class="entry-card project-card" type="button" data-detail="research-skill" aria-label="查看需求调研 Skill 详情">
+            <div class="project-visual compact-visual" aria-hidden="true">
+              <div class="visual-step"><b>L1</b><span>定位</span></div><i></i><div class="visual-step"><b>L2</b><span>分仓</span></div><i></i><div class="visual-step visual-step-accent"><b>L3</b><span>证据</span></div>
+            </div>
+            <p class="card-label">Multi-repo Skill</p>
+            <h3>需求调研 Skill</h3>
+            <p>用 L1→L2→L3 渐进式检索与主—子 Agent 分仓协作，提炼需求关键词并构建跨仓代码证据链。</p>
+            <div class="metric-row"><span><strong>80%+</strong> 跨仓分析准确率</span><span><strong>主—子 Agent</strong> 分仓协作</span></div>
+            <span class="entry-more">查看协作机制 <span aria-hidden="true">↗</span></span>
+          </button>
+        </div>
+      </div>
     </section>
 
-    <section class="awards"><h2>奖项与成果</h2><div><div class="award"><strong>国家奖学金</strong></div><div class="award"><strong>全国大学生数学竞赛一等奖</strong></div><div class="award"><strong>SCI 论文两篇</strong></div></div></section>
+    <section class="portfolio-section reveal" id="research" aria-labelledby="research-title">
+      <header class="section-heading">
+        <div><p class="section-kicker">Research · AAAI 2027</p><h2 id="research-title">研究论文</h2></div>
+        <p>围绕 Memory 泛化与自演化 Agent 的选择瓶颈，两项工作均处于匿名评审阶段。</p>
+      </header>
+      <div class="research-list">
+        <button class="entry-card paper-card" type="button" data-detail="memoworld" aria-label="查看 MemoWorld 论文详情">
+          <div class="paper-preview"><img src="./assets/paper-memoworld-2027.png" alt="MemoWorld 论文首页" loading="lazy"><span>点击查看首页</span></div>
+          <div class="paper-copy">
+            <span class="entry-meta">AAAI 2027 · 共一作者 / 在投</span>
+            <h3>MemoWorld</h3>
+            <p class="paper-title">Training Transferable Memory for LLM Agents by Evolving Their Worlds</p>
+            <p>把失败诊断为记忆依赖模体，并让训练世界沿学习进步演化，缓解固定任务流造成的“静态世界过拟合”。</p>
+            <div class="metric-row"><span><strong>+12.2</strong> Zero-shot SSR</span><span><strong>5.4×</strong> 更低组合差距</span><span><strong>+4.5</strong> MemoryArena</span></div>
+            <span class="entry-more">摘要、方法与实验 <span aria-hidden="true">↗</span></span>
+          </div>
+        </button>
+
+        <button class="entry-card paper-card" type="button" data-detail="rvd" aria-label="查看 RVD 论文详情">
+          <div class="paper-preview"><img src="./assets/paper-rvd-2027.png" alt="When Solver Progress Outruns Selection 论文首页" loading="lazy"><span>点击查看首页</span></div>
+          <div class="paper-copy">
+            <span class="entry-meta">AAAI 2027 · 三作 / 在投</span>
+            <h3>When Solver Progress Outruns Selection</h3>
+            <p class="paper-title">Retrospective Verifier Distillation for Self-Evolving Agents</p>
+            <p>用固定候选池回放区分“没有生成正确轨迹”和“正确轨迹未被选中”，再以任务后可审计证据持续训练 verifier。</p>
+            <div class="metric-row"><span><strong>+3.2</strong> 平均准确率</span><span><strong>+4.7</strong> AppWorld</span><span><strong>+4.1</strong> LiveCodeBench</span></div>
+            <span class="entry-more">诊断、RVD 与适用边界 <span aria-hidden="true">↗</span></span>
+          </div>
+        </button>
+      </div>
+    </section>
+
+    <section class="portfolio-section reveal" id="opensource" aria-labelledby="opensource-title">
+      <header class="section-heading">
+        <div><p class="section-kicker">Open Source · Core contributor</p><h2 id="opensource-title">开源项目</h2></div>
+        <p>把 Agent 工程机制拆成可运行、可测试、可逐章理解的教学实现。</p>
+      </header>
+      <button class="entry-card opensource-card" type="button" data-detail="workbuddy" aria-label="查看 learn-workbuddy 开源贡献详情">
+        <div class="opensource-copy">
+          <span class="entry-meta">adongwanai / learn-workbuddy · 核心作者</span>
+          <h3>learn-workbuddy</h3>
+          <p>一份从 Agent Loop 到桌面 Harness 的 24 章开源工程课。近期重点重构有界 Agent Loop 与统一 Tool Registry，让停止、参数校验、错误和并发策略成为显式契约。</p>
+          <div class="metric-row"><span><strong>24</strong> 章</span><span><strong>27</strong> 张架构图</span><span><strong>2</strong> 核心章节重构</span></div>
+          <span class="entry-more">查看我的贡献与仓库链接 <span aria-hidden="true">↗</span></span>
+        </div>
+        <div class="harness-map" aria-hidden="true">
+          <div><b>Loop</b><span>有界停止</span></div>
+          <div><b>Tools</b><span>统一注册</span></div>
+          <div><b>Memory</b><span>分层作用域</span></div>
+          <div><b>Context</b><span>按需组装</span></div>
+          <div><b>Guard</b><span>权限审计</span></div>
+        </div>
+      </button>
+    </section>
+
+    <section class="portfolio-section reveal" id="stack" aria-labelledby="stack-title">
+      <header class="section-heading compact-heading">
+        <div><p class="section-kicker">Working set</p><h2 id="stack-title">技术栈</h2></div>
+      </header>
+      <div class="stack-grid">
+        <article><h3>Agent 系统</h3><ul><li>LangGraph</li><li>Agent Memory</li><li>Tool Use</li><li>Working Memory</li></ul></article>
+        <article><h3>检索与知识</h3><ul><li>Agentic Search</li><li>Elasticsearch</li><li>BM25 / Dense Retrieval</li><li>Reranker</li></ul></article>
+        <article><h3>训练与评测</h3><ul><li>SFT</li><li>GRPO</li><li>Verifier</li><li>Recall@K / MRR</li></ul></article>
+        <article><h3>开发方式</h3><ul><li>Python</li><li>Codex</li><li>Claude Code</li><li>Git</li></ul></article>
+      </div>
+    </section>
+
+    <section class="portfolio-section reveal" id="honors" aria-labelledby="honors-title">
+      <header class="section-heading compact-heading">
+        <div><p class="section-kicker">Honors</p><h2 id="honors-title">荣誉与研究训练</h2></div>
+      </header>
+      <div class="honor-list">
+        <span>国家奖学金</span>
+        <span>全国大学生数学竞赛一等奖</span>
+        <span>医学图像处理 SCI 论文</span>
+        <span>小模型 Finetune SCI 论文</span>
+      </div>
+    </section>
   </main>
 
-  <dialog id="agent-case"><div class="modal-head"><strong>出境订单排障 Agent</strong><button class="close" aria-label="关闭">×</button></div><div class="modal-body"><img class="hero-image" src="assets/runtime-v3.png" alt="订单排障 Agent 完整流程图"><div class="star"><article><b>S · SITUATION</b><h4>人工排障需要跨多类证据反复核对</h4><p>订单、供应商请求/回调、调用链日志、错误码与历史工单分散，定位慢且容易漏证据。</p></article><article><b>T · TASK</b><h4>构建可验证、只读、安全的诊断闭环</h4><p>输出根因候选、证据链和处置建议；生产写操作仍由规则系统与人工审批。</p></article><article><b>A · ACTION</b><h4>Tool + LangGraph + SFT→GRPO</h4><p>实现 Router-Planner-Executor-Verifier-Synthesizer；构造多跳回放集，以 LoRA SFT 学协议、GRPO 优化工具路径与停止策略。</p></article><article><b>R · RESULT</b><h4>准确、快速、可归因</h4><p>将失败定位到检索、路径、证据或答案层，并保留逐轮调用与评测轨迹。</p></article></div><div class="metrics"><div class="metric"><strong>78.3%</strong><span>根因 Top-1</span></div><div class="metric"><strong>86.4%</strong><span>证据 Recall@5</span></div><div class="metric"><strong>7.1 min</strong><span>平均诊断耗时</span></div></div><div class="tags"><span>LangGraph</span><span>ReAct</span><span>LoRA SFT</span><span>GRPO</span><span>Faithfulness</span></div></div></dialog>
-  <dialog id="knowledge-case"><div class="modal-head"><strong>业务与代码知识库</strong><button class="close" aria-label="关闭">×</button></div><div class="modal-body"><img class="hero-image" src="assets/knowledge-v4.png" alt="业务文档引导多仓代码取证的完整流程图"><div class="star"><article><b>S · SITUATION</b><h4>业务指南与真实实现分散</h4><p>仅查文档无法确认代码事实，仅搜代码又容易缺少业务术语、系统边界和调用方向。</p></article><article><b>T · TASK</b><h4>用文档指导代码取证</h4><p>先从业务文档提取调查指南，再进入多个代码仓库沿调用关系构建证据链。</p></article><article><b>A · ACTION</b><h4>分块检索、全文兜底、多仓搜索</h4><p>文档同时维护整篇与分块索引；先以关键词和向量混合检索分块，信息不足时根据文档标识回读整篇。随后 Agent 使用命令行在多仓库搜索、读取文件和 Git 信息，串联代码证据。</p></article><article><b>R · RESULT</b><h4>以代码证据链支撑答案</h4><p>覆盖出境业务常见问题定位，知识库问答准确率达到 80% 以上。</p></article></div><div class="tags"><span>Document Guide</span><span>Full-document Fallback</span><span>Multi-repo Search</span><span>Code Evidence Chain</span></div></div></dialog>
-  <dialog id="repo-case"><div class="modal-head"><strong>跨仓需求调研 Skill</strong><button class="close" aria-label="关闭">×</button></div><div class="modal-body"><img class="hero-image" src="assets/multi-repo-v2.png" alt="跨仓需求调研完整协作图"><div class="star"><article><b>S · SITUATION</b><h4>跨仓调研耗时且易遗漏</h4><p>需求链路跨越多个仓库，单次搜索难以形成完整结论。</p></article><article><b>T · TASK</b><h4>形成可核验的代码证据链</h4><p>减少无效搜索，并让结论能回到具体代码位置。</p></article><article><b>A · ACTION</b><h4>L1→L2→L3 渐进检索</h4><p>设计主-子 Agent 分仓协作，完成关键词提炼、范围收敛与证据汇总。</p></article><article><b>R · RESULT</b><h4>准确率 80%+</h4><p>提升跨仓分析准确率，并显著缩短代码逻辑梳理时间。</p></article></div><div class="tags"><span>Multi-Agent</span><span>Repository Search</span><span>Evidence Chain</span></div></div></dialog>
-  <dialog id="paper-case"><div class="modal-head"><strong>MemoWorld</strong><button class="close" aria-label="关闭">×</button></div><div class="modal-body"><img class="hero-image" src="assets/memoworld-paper.png" alt="MemoWorld 论文首页"><div class="star"><article><b>PROBLEM</b><h4>静态世界过拟合</h4><p>固定任务流训练难以适应持续演化的记忆架构与未知任务。</p></article><article><b>METHOD</b><h4>记忆依赖模体</h4><p>将泛化单元从任务重定义为模体，动态构造证据结构，训练写入、修订、分支与遗忘。</p></article><article><b>RESULT</b><h4>组合泛化提升</h4><p>相同交互预算下，三项外部基准零样本成功率均获提升，且不损失无记忆任务性能。</p></article><article><b>ROLE</b><h4>共同第一作者</h4><p>AAAI 2027 在投。</p></article></div></div></dialog>
-  <dialog id="open-case"><div class="modal-head"><strong>learn-workbuddy</strong><button class="close" aria-label="关闭">×</button></div><div class="modal-body"><div class="star"><article><b>RUNTIME</b><h4>Provider-neutral Agent Loop</h4><p>统一 Anthropic、OpenAI Responses / Chat、DeepSeek 与 Offline Mock 的工具协议。</p></article><article><b>CONTEXT</b><h4>长任务上下文工程</h4><p>实现 Session、Workspace Memory、JSONL 恢复、context compact 与大工具输出外部化。</p></article><article><b>SAFETY</b><h4>权限与路径约束</h4><p>补齐 Permission Gate、cwd 实路径约束、路径逃逸拒绝与 fail-closed。</p></article><article><b>RECOVERY</b><h4>恢复与审计</h4><p>建设崩溃恢复、hash-chain Audit，并用可运行测试验证工程主链。</p></article></div><a class="modal-link" href="https://github.com/adongwanai/learn-workbuddy" target="_blank" rel="noreferrer">在 GitHub 查看项目 ↗</a><div class="tags"><span>Agent Loop</span><span>Context Engineering</span><span>Recovery</span><span>Permission Gate</span><span>Audit</span></div></div></dialog>
-  <dialog id="image-viewer"><button class="close" aria-label="关闭全屏图片">×</button><img alt=""></dialog>
+  <footer class="site-footer" id="contact">
+    <div>
+      <p class="section-kicker">Contact</p>
+      <h2>期待把 Agent 做进真实流程。</h2>
+      <p>现居上海 · 求职方向：Agent 开发工程师</p>
+    </div>
+    <div class="contact-links">
+      <a href="mailto:wzr8277@163.com">wzr8277@163.com</a>
+      <a href="tel:+8618811498277">188 1149 8277</a>
+      <a href="https://github.com/WZR8277" target="_blank" rel="noreferrer">GitHub · WZR8277</a>
+    </div>
+    <p class="copyright">© 2026 王昭容 · Built for clarity, evidence and accessibility.</p>
+  </footer>
 
-  <footer id="contact"><div class="wrap footer-main"><div><div class="eyebrow">Contact</div><h2>一起构建可靠的 Agent。</h2></div><div class="contact"><a href="mailto:wzr8277@163.com">wzr8277@163.com</a><a href="https://github.com/WZR8277">github.com/WZR8277</a><span>上海 · Agent 开发工程师</span></div></div><div class="wrap footnote"><span>王昭容 · Agent Engineer</span><span>© 2026</span></div></footer>
-  <script>
-    document.querySelectorAll('[data-modal]').forEach(button=>button.addEventListener('click',()=>document.getElementById(button.dataset.modal).showModal()));
-    document.querySelectorAll('dialog').forEach(dialog=>{dialog.querySelector('.close').addEventListener('click',()=>dialog.close());dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close()})});
-    const viewer=document.getElementById('image-viewer'),viewerImage=viewer.querySelector('img');
-    document.querySelectorAll('.hero-image').forEach(image=>image.addEventListener('click',()=>{viewerImage.src=image.src;viewerImage.alt=image.alt;viewer.showModal()}));
-  </script>
+  <div class="modal-backdrop" id="detail-backdrop" hidden>
+    <section class="detail-modal" id="detail-modal" role="dialog" aria-modal="true" aria-labelledby="detail-title" tabindex="-1">
+      <button class="modal-close" type="button" aria-label="关闭详情">×</button>
+      <div id="detail-content"></div>
+    </section>
+  </div>
+
+  <div class="image-viewer" id="image-viewer" hidden role="dialog" aria-modal="true" aria-label="论文首页大图">
+    <button class="viewer-close" type="button" aria-label="关闭大图">×</button>
+    <img id="viewer-image" src="" alt="">
+  </div>
+
+  <script src="./app.js" defer></script>
 </body>
 </html>
