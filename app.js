@@ -3,16 +3,16 @@ const details = {
     meta: "教育 · 2022.09—2025.03",
     title: "浙江大学",
     subtitle: "电子信息硕士 · 全日制",
-    lead: "研究训练以人工智能与计算机视觉为主，完成医学图像处理相关 SCI 工作。",
-    tags: ["电子信息", "人工智能", "计算机视觉"],
+    lead: "硕士研究方向为人工智能与计算机视觉，完成医学图像处理 SCI；后续研究延伸至 Agent Memory 与自演化 Agent，两项工作在投 AAAI 2027。",
+    tags: ["电子信息", "计算机视觉", "Agent Memory", "AAAI 2027 在投"],
     role: "硕士研究生",
-    background: "在工程与研究之间建立完整训练：从问题定义、实验设计，到指标分析和论文表达。",
+    background: "研究训练覆盖医学图像处理、Agent Memory 与自演化 Agent，包含一篇医学图像处理 SCI，以及 MemoWorld（共一）和 RVD（三作）两项 AAAI 2027 在投工作。",
     contributions: [
-      "围绕计算机视觉与医学图像处理开展研究，形成从数据处理到实验复现的基本能力。",
-      "把研究中的可控变量、对比实验与错误分析方法迁移到后续 Agent 评测工作。"
+      "围绕计算机视觉与医学图像处理开展研究，完成相关 SCI 工作。",
+      "参与 MemoWorld 与 RVD 的问题分析、方法设计和实验验证，两项工作在投 AAAI 2027。",
+      "持续使用对比实验、指标拆分与错误分析验证研究判断。"
     ],
-    approach: ["研究问题拆解与文献调研", "实验设计、复现与误差分析", "SCI 论文写作与结果表达"],
-    quote: "这段训练让我习惯先建立可验证问题，再决定模型和方法。"
+    approach: ["研究问题拆解与文献调研", "实验设计、复现与误差分析", "SCI / AAAI 论文写作与结果表达"]
   },
   ustb: {
     meta: "教育 · 2018.09—2022.06",
@@ -206,35 +206,32 @@ const details = {
   workbuddy: {
     meta: "开源项目 · 核心作者",
     title: "learn-workbuddy",
-    subtitle: "从 0 手搓桌面 AI 助手 · 24 节 Agent Harness 工程课",
-    lead: "不是产品源码，而是一套可运行的工程教学蓝图：每章新增一个机制、配一份代码与一张架构图。",
-    tags: ["Agent Harness", "Memory", "Tool Registry", "Clean-room Tutorial"],
+    subtitle: "Agent Harness · 分层 Memory · RAG / Context",
+    lead: "主导 learn-workbuddy 中 Agent Harness、分层 Memory 与 RAG/Context 关键章节设计与实现。",
+    tags: ["Agent Harness", "Layered Memory", "RAG / Context", "Regression Evaluation"],
     role: "核心作者 / 章节设计与实现",
-    background: "Agent 从 CLI 走向桌面和长期任务后，需要处理会话、工具、上下文、记忆、权限、审计和恢复。仓库把这些工程边界拆成 24 个可独立运行的章节。",
+    background: "项目以可运行章节拆解桌面 Agent 的工程边界。我的贡献集中在运行循环与工具协议、跨会话记忆，以及可解释检索和回归评测。",
     flow: [
-      { title: "Agent Loop", text: "模型—工具—结果的有界循环" },
-      { title: "Tool Dispatch", text: "注册、Schema、错误与并发边界" },
-      { title: "Memory / Context", text: "作用域、持久化、压缩与组装" },
-      { title: "Safety / Audit", text: "权限、沙盒、回放与证据", accent: true }
+      { title: "Agent Harness", text: "有界 Loop、工具注册、权限、错误与 Replay" },
+      { title: "Layered Memory", text: "user / workspace / session 三层作用域" },
+      { title: "RAG / Context", text: "来源、作用域、评分与入选原因" },
+      { title: "Regression", text: "Recall@K、MRR 与稳定回归", accent: true }
     ],
     metrics: [
-      { value: "24", label: "工程章节" },
-      { value: "27", label: "架构图" },
-      { value: "1 cmd", label: "离线完整 Harness Tour" }
+      { value: "有界", label: "Agent Loop / Transcript Replay" },
+      { value: "3 层", label: "user / workspace / session" },
+      { value: "2 项", label: "Recall@K / MRR 回归指标" }
     ],
     contributions: [
-      "重构 s01 Agent Loop：用显式 stop contract 区分 final answer、max tokens 与 max turns，使循环可测试、可观测并能有界停止。",
-      "重构 s02 Tool Dispatch：以单一 ToolRegistry 统一模型 schema、名称查找、参数校验、执行与结构化错误。",
-      "为 s02 增加只读工具批次的并发安全策略；未知工具、写操作或不安全调用保守串行，结果保持原调用顺序。",
-      "为两个章节补充测试、README 与架构图，让机制、代码和验证方式保持一致。"
+      "Agent Harness：设计并实现有界 Agent Loop，统一工具注册与参数校验、权限决策、结构化错误及 Transcript Replay。",
+      "Memory：设计并实现 user / workspace / session 分层记忆体系，覆盖作用域隔离、持久化、跨重启恢复和泄漏防护。",
+      "RAG / Context：设计并实现可解释检索与上下文组装，呈现召回来源、作用域、评分及入选原因，并以 Recall@K、MRR 建立检索回归。"
     ],
     approach: [
-      "模型输出始终被视为不可信输入，进入 handler 前先经过协议与参数校验。",
-      "错误作为正常 tool_result 返回给模型，而不是让 Agent Loop 因异常退出。",
-      "来源可以扩展到内置工具、Skills 与 MCP，但都要先归一到同一 dispatch boundary。"
+      "将工具注册、Schema 校验、权限判断和错误结构收敛到统一调用边界。",
+      "以分层作用域约束记忆读写，支持持久化、恢复和跨作用域泄漏防护。",
+      "检索结果保留来源、评分和选择理由，并用固定查询集持续执行 Recall@K / MRR 回归。"
     ],
-    tradeoff: "教学实现优先保留清晰的责任边界，而不是一次堆入全部生产复杂度；每一章只增加一个核心机制，便于验证和迁移。",
-    quote: "模型是大脑，Harness 是让它长期、受控、可恢复地工作的操作系统。",
     link: { label: "在 GitHub 查看 learn-workbuddy", url: "https://github.com/adongwanai/learn-workbuddy" }
   }
 };
