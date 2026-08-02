@@ -1,5 +1,6 @@
 const details = {
   zju: {
+    kind: "education",
     meta: "教育 · 2022.09—2025.03",
     title: "浙江大学",
     subtitle: "电子信息硕士 · 全日制",
@@ -15,6 +16,7 @@ const details = {
     approach: ["研究问题拆解与文献调研", "实验设计、复现与误差分析", "SCI 论文写作与结果表达"]
   },
   ustb: {
+    kind: "education",
     meta: "教育 · 2018.09—2022.06",
     title: "北京科技大学",
     subtitle: "智能科学与技术本科 · 全日制",
@@ -35,6 +37,7 @@ const details = {
     quote: "算法基础、工程实现和研究表达，是后来进入 Agent 系统工作的三条底线。"
   },
   diagnosis: {
+    kind: "project",
     meta: "公司项目 · 携程火车票研发部",
     title: "出境订单排障 Agent",
     subtitle: "多步诊断 · Working Memory · Evidence-first",
@@ -49,9 +52,9 @@ const details = {
       { title: "根因合成", text: "结论、证据链与建议", accent: true }
     ],
     metrics: [
-      { value: "61.7→78.3%", label: "根因 Top-1" },
-      { value: "68.9→86.4%", label: "关键证据 Recall@5" },
-      { value: "12.4→7.1min", label: "人工平均排障时长" }
+      { value: "61.7 → 78.3%", label: "根因 Top-1" },
+      { value: "68.9 → 86.4%", label: "关键证据 Recall@5" },
+      { value: "12.4 → 7.1 min", label: "人工平均排障时长" }
     ],
     contributions: [
       "基于 LangGraph 组织 Router、Planner、Executor、Verifier 与 Synthesizer，并把查询能力封装为只读工具。",
@@ -73,6 +76,7 @@ const details = {
     quote: "核心变化不是让模型多想几步，而是让每一步都留下可检查的证据。"
   },
   knowledge: {
+    kind: "project",
     meta: "公司项目 · Knowledge & Search",
     title: "出境业务与代码仓库知识库",
     subtitle: "文档作指南 · 代码作证据",
@@ -101,10 +105,17 @@ const details = {
       "代码阶段回答‘实现在哪里、调用如何发生、证据是否闭环’。",
       "最终输出区分文档提示与代码事实，降低两类信息被混用的风险。"
     ],
+    star: {
+      S: "业务规则分散在文档中，真实行为又落在多个代码仓库；只看其中一侧都容易得出不完整结论。",
+      T: "建立一条先理解业务语境、再用代码完成取证的检索链路，并在信息不足时保留可靠兜底。",
+      A: "用 doc_index 与 chunk_index 组织整篇文档和分块召回；文档先提供定位指南，再由 Agentic Search 调用命令行跨仓追踪文件、符号与调用关系。",
+      R: "常见定位场景准确率达到 80%+，输出能够明确区分文档提示与代码事实。"
+    },
     tradeoff: "整篇文档回退提升上下文完整性，但只在分块信息不足时触发，以控制噪声和 token 成本。",
     quote: "文档告诉 Agent 往哪里走，代码证据决定它能不能下结论。"
   },
   "research-skill": {
+    kind: "project",
     meta: "公司项目 · Multi-repo Skill",
     title: "需求调研 Skill",
     subtitle: "L1→L2→L3 渐进式检索 · 主—子 Agent 分仓协作",
@@ -133,9 +144,16 @@ const details = {
       "各子 Agent 返回高密度摘要和证据，不把完整探索过程灌回主上下文。",
       "合并阶段检查跨仓调用是否闭环，并显式记录尚未证实的假设。"
     ],
+    star: {
+      S: "跨仓需求同时涉及入口、服务调用和下游实现，全量搜索噪声高，单 Agent 也容易在仓库切换中丢失上下文。",
+      T: "让调研过程按信息充分度逐层深入，并把每个结论绑定到可回看的代码证据。",
+      A: "设计 L1 语义定位、L2 分仓探索、L3 深入取证三级流程；主 Agent 维护全局目标，子 Agent 在单仓内追踪符号与调用。",
+      R: "跨仓分析准确率达到 80%+，最终报告保留调用链、证据位置和未证实假设。"
+    },
     quote: "跨仓协作的关键不是增加 Agent 数量，而是让每个 Agent 只承担边界清晰的取证任务。"
   },
   memoworld: {
+    kind: "paper",
     meta: "研究论文 · AAAI 2027 在投",
     title: "MemoWorld",
     subtitle: "Training Transferable Memory for LLM Agents by Evolving Their Worlds",
@@ -166,10 +184,17 @@ const details = {
       "FMC 衡量训练中被 Oracle 判定为必要的模体覆盖，MGG 衡量 ID 与组合 OOD 的差距。",
       "外部基准与无记忆子集共同检查 transfer 及能力副作用。"
     ],
+    star: {
+      S: "固定训练流会让记忆控制器学习表面线索到记忆动作的捷径，遇到未见依赖结构时失效。",
+      T: "构造能暴露真实记忆失败、并持续提升组合泛化能力的训练环境。",
+      A: "以可执行 world DSL、Exact Oracle 和 failure fingerprint 定位失败模体，再用留出兄弟实例上的学习进步筛选演化世界。",
+      R: "三项未见基准 Zero-shot SSR 平均提升 12.2，组合泛化差距降低 5.4 倍，MemoryArena native success 提升 4.5。"
+    },
     tradeoff: "一个无梯度架构没有获得收益，说明覆盖不是充分条件；记忆结构还必须能被控制器表示和学习。",
     quote: "To train memory that transfers, evolve the world, not the dataset."
   },
   rvd: {
+    kind: "paper",
     meta: "研究论文 · AAAI 2027 在投",
     title: "When Solver Progress Outruns Selection",
     subtitle: "Retrospective Verifier Distillation for Self-Evolving Agents",
@@ -200,10 +225,17 @@ const details = {
       "候选池固定后，solver 不再变化；任何 R 的恢复都来自 selection。",
       "证据质量与 selection-aligned ranking 比 gate 本身更关键。"
     ],
+    star: {
+      S: "自演化 Agent 的端到端准确率会混合生成与选择两类问题，正确候选可能已经存在却被固定 selector 丢弃。",
+      T: "在不改变候选覆盖率的前提下，隔离并修复 verifier 滞后造成的 realized accuracy 损失。",
+      A: "冻结候选池进行 replay，以任务后工具、测试和状态证据构造保守偏好对，再训练轻量 verifier 并通过 fresh-development gate。",
+      R: "三项基准平均 realized accuracy 提升 3.2，其中 AppWorld 提升 4.7、LiveCodeBench 提升 4.1。"
+    },
     tradeoff: "RVD 不能创造候选池里不存在的正确答案，也要求任务后证据足够可审计。SWE-bench Verified 上的增益不显著，因此论文把结论限定在 verification-limited regime。",
     quote: "先确认正确候选是否存在，再决定应该继续进化 solver，还是修复 verifier。"
   },
   workbuddy: {
+    kind: "opensource",
     meta: "开源项目 · 核心作者",
     title: "learn-workbuddy",
     subtitle: "Agent Harness · 分层 Memory · RAG / Context",
@@ -232,6 +264,12 @@ const details = {
       "以分层作用域约束记忆读写，支持持久化、恢复和跨作用域泄漏防护。",
       "检索结果保留来源、评分和选择理由，并用固定查询集持续执行 Recall@K / MRR 回归。"
     ],
+    star: {
+      S: "桌面 Agent 的运行循环、权限、记忆与上下文往往被揉成一个整体，学习者难以单独理解和验证。",
+      T: "把关键工程边界拆成可运行章节，并让每一章都能被测试、回放和逐步扩展。",
+      A: "主导 Agent Harness、分层 Memory 与 RAG/Context 章节，统一工具协议和错误结构，建立三层记忆作用域及检索回归。",
+      R: "形成覆盖有界 Loop、Transcript Replay、跨重启记忆恢复与 Recall@K / MRR 的可运行教学实现。"
+    },
     link: { label: "在 GitHub 查看 learn-workbuddy", url: "https://github.com/adongwanai/learn-workbuddy" }
   }
 };
@@ -247,15 +285,15 @@ const viewerClose = document.querySelector(".viewer-close");
 let returnFocus = null;
 let returnHash = "";
 
-function flowMarkup(items = []) {
+function flowMarkup(items = [], title = "系统链路") {
   if (!items.length) return "";
-  return `<section class="detail-section"><h3>系统链路</h3><div class="detail-flow">${items.map(item => `
+  return `<section class="detail-section"><h3>${title}</h3><div class="detail-flow">${items.map(item => `
     <div class="flow-step${item.accent ? " is-accent" : ""}"><b>${item.title}</b><span>${item.text}</span></div>`).join("")}</div></section>`;
 }
 
 function metricsMarkup(items = []) {
   if (!items.length) return "";
-  return `<section class="detail-section"><h3>关键结果</h3><div class="detail-metrics">${items.map(item => `
+  return `<section class="detail-section detail-results"><h3>核心指标</h3><div class="detail-metrics">${items.map(item => `
     <div class="detail-metric"><strong>${item.value}</strong><span>${item.label}</span></div>`).join("")}</div></section>`;
 }
 
@@ -273,19 +311,25 @@ function starMarkup(star) {
 
 function imageMarkup(image) {
   if (!image) return "";
-  return `<section class="detail-section"><h3>论文首页</h3><div class="detail-paper">
+  return `<figure class="detail-paper">
     <button type="button" data-full-image="${image.src}" data-full-alt="${image.alt}" aria-label="全屏查看${image.alt}">
-      <img src="${image.src}" alt="${image.alt}"><small>点击图片全屏查看</small>
+      <img src="${image.src}" alt="${image.alt}"><span><b>论文首页</b><small>点击全屏查看</small></span>
     </button>
-  </div></section>`;
+  </figure>`;
 }
 
 function renderDetail(detail) {
+  const isPaper = detail.kind === "paper";
   const tags = detail.tags?.length ? `<div class="detail-tags">${detail.tags.map(tag => `<span>${tag}</span>`).join("")}</div>` : "";
-  const role = detail.role ? `<section class="detail-section"><h3>我的角色</h3><div class="detail-panel"><b>Role</b><p>${detail.role}</p></div></section>` : "";
-  const context = detail.background ? `<section class="detail-section"><h3>背景与判断</h3><p>${detail.background}</p></section>` : "";
-  const tradeoff = detail.tradeoff ? `<section class="detail-section"><h3>边界与权衡</h3><blockquote class="detail-quote">${detail.tradeoff}</blockquote></section>` : "";
-  const quote = detail.quote ? `<section class="detail-section"><blockquote class="detail-quote">${detail.quote}</blockquote></section>` : "";
+  const intro = `<div class="detail-intro"><p>${detail.lead}</p>${tags}</div>`;
+  const leadBlock = isPaper
+    ? `<div class="detail-paper-overview">${imageMarkup(detail.image)}<div class="detail-paper-summary">${intro}${metricsMarkup(detail.metrics)}</div></div>`
+    : `${imageMarkup(detail.image)}${intro}${metricsMarkup(detail.metrics)}`;
+  const contextTitle = detail.kind === "education" ? "学习与研究" : isPaper ? "研究问题" : "背景与痛点";
+  const context = detail.background ? `<article class="detail-context"><h3>${contextTitle}</h3><p>${detail.background}</p></article>` : "";
+  const role = detail.role ? `<article class="detail-context detail-role"><h3>${isPaper ? "作者角色" : "我的角色"}</h3><strong>${detail.role}</strong></article>` : "";
+  const overview = context || role ? `<section class="detail-overview">${context}${role}</section>` : "";
+  const tradeoff = detail.tradeoff ? `<section class="detail-section"><h3>${isPaper ? "研究边界" : "技术权衡"}</h3><blockquote class="detail-quote">${detail.tradeoff}</blockquote></section>` : "";
   const link = detail.link ? `<section class="detail-section"><a class="detail-link" href="${detail.link.url}" target="_blank" rel="noreferrer">${detail.link.label} ↗</a></section>` : "";
 
   return `
@@ -293,20 +337,15 @@ function renderDetail(detail) {
       <p class="entry-meta">${detail.meta}</p>
       <h2 id="detail-title">${detail.title}</h2>
       <p class="paper-title">${detail.subtitle}</p>
-      <p>${detail.lead}</p>
-      ${tags}
     </header>
     <div class="detail-body">
-      ${imageMarkup(detail.image)}
-      ${flowMarkup(detail.flow)}
-      ${metricsMarkup(detail.metrics)}
-      ${context}
-      ${role}
-      ${listMarkup("我的贡献", detail.contributions)}
-      ${listMarkup("技术方案", detail.approach)}
+      ${leadBlock}
+      ${overview}
+      ${flowMarkup(detail.flow, isPaper ? "方法框架" : "系统链路")}
+      ${listMarkup(isPaper ? "核心贡献" : detail.kind === "education" ? "主要经历" : "技术方案", detail.contributions)}
+      ${listMarkup(isPaper ? "实验与验证" : detail.kind === "education" ? "能力沉淀" : "实现要点", detail.approach)}
       ${starMarkup(detail.star)}
       ${tradeoff}
-      ${quote}
       ${link}
     </div>`;
 }
