@@ -390,6 +390,24 @@ function closeViewer() {
 document.querySelectorAll("[data-detail]").forEach(card => {
   card.addEventListener("click", () => openDetail(card.dataset.detail, card));
 });
+
+const filterTabs = document.querySelectorAll("[data-filter]");
+const timelineItems = document.querySelectorAll(".timeline-item[data-kind]");
+
+filterTabs.forEach(tab => {
+  tab.addEventListener("click", () => {
+    const filter = tab.dataset.filter;
+    filterTabs.forEach(item => {
+      const active = item === tab;
+      item.classList.toggle("is-active", active);
+      item.setAttribute("aria-selected", String(active));
+    });
+    timelineItems.forEach(item => {
+      item.hidden = filter !== "all" && item.dataset.kind !== filter;
+    });
+  });
+});
+
 closeButton.addEventListener("click", closeDetail);
 backdrop.addEventListener("click", event => { if (event.target === backdrop) closeDetail(); });
 viewerClose.addEventListener("click", closeViewer);

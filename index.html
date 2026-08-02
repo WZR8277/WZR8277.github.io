@@ -15,208 +15,186 @@
   <header class="site-header" aria-label="主导航">
     <a class="brand" href="#top" aria-label="返回首页">王昭容</a>
     <nav class="nav-links" aria-label="页面章节">
-      <a href="#education">教育</a>
-      <a href="#work">公司经历</a>
-      <a href="#research">研究论文</a>
-      <a href="#opensource">开源项目</a>
+      <a href="#timeline">经历与作品</a>
+      <a href="#stack">技能</a>
       <a href="#honors">荣誉</a>
+      <a href="#contact">联系</a>
     </nav>
   </header>
 
   <main id="main">
     <section class="hero" id="top" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span>Agent Engineer · Portfolio</p>
+        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span>求职作品集 · 2026</p>
         <h1 id="hero-title">王昭容</h1>
-        <p class="hero-intro">浙江大学电子信息硕士，曾任携程火车票研发部 Agent 开发工程师。具备 <strong>Agent Memory</strong>、Agentic RAG 与 Tool Use 系统研发经验。</p>
+        <p class="hero-role">Agent 开发工程师 <span aria-hidden="true">×</span> 关注 Memory</p>
+        <p class="hero-intro">浙江大学电子信息硕士，曾任携程火车票研发部 Agent 开发工程师。具备 Agent Memory、Agentic RAG 与 Tool Use 系统研发经验。</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="#work">查看代表经历 <span aria-hidden="true">↓</span></a>
-          <a class="button button-secondary" href="#research">查看研究</a>
+          <a class="button button-primary" href="#timeline">探索经历与作品 <span aria-hidden="true">↓</span></a>
+          <a class="button button-secondary" href="https://github.com/WZR8277" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
         </div>
       </div>
 
-      <div class="proof-grid" aria-label="代表性成果">
-        <article class="proof-card proof-featured">
-          <small class="proof-source">出境订单排障 Agent</small>
-          <strong>78.3%</strong>
-          <span>根因诊断 Top-1</span>
-          <small>61.7% → 78.3% · 240 条工单</small>
-        </article>
-        <article class="proof-card">
-          <small class="proof-source">出境订单排障 Agent</small>
-          <strong>86.4%</strong>
-          <span>关键证据 Recall@5</span>
-          <small>68.9% → 86.4% · 240 条工单</small>
-        </article>
-        <article class="proof-card">
-          <small class="proof-source">MemoWorld · AAAI 2027</small>
-          <strong>+12.2</strong>
-          <span>未见任务平均成功率</span>
-          <small>Zero-shot SSR · 共一作者 / 在投</small>
-        </article>
-        <article class="proof-card">
-          <small class="proof-source">研究论文</small>
-          <strong>2 篇</strong>
-          <span>AAAI 2027 在投</span>
-          <small>MemoWorld（共一）· RVD（三作）</small>
-        </article>
-      </div>
-
-      <a class="scroll-cue" href="#education">Scroll <span aria-hidden="true">↓</span></a>
-    </section>
-
-    <section class="portfolio-section reveal" id="education" aria-labelledby="education-title">
-      <header class="section-heading">
-        <div><p class="section-kicker">Education · 2018—2025</p><h2 id="education-title">教育经历</h2></div>
-        <p>本科与硕士阶段完成智能科学、电子信息方向训练，研究覆盖小模型微调、人工智能与计算机视觉，并形成 2 篇 SCI。</p>
-      </header>
-      <div class="education-grid">
-        <button class="entry-card education-card" type="button" data-detail="zju" aria-label="查看浙江大学教育经历详情">
-          <span class="entry-meta">2022.09—2025.03 · 硕士</span>
-          <h3>浙江大学</h3>
-          <p class="entry-org">电子信息 · 全日制</p>
-          <p>人工智能 / 计算机视觉研究方向，完成医学图像处理相关 SCI 研究。</p>
-          <span class="entry-more">查看详情 <span aria-hidden="true">↗</span></span>
-        </button>
-        <button class="entry-card education-card" type="button" data-detail="ustb" aria-label="查看北京科技大学教育经历详情">
-          <span class="entry-meta">2018.09—2022.06 · 本科</span>
-          <h3>北京科技大学</h3>
-          <p class="entry-org">智能科学与技术 · 全日制</p>
-          <p>以机器学习与工程基础为主线，获得国家奖学金及全国大学生数学竞赛一等奖。</p>
-          <span class="entry-more">查看详情 <span aria-hidden="true">↗</span></span>
-        </button>
-      </div>
-    </section>
-
-    <section class="portfolio-section reveal" id="work" aria-labelledby="work-title">
-      <header class="section-heading">
-        <div><p class="section-kicker">Work · Ctrip</p><h2 id="work-title">公司经历</h2></div>
-        <p>同一业务语境下的三项 Agent 工程实践：诊断、知识与跨仓调研。</p>
-      </header>
-      <div class="work-list">
-        <button class="entry-card project-card project-featured" type="button" data-detail="diagnosis" aria-label="查看出境订单排障 Agent 详情">
-          <span class="entry-meta">2025.05 起 · 携程火车票研发部</span>
-          <div class="project-layout">
-            <div class="project-copy">
-              <p class="card-label">Production Agent</p>
-              <h3>出境订单排障 Agent</h3>
-              <p>把订单、供应商回调、调用链日志与历史工单组织成多步诊断；证据不足时重新规划，最终输出根因、证据链与处置建议。</p>
-              <div class="metric-row" aria-label="项目指标">
-                <span><strong>78.3%</strong> Top-1</span>
-                <span><strong>86.4%</strong> Recall@5</span>
-                <span><strong>7.1 min</strong> 平均耗时</span>
-              </div>
-              <span class="entry-more">打开项目详情 <span aria-hidden="true">↗</span></span>
-            </div>
-            <div class="mini-system mini-diagnosis" aria-hidden="true">
-              <div class="mini-node">异常输入</div><i></i><div class="mini-node">规划 / 工具</div><i></i><div class="mini-node">证据核验</div><i></i><div class="mini-node mini-accent">根因结论</div>
-              <span class="feedback-line">证据不足 · 重新规划</span>
-            </div>
-          </div>
-        </button>
-
-        <div class="support-grid">
-          <button class="entry-card project-card" type="button" data-detail="knowledge" aria-label="查看出境业务与代码仓库知识库详情">
-            <div class="project-visual compact-visual" aria-hidden="true">
-              <div class="visual-step"><b>01</b><span>文档指南</span></div><i></i><div class="visual-step"><b>02</b><span>多仓代码查找</span></div><i></i><div class="visual-step visual-step-accent"><b>03</b><span>代码证据链</span></div>
-            </div>
-            <p class="card-label">Knowledge & Search</p>
-            <h3>出境业务与代码仓库知识库</h3>
-            <p>先检索业务文档建立定位指南，再通过 Agentic Search 进入多代码仓库查找实现证据；分块信息不足时回退整篇文档。</p>
-            <div class="metric-row"><span><strong>80%+</strong> 场景准确率</span><span><strong>doc / chunk</strong> 双索引</span></div>
-            <span class="entry-more">查看检索链路 <span aria-hidden="true">↗</span></span>
-          </button>
-
-          <button class="entry-card project-card" type="button" data-detail="research-skill" aria-label="查看需求调研 Skill 详情">
-            <div class="project-visual compact-visual" aria-hidden="true">
-              <div class="visual-step"><b>L1</b><span>定位</span></div><i></i><div class="visual-step"><b>L2</b><span>分仓</span></div><i></i><div class="visual-step visual-step-accent"><b>L3</b><span>证据</span></div>
-            </div>
-            <p class="card-label">Multi-repo Skill</p>
-            <h3>需求调研 Skill</h3>
-            <p>用 L1→L2→L3 渐进式检索与主—子 Agent 分仓协作，提炼需求关键词并构建跨仓代码证据链。</p>
-            <div class="metric-row"><span><strong>80%+</strong> 跨仓分析准确率</span><span><strong>主—子 Agent</strong> 分仓协作</span></div>
-            <span class="entry-more">查看协作机制 <span aria-hidden="true">↗</span></span>
-          </button>
+      <div class="proof-wrap" aria-label="代表性成果">
+        <span class="trace-label" aria-hidden="true">EVIDENCE TRACE</span>
+        <div class="proof-grid">
+          <article class="proof-card">
+            <small>出境订单排障 Agent</small>
+            <strong>78.3%</strong>
+            <span>根因诊断 Top-1</span>
+            <p>61.7% → 78.3% · 240 条工单</p>
+          </article>
+          <article class="proof-card">
+            <small>出境订单排障 Agent</small>
+            <strong>86.4%</strong>
+            <span>关键证据 Recall@5</span>
+            <p>68.9% → 86.4% · 240 条工单</p>
+          </article>
+          <article class="proof-card">
+            <small>MemoWorld · AAAI 2027</small>
+            <strong>+12.2</strong>
+            <span>未见任务平均成功率</span>
+            <p>Zero-shot SSR · 共一作者 / 在投</p>
+          </article>
+          <article class="proof-card">
+            <small>Research</small>
+            <strong>2 篇</strong>
+            <span>AAAI 2027 在投</span>
+            <p>MemoWorld（共一）· RVD（三作）</p>
+          </article>
         </div>
       </div>
+      <a class="scroll-cue" href="#timeline">Scroll <span aria-hidden="true">↓</span></a>
     </section>
 
-    <section class="portfolio-section reveal" id="research" aria-labelledby="research-title">
-      <header class="section-heading">
-        <div><p class="section-kicker">Research · AAAI 2027</p><h2 id="research-title">研究论文</h2></div>
-        <p>围绕 Memory 泛化与自演化 Agent 的选择瓶颈，两项工作均处于匿名评审阶段。</p>
+    <section class="timeline-section" id="timeline" aria-labelledby="timeline-title">
+      <header class="timeline-heading reveal">
+        <p class="section-kicker">Journey & Work</p>
+        <h2 id="timeline-title">经历与作品</h2>
+        <p>沿着学习、业务实践、研究与开源，一次看清我的 Agent 工程路径。</p>
       </header>
-      <div class="research-list">
-        <button class="entry-card paper-card" type="button" data-detail="memoworld" aria-label="查看 MemoWorld 论文详情">
-          <div class="paper-preview"><img src="./assets/paper-memoworld-2027.png" alt="MemoWorld 论文首页" loading="lazy"><span>点击查看首页</span></div>
-          <div class="paper-copy">
-            <span class="entry-meta">AAAI 2027 · 共一作者 / 在投</span>
+
+      <div class="filter-tabs reveal" role="tablist" aria-label="按类型筛选">
+        <button class="filter-tab is-active" type="button" role="tab" aria-selected="true" data-filter="all">全部</button>
+        <button class="filter-tab" type="button" role="tab" aria-selected="false" data-filter="education">教育</button>
+        <button class="filter-tab" type="button" role="tab" aria-selected="false" data-filter="work">公司经历</button>
+        <button class="filter-tab" type="button" role="tab" aria-selected="false" data-filter="research">研究论文</button>
+        <button class="filter-tab" type="button" role="tab" aria-selected="false" data-filter="opensource">开源项目</button>
+      </div>
+
+      <ol class="timeline-list" aria-label="经历与作品时间轴">
+        <li class="timeline-item reveal" data-kind="education" id="education">
+          <span class="timeline-dot" aria-hidden="true"></span>
+          <button class="timeline-card" type="button" data-detail="ustb" aria-label="查看北京科技大学教育经历详情">
+            <div class="card-topline"><span>2018.09—2022.06</span><span class="category-pill">教育 · 本科</span></div>
+            <h3>北京科技大学</h3>
+            <p class="card-subtitle">智能科学与技术 · 全日制</p>
+            <p>以机器学习与工程基础为主线，完成智能科学与技术专业训练。</p>
+            <div class="topic-row"><span>机器学习</span><span>智能系统</span><span>工程基础</span></div>
+            <span class="entry-more">查看教育经历 <span aria-hidden="true">↗</span></span>
+          </button>
+        </li>
+
+        <li class="timeline-item reveal" data-kind="education">
+          <span class="timeline-dot" aria-hidden="true"></span>
+          <button class="timeline-card" type="button" data-detail="zju" aria-label="查看浙江大学教育经历详情">
+            <div class="card-topline"><span>2022.09—2025.03</span><span class="category-pill">教育 · 硕士</span></div>
+            <h3>浙江大学</h3>
+            <p class="card-subtitle">电子信息 · 全日制</p>
+            <p>围绕人工智能与计算机视觉开展研究，完成医学图像处理相关 SCI 工作。</p>
+            <div class="topic-row"><span>人工智能</span><span>计算机视觉</span><span>SCI 研究</span></div>
+            <span class="entry-more">查看学习与研究 <span aria-hidden="true">↗</span></span>
+          </button>
+        </li>
+
+        <li class="timeline-item reveal" data-kind="work" id="work">
+          <span class="timeline-dot" aria-hidden="true"></span>
+          <article class="timeline-card company-card">
+            <div class="card-topline"><span>2025.05 起</span><span class="category-pill">公司经历</span></div>
+            <h3>携程火车票研发部</h3>
+            <p class="card-subtitle">Agent 开发工程师</p>
+            <p>围绕同一出境业务语境，推进诊断、知识检索和跨仓调研三项 Agent 工程实践。</p>
+            <div class="company-projects">
+              <button class="company-project project-primary" type="button" data-detail="diagnosis" aria-label="查看出境订单排障 Agent 详情">
+                <span>主项目 · Production Agent</span>
+                <strong>出境订单排障 Agent</strong>
+                <p>多步规划、只读工具、Working Memory 与证据充分性验证。</p>
+                <div class="project-stats"><b>78.3% Top-1</b><b>86.4% Recall@5</b><b>7.1 min</b></div>
+              </button>
+              <button class="company-project" type="button" data-detail="knowledge" aria-label="查看出境业务与代码仓库知识库详情">
+                <span>相关实践 · Knowledge & Search</span>
+                <strong>业务与代码仓库知识库</strong>
+                <p>文档指南 → 多仓代码查找 → 代码证据链。</p>
+              </button>
+              <button class="company-project" type="button" data-detail="research-skill" aria-label="查看需求调研 Skill 详情">
+                <span>相关实践 · Multi-repo Skill</span>
+                <strong>需求调研 Skill</strong>
+                <p>L1→L2→L3 渐进检索与主—子 Agent 分仓协作。</p>
+              </button>
+            </div>
+          </article>
+        </li>
+
+        <li class="timeline-item reveal" data-kind="research" id="research">
+          <span class="timeline-dot" aria-hidden="true"></span>
+          <button class="timeline-card paper-timeline-card" type="button" data-detail="memoworld" aria-label="查看 MemoWorld 论文详情">
+            <div class="paper-thumb"><img src="./assets/paper-memoworld-2027.png" alt="MemoWorld 论文首页" loading="lazy"><span>论文首页 · 点击查看</span></div>
+            <div class="card-topline"><span>AAAI 2027 在投</span><span class="category-pill">研究论文 · 共一</span></div>
             <h3>MemoWorld</h3>
-            <p class="paper-title">Training Transferable Memory for LLM Agents by Evolving Their Worlds</p>
-            <p>把失败诊断为记忆依赖模体，并让训练世界沿学习进步演化，缓解固定任务流造成的“静态世界过拟合”。</p>
-            <div class="metric-row"><span><strong>+12.2</strong> Zero-shot SSR</span><span><strong>5.4×</strong> 更低组合差距</span><span><strong>+4.5</strong> MemoryArena</span></div>
+            <p class="card-subtitle paper-name">Training Transferable Memory for LLM Agents by Evolving Their Worlds</p>
+            <p>让训练世界沿真实记忆失败持续演化，缓解固定任务流带来的静态世界过拟合。</p>
+            <div class="compact-metrics"><span><b>+12.2</b> Zero-shot SSR</span><span><b>5.4×</b> 更低组合差距</span></div>
             <span class="entry-more">摘要、方法与实验 <span aria-hidden="true">↗</span></span>
-          </div>
-        </button>
+          </button>
+        </li>
 
-        <button class="entry-card paper-card" type="button" data-detail="rvd" aria-label="查看 RVD 论文详情">
-          <div class="paper-preview"><img src="./assets/paper-rvd-2027.png" alt="When Solver Progress Outruns Selection 论文首页" loading="lazy"><span>点击查看首页</span></div>
-          <div class="paper-copy">
-            <span class="entry-meta">AAAI 2027 · 三作 / 在投</span>
+        <li class="timeline-item reveal" data-kind="research">
+          <span class="timeline-dot" aria-hidden="true"></span>
+          <button class="timeline-card paper-timeline-card" type="button" data-detail="rvd" aria-label="查看 RVD 论文详情">
+            <div class="paper-thumb"><img src="./assets/paper-rvd-2027.png" alt="When Solver Progress Outruns Selection 论文首页" loading="lazy"><span>论文首页 · 点击查看</span></div>
+            <div class="card-topline"><span>AAAI 2027 在投</span><span class="category-pill">研究论文 · 三作</span></div>
             <h3>When Solver Progress Outruns Selection</h3>
-            <p class="paper-title">Retrospective Verifier Distillation for Self-Evolving Agents</p>
-            <p>用固定候选池回放区分“没有生成正确轨迹”和“正确轨迹未被选中”，再以任务后可审计证据持续训练 verifier。</p>
-            <div class="metric-row"><span><strong>+3.2</strong> 平均准确率</span><span><strong>+4.7</strong> AppWorld</span><span><strong>+4.1</strong> LiveCodeBench</span></div>
+            <p class="card-subtitle paper-name">Retrospective Verifier Distillation for Self-Evolving Agents</p>
+            <p>以固定候选池回放诊断选择瓶颈，再用任务后可审计证据持续训练 verifier。</p>
+            <div class="compact-metrics"><span><b>+3.2</b> 平均准确率</span><span><b>+4.7</b> AppWorld</span></div>
             <span class="entry-more">诊断、RVD 与适用边界 <span aria-hidden="true">↗</span></span>
-          </div>
-        </button>
+          </button>
+        </li>
+
+        <li class="timeline-item reveal" data-kind="opensource" id="opensource">
+          <span class="timeline-dot" aria-hidden="true"></span>
+          <button class="timeline-card opensource-timeline-card" type="button" data-detail="workbuddy" aria-label="查看 learn-workbuddy 开源贡献详情">
+            <div class="card-topline"><span>持续维护</span><span class="category-pill">开源项目 · 核心作者</span></div>
+            <h3>learn-workbuddy</h3>
+            <p class="card-subtitle">adongwanai / learn-workbuddy</p>
+            <p>主导 Agent Harness、分层 Memory 与 RAG/Context 关键章节设计与实现。</p>
+            <div class="architecture-mini" aria-hidden="true">
+              <span><b>Loop</b>有界运行</span><i></i><span><b>Memory</b>分层恢复</span><i></i><span><b>RAG</b>检索回归</span>
+            </div>
+            <div class="topic-row"><span>Harness</span><span>Memory</span><span>RAG / Context</span></div>
+            <span class="entry-more">查看我的贡献与仓库链接 <span aria-hidden="true">↗</span></span>
+          </button>
+        </li>
+      </ol>
+    </section>
+
+    <section class="support-section reveal" id="stack" aria-labelledby="stack-title">
+      <header class="support-heading"><p class="section-kicker">Skills</p><h2 id="stack-title">专业技能</h2></header>
+      <div class="capability-list">
+        <article><p>开发协作</p><h3>Vibe Coding</h3><ul><li>Codex</li><li>Claude Code</li><li>Cursor</li></ul></article>
+        <article><p>Agent 系统</p><h3>Agent 工程</h3><ul><li>Agent Memory</li><li>Agentic RAG</li><li>Tool Use</li></ul></article>
       </div>
     </section>
 
-    <section class="portfolio-section reveal" id="opensource" aria-labelledby="opensource-title">
-      <header class="section-heading">
-        <div><p class="section-kicker">Open Source · Core contributor</p><h2 id="opensource-title">开源项目</h2></div>
-        <p>把 Agent 工程机制拆成可运行、可测试、可逐章理解的教学实现。</p>
-      </header>
-      <button class="entry-card opensource-card" type="button" data-detail="workbuddy" aria-label="查看 learn-workbuddy 开源贡献详情">
-        <div class="opensource-copy">
-          <span class="entry-meta">adongwanai / learn-workbuddy · 核心作者</span>
-          <h3>learn-workbuddy</h3>
-          <p>主导 Agent Harness、分层 Memory 与 RAG/Context 关键章节设计，覆盖有界 Loop、工具与权限协议、三层记忆体系，以及可解释检索与回归评测。</p>
-          <div class="metric-row"><span><strong>Harness</strong> Loop / Tools / Replay</span><span><strong>Memory</strong> User / Workspace / Session</span><span><strong>RAG</strong> Recall@K / MRR</span></div>
-          <span class="entry-more">查看我的贡献与仓库链接 <span aria-hidden="true">↗</span></span>
-        </div>
-        <div class="harness-map" aria-hidden="true">
-          <div><b>Loop</b><span>有界循环</span></div>
-          <div><b>Tools</b><span>注册 / 校验</span></div>
-          <div><b>Memory</b><span>分层 / 恢复</span></div>
-          <div><b>Context</b><span>来源 / 评分</span></div>
-          <div><b>Eval</b><span>Recall@K / MRR</span></div>
-        </div>
-      </button>
-    </section>
-
-    <section class="portfolio-section supporting-section reveal" id="stack" aria-labelledby="stack-title">
-      <header class="section-heading compact-heading">
-        <div><p class="section-kicker">Skills</p><h2 id="stack-title">专业技能</h2></div>
-      </header>
-      <div class="skill-grid">
-        <article class="skill-card"><p class="skill-label">开发协作</p><h3>Vibe Coding</h3><ul><li>Codex</li><li>Claude Code</li><li>Cursor</li></ul></article>
-        <article class="skill-card"><p class="skill-label">Agent 系统</p><h3>Agent 工程</h3><ul><li>Agent Memory</li><li>Agentic RAG</li><li>Tool Use</li></ul></article>
-      </div>
-    </section>
-
-    <section class="portfolio-section supporting-section reveal" id="honors" aria-labelledby="honors-title">
-      <header class="section-heading compact-heading">
-        <div><p class="section-kicker">Honors</p><h2 id="honors-title">荣誉与研究训练</h2></div>
-      </header>
-      <div class="honor-grid">
-        <article class="honor-card"><span>奖学金</span><strong>国家奖学金</strong></article>
-        <article class="honor-card"><span>数学竞赛</span><strong>全国大学生数学竞赛一等奖</strong></article>
-        <article class="honor-card"><span>研究经历</span><strong>医学图像处理 SCI 论文</strong></article>
-        <article class="honor-card"><span>研究经历</span><strong>小模型 Finetune SCI 论文</strong></article>
-        <article class="honor-card"><span>研究论文</span><strong>MemoWorld · AAAI 2027 在投</strong></article>
-        <article class="honor-card"><span>研究论文</span><strong>RVD · AAAI 2027 在投</strong></article>
+    <section class="support-section reveal" id="honors" aria-labelledby="honors-title">
+      <header class="support-heading"><p class="section-kicker">Honors</p><h2 id="honors-title">荣誉与研究训练</h2></header>
+      <div class="honor-list">
+        <span><i>奖学金</i>国家奖学金</span>
+        <span><i>数学竞赛</i>全国大学生数学竞赛一等奖</span>
+        <span><i>研究经历</i>医学图像处理 SCI 论文</span>
+        <span><i>研究经历</i>小模型 Finetune SCI 论文</span>
+        <span><i>研究论文</i>MemoWorld · AAAI 2027 在投</span>
+        <span><i>研究论文</i>RVD · AAAI 2027 在投</span>
       </div>
     </section>
   </main>
@@ -228,9 +206,9 @@
       <p>现居上海 · 求职方向：Agent 开发工程师</p>
     </div>
     <div class="contact-links">
-      <a href="mailto:wzr8277@163.com"><small>邮箱</small><strong>wzr8277@163.com</strong><span aria-hidden="true">↗</span></a>
-      <a href="tel:+8618811498277"><small>电话</small><strong>188 1149 8277</strong><span aria-hidden="true">↗</span></a>
-      <a href="https://github.com/WZR8277" target="_blank" rel="noreferrer"><small>GitHub</small><strong>WZR8277</strong><span aria-hidden="true">↗</span></a>
+      <a href="mailto:wzr8277@163.com"><span>邮箱</span><strong>wzr8277@163.com</strong><i aria-hidden="true">↗</i></a>
+      <a href="tel:+8618811498277"><span>电话</span><strong>188 1149 8277</strong><i aria-hidden="true">↗</i></a>
+      <a href="https://github.com/WZR8277" target="_blank" rel="noreferrer"><span>GitHub</span><strong>WZR8277</strong><i aria-hidden="true">↗</i></a>
     </div>
     <p class="copyright">© 2026 王昭容</p>
   </footer>
@@ -244,7 +222,7 @@
 
   <div class="image-viewer" id="image-viewer" hidden role="dialog" aria-modal="true" aria-label="论文首页大图">
     <button class="viewer-close" type="button" aria-label="关闭大图">×</button>
-    <img id="viewer-image" src="" alt="">
+    <img id="viewer-image" alt="">
   </div>
 
   <script src="./app.js" defer></script>
