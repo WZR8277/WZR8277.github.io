@@ -305,8 +305,8 @@ function listMarkup(title, items = []) {
 function starMarkup(star) {
   if (!star) return "";
   const labels = { S: "背景", T: "任务", A: "行动", R: "结果" };
-  return `<section class="detail-section"><h3>STAR 提炼</h3><div class="detail-grid">${Object.entries(star).map(([key, value]) => `
-    <div class="detail-panel"><b>${key} · ${labels[key]}</b><p>${value}</p></div>`).join("")}</div></section>`;
+  return `<section class="detail-section"><h3>STAR 提炼</h3><div class="star-grid">${Object.entries(star).map(([key, value]) => `
+    <article class="star-card"><div class="star-card-head"><b>${key}</b><span>${labels[key]}</span></div><p>${value}</p></article>`).join("")}</div></section>`;
 }
 
 function imageMarkup(image) {
