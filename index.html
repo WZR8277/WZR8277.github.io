@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#f8f7f4">
   <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
-  <meta name="description" content="王昭容的 Agent 开发工程师个人主页：Agent Memory、Agentic RAG、Tool Use 与真实业务 Agent 实践。">
+  <meta name="description" content="王昭容的 Agent 开发工程师个人主页：Agent Runtime、Memory、Agentic RAG、Tool Use 与评测实践。">
   <link rel="canonical" href="https://wzr8277.github.io/">
   <title>王昭容 · Agent 开发工程师</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,10 +32,10 @@
         <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span>求职作品集 · 2026</p>
         <h1 id="hero-title">王昭容</h1>
         <p class="hero-role">Agent 开发工程师 <span aria-hidden="true">×</span> 关注 Memory</p>
-        <p class="hero-intro">浙江大学电子信息硕士，曾任携程火车票研发部 Agent 开发工程师。具备 Agent Memory、Agentic RAG 与 Tool Use 系统研发经验。</p>
+        <p class="hero-intro">浙江大学电子信息硕士，曾任携程火车票研发部 Agent 开发工程师。具备 Agent Runtime、Memory、Agentic RAG 与 Tool Use 系统研发经验。</p>
         <div class="hero-actions">
           <a class="button button-primary" href="#timeline">探索经历与作品 <span aria-hidden="true">↓</span></a>
-          <a class="button button-secondary" href="https://github.com/adongwanai/learn-workbuddy" target="_blank" rel="noreferrer">开源项目 <span aria-hidden="true">↗</span></a>
+          <a class="button button-secondary" href="#opensource">开源项目 <span aria-hidden="true">↓</span></a>
         </div>
       </div>
 
@@ -48,12 +48,12 @@
             <span>根因诊断 Top-1</span>
             <p>61.7% → 78.3% · 240 条工单</p>
           </article>
-          <article class="proof-card">
-            <small>出境订单排障 Agent</small>
-            <strong>86.4%</strong>
-            <span>关键证据 Recall@5</span>
-            <p>68.9% → 86.4% · 240 条工单</p>
-          </article>
+          <a class="proof-card proof-card-link" href="#opensource" aria-label="查看 EvoWork 开源项目">
+            <small>EvoWork · Skills Evolution</small>
+            <strong>52→80%</strong>
+            <span>任务成功率</span>
+            <p>6 轮进化 · 60 Case 隔离门控 · 点击查看</p>
+          </a>
           <article class="proof-card">
             <small>MemoWorld · AAAI 2027</small>
             <strong>+12.2</strong>
@@ -167,6 +167,23 @@
 
         <li class="timeline-item reveal" data-kind="opensource" id="opensource">
           <span class="timeline-dot" aria-hidden="true"></span>
+          <button class="timeline-card opensource-timeline-card evowork-card" type="button" data-detail="evowork" aria-label="查看 EvoWork 开源项目详情">
+            <div class="card-topline"><span>开源项目</span><span class="category-pill">核心作者</span></div>
+            <h3>EvoWork</h3>
+            <p class="card-subtitle">Self-improving Agent Framework · Runtime / Memory / Skills / Eval / Safety</p>
+            <p>从零实现五大子系统，打通评测驱动、失败归因、技能进化与回归验证的 Agent 自改进闭环。</p>
+            <div class="evo-loop-mini" aria-label="EvoWork 自改进闭环">
+              <span><b>评测驱动</b>固定任务集</span><span><b>失败归因</b>轨迹分析</span>
+              <span><b>技能进化</b>生成提案</span><span><b>回归门控</b>沙箱验证</span>
+            </div>
+            <div class="compact-metrics compact-metrics-three"><span><b>−45%</b> LLM 轮次</span><span><b>−54%</b> Token</span><span><b>+28pp</b> 成功率</span></div>
+            <div class="topic-row"><span>Runtime</span><span>Memory</span><span>Skill Evolution</span><span>Eval & Safety</span></div>
+            <span class="entry-more">查看系统设计与评测结果 <span aria-hidden="true">↗</span></span>
+          </button>
+        </li>
+
+        <li class="timeline-item reveal" data-kind="opensource">
+          <span class="timeline-dot" aria-hidden="true"></span>
           <button class="timeline-card opensource-timeline-card" type="button" data-detail="workbuddy" aria-label="查看 learn-workbuddy 开源贡献详情">
             <div class="card-topline"><span>持续维护</span><span class="category-pill">开源项目 · 核心作者</span></div>
             <h3>learn-workbuddy</h3>
@@ -185,8 +202,10 @@
     <section class="support-section reveal" id="stack" aria-labelledby="stack-title">
       <header class="support-heading"><p class="section-kicker">Skills</p><h2 id="stack-title">专业技能</h2></header>
       <div class="capability-list">
-        <article><p>开发协作</p><h3>Vibe Coding</h3><ul><li>Codex</li><li>Claude Code</li><li>Cursor</li></ul></article>
-        <article><p>Agent 系统</p><h3>Agent 工程</h3><ul><li>Agent Memory</li><li>Agentic RAG</li><li>Tool Use</li></ul></article>
+        <article><p>Agent & Harness</p><h3>Agent 与 Harness 工程</h3><ul><li>Agent Loop</li><li>ReAct</li><li>Tool Use</li><li>Subagent / Multi-Agent</li><li>状态机与任务编排</li><li>MCP 开发与集成</li></ul></article>
+        <article><p>Memory & Context</p><h3>Memory 与 Context Engineering</h3><ul><li>短期 / 长期记忆</li><li>Episodic / Semantic</li><li>混合检索</li><li>KV / 前缀缓存</li><li>Stable / Dynamic Prompt</li><li>主动压缩</li></ul></article>
+        <article><p>RAG & Evaluation</p><h3>RAG 与评测</h3><ul><li>Agentic RAG</li><li>RRF</li><li>Cross-Encoder Rerank</li><li>LLM-as-Judge</li><li>EM / F1</li><li>检索精确率</li><li>隔离测试集</li></ul></article>
+        <article><p>Engineering</p><h3>工程能力</h3><ul><li>Java</li><li>Python</li><li>Git</li><li>Codex</li><li>Cursor</li><li>Claude Code</li><li>Skill-Driven Development</li></ul></article>
       </div>
     </section>
 

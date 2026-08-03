@@ -296,6 +296,17 @@ button.timeline-card:hover { transform: translateY(-4px); border-color: color-mi
 .compact-metrics span:nth-child(2) { border-color: color-mix(in srgb, var(--teal) 11%, var(--line)); background: color-mix(in srgb, var(--teal-soft) 58%, #fff); }
 .compact-metrics b { display: block; color: var(--entry-accent); font-family: var(--mono); font-size: 17px; }
 .compact-metrics span:nth-child(2) b { color: var(--teal); }
+.compact-metrics-three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.compact-metrics-three span { padding: 10px; font-size: 10.5px; }
+.compact-metrics-three span:nth-child(3) { border-color: color-mix(in srgb, var(--coral) 11%, var(--line)); background: color-mix(in srgb, var(--coral-soft) 58%, #fff); }
+.compact-metrics-three span:nth-child(3) b { color: var(--coral); }
+.evo-loop-mini { counter-reset: evo; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 22px; padding: 10px; border: 1px solid #dfe2f0; border-radius: 13px; background: #f8f8fb; }
+.evo-loop-mini span { counter-increment: evo; position: relative; min-height: 66px; display: flex; flex-direction: column; justify-content: center; gap: 3px; padding: 10px 10px 10px 42px; border: 1px solid #e1e3ed; border-radius: 10px; color: var(--muted); background: #fff; font-size: 11.5px; line-height: 1.45; }
+.evo-loop-mini span::before { content: counter(evo, decimal-leading-zero); position: absolute; left: 10px; top: 50%; translate: 0 -50%; width: 24px; height: 24px; display: grid; place-items: center; border-radius: 50%; color: var(--accent); background: var(--accent-soft); font-family: var(--mono); font-size: 9px; font-weight: 700; }
+.evo-loop-mini span:nth-child(2)::before { color: var(--teal); background: var(--teal-soft); }
+.evo-loop-mini span:nth-child(3)::before { color: var(--amber); background: var(--amber-soft); }
+.evo-loop-mini span:nth-child(4)::before { color: var(--coral); background: var(--coral-soft); }
+.evo-loop-mini b { color: var(--ink-2); font-size: 12px; }
 .architecture-mini { display: grid; grid-template-columns: 1fr 18px 1fr 18px 1fr; align-items: center; margin-top: 22px; padding: 14px; border: 1px solid #e0e1ed; border-radius: 13px; background: #f7f7fb; }
 .architecture-mini span { min-height: 60px; display: flex; flex-direction: column; justify-content: center; gap: 2px; padding: 9px; border: 1px solid #dedfeb; border-radius: 9px; color: var(--muted); background: #fff; font-size: 10.5px; text-align: center; }
 .architecture-mini span:nth-child(1) b { color: var(--accent); }
@@ -324,11 +335,14 @@ button.timeline-card:hover { transform: translateY(-4px); border-color: color-mi
 .capability-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .capability-list article { --cap-accent: var(--accent); --cap-soft: var(--accent-soft); padding: 25px 28px 27px 0; }
 .capability-list article:nth-child(2) { --cap-accent: var(--teal); --cap-soft: var(--teal-soft); }
-.capability-list article + article { padding-left: 28px; border-left: 1px solid var(--line); }
+.capability-list article:nth-child(3) { --cap-accent: var(--amber); --cap-soft: var(--amber-soft); }
+.capability-list article:nth-child(4) { --cap-accent: var(--coral); --cap-soft: var(--coral-soft); }
+.capability-list article:nth-child(even) { padding-right: 0; padding-left: 28px; border-left: 1px solid var(--line); }
+.capability-list article:nth-child(-n + 2) { border-bottom: 1px solid var(--line); }
 .capability-list p { margin: 0; color: var(--cap-accent); font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: .06em; }
-.capability-list h3 { margin: 9px 0 18px; font-family: var(--display); font-size: 24px; font-weight: 600; }
+.capability-list h3 { margin: 9px 0 18px; font-family: var(--display); font-size: 22px; font-weight: 600; line-height: 1.3; }
 .capability-list ul { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
-.capability-list li { padding: 6px 9px; border-radius: 7px; color: var(--ink-2); background: color-mix(in srgb, var(--cap-soft) 72%, #efefec); font-size: 12.5px; font-weight: 650; }
+.capability-list li { padding: 6px 9px; border-radius: 7px; color: var(--ink-2); background: color-mix(in srgb, var(--cap-soft) 72%, #efefec); font-size: 13px; font-weight: 650; }
 .honor-list { display: flex; flex-wrap: wrap; gap: 10px; }
 .honor-list span { --honor-accent: var(--accent); --honor-soft: var(--accent-soft); display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 10px 14px; border: 1px solid color-mix(in srgb, var(--honor-accent) 9%, var(--line)); border-radius: 11px; color: var(--ink-2); background: color-mix(in srgb, var(--honor-soft) 48%, #fff); font-size: 13px; font-weight: 650; }
 .honor-list span:nth-child(3n + 2) { --honor-accent: var(--teal); --honor-soft: var(--teal-soft); }
@@ -482,8 +496,9 @@ button.timeline-card:hover { transform: translateY(-4px); border-color: color-mi
   .support-section { padding: 70px 0; }
   .support-section + .support-section { padding-top: 64px; }
   .capability-list { grid-template-columns: 1fr; }
-  .capability-list article { padding: 24px 0; }
-  .capability-list article + article { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
+  .capability-list article { padding: 24px 0; border-bottom: 1px solid var(--line); }
+  .capability-list article:nth-child(even) { padding-right: 0; padding-left: 0; border-left: 0; }
+  .capability-list article:last-child { border-bottom: 0; }
   .site-footer { margin-top: 12px; padding-top: 58px; }
   .contact-links { grid-template-columns: 1fr; }
   .contact-links a { min-height: 76px; }
@@ -535,6 +550,9 @@ button.timeline-card:hover { transform: translateY(-4px); border-color: color-mi
   .proof-card p { font-size: 9.5px; }
   .card-topline { align-items: flex-start; flex-direction: column; }
   .compact-metrics { grid-template-columns: 1fr; }
+  .compact-metrics-three { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+  .compact-metrics-three span { min-width: 0; padding: 8px 6px; font-size: 9.5px; }
+  .compact-metrics-three b { font-size: 15px; white-space: nowrap; }
   .project-stats { flex-direction: column; gap: 5px; }
   .honor-list { display: grid; grid-template-columns: 1fr; }
 }

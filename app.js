@@ -234,6 +234,48 @@ const details = {
     tradeoff: "RVD 不能创造候选池里不存在的正确答案，也要求任务后证据足够可审计。SWE-bench Verified 上的增益不显著，因此论文把结论限定在 verification-limited regime。",
     quote: "先确认正确候选是否存在，再决定应该继续进化 solver，还是修复 verifier。"
   },
+  evowork: {
+    kind: "opensource",
+    meta: "开源项目 · 核心作者",
+    title: "EvoWork",
+    subtitle: "Self-improving Agent Framework · Runtime / Memory / Skills / Eval / Safety",
+    lead: "从零实现 Runtime、Memory、Skills 自进化、Eval 与安全五大子系统，打通评测驱动、失败归因、技能进化与回归验证的 Agent 自改进闭环。",
+    tags: ["Advanced Runtime", "Layered Memory", "Skill Evolution", "Eval & Safety"],
+    role: "核心作者 / 系统设计与独立实现",
+    background: "传统 Agent Loop 往往把工具调度、上下文、评测和权限揉进核心循环：新增工具需要改动主流程，长任务上下文持续膨胀，失败也难以沉淀成可验证的改进。EvoWork 将运行、记忆、进化、评测与安全拆成可独立演进的子系统。",
+    flow: [
+      { title: "评测驱动", text: "固定任务集与隔离测试集暴露稳定失败" },
+      { title: "失败归因", text: "分析轨迹并定位 Runtime、Memory 或 Skill 问题" },
+      { title: "技能提案", text: "从失败模式生成可审查的新技能或修订" },
+      { title: "沙箱回归", text: "以成功率门控验证收益并检查副作用" },
+      { title: "确认集成", text: "用户确认后进入技能库并持续回归", accent: true }
+    ],
+    metrics: [
+      { value: "−45%", label: "多工具任务 LLM 交互轮次" },
+      { value: "12.3k → 5.6k", label: "长程任务单任务 Token" },
+      { value: "52% → 80%", label: "6 轮技能进化后任务成功率" }
+    ],
+    contributions: [
+      "系统设计：独立从零实现 Runtime、Memory、Skills 自进化、Eval 与安全五大子系统，形成从评测到回归验证的完整闭环。",
+      "Runtime 与工具调度：以 Dispatch Table 动态注册、Batch Tool Calling 和 Interrupt 中断恢复扩展 Agent Loop；新增工具平均约 30 行接入且不侵入核心循环。在 120 任务 × 3 轮评测中，LLM 交互轮次降低 45%，端到端耗时降低 38%。",
+      "Memory 与 Context Engineering：构建 Episodic JSONL + SemanticVector 双层记忆，以及 Context 四操作主动压缩策略。在 80 组平均 40+ 轮长程任务 × 5 次评测中，单任务 Token 从 12.3k 降至 5.6k，成功率从 71% 提升至 76%。",
+      "Eval 驱动的技能自进化：搭建轨迹分析、失败归因、技能提案、沙箱回归与用户确认集成流程，以 60 Case 隔离测试集进行成功率门控。6 轮迭代后成功率从 52% 提升至 80%，失败自动归因覆盖率 85%，技能提案回归通过率 60%。",
+      "安全与权限：实现三级权限模型、Dry-run 副作用预览与成本守卫；拦截全部预设高危操作，单任务成本上限 $0.5，评测期间越权调用 0 次。"
+    ],
+    approach: [
+      "Dispatch Table 将工具发现、Schema 与执行器从 Agent Loop 解耦；Batch Tool Calling 合并无依赖调用，Interrupt 保存可恢复状态。",
+      "Episodic JSONL 保留可回放事件，SemanticVector 负责语义召回；Context 四操作按任务阶段主动控制上下文规模。",
+      "所有技能提案先进入隔离沙箱，只有通过固定回归集且得到用户确认后才集成，避免自进化直接污染生产技能。",
+      "权限、Dry-run 与成本守卫位于统一执行边界，在工具真正产生副作用前完成校验。"
+    ],
+    star: {
+      S: "传统 Agent Loop 扩展性差，工具调度、长上下文、失败归因和权限控制相互耦合，改进难以被稳定验证。",
+      T: "构建可扩展、可恢复、可评测且受安全边界约束的 Agent Runtime，并让失败能够转化为可回归的技能改进。",
+      A: "拆分五大子系统，以动态工具注册、批量调用、双层记忆、主动压缩、隔离评测和用户确认门控组成自改进闭环。",
+      R: "多工具交互轮次降低 45%、端到端耗时降低 38%、长任务 Token 降低 54%；6 轮技能进化后成功率提升 28 个百分点，并实现预设高危操作 100% 拦截。"
+    },
+    tradeoff: "技能进化不会直接自动写入生产技能库：沙箱回归与用户确认增加了一步延迟，但把错误提案和能力回退限制在隔离环境内。"
+  },
   workbuddy: {
     kind: "opensource",
     meta: "开源项目 · 核心作者",
