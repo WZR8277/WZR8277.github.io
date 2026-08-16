@@ -193,47 +193,6 @@ const details = {
     tradeoff: "一个无梯度架构没有获得收益，说明覆盖不是充分条件；记忆结构还必须能被控制器表示和学习。",
     quote: "To train memory that transfers, evolve the world, not the dataset."
   },
-  rvd: {
-    kind: "paper",
-    meta: "研究论文 · AAAI 2027 在投",
-    title: "When Solver Progress Outruns Selection",
-    subtitle: "Retrospective Verifier Distillation for Self-Evolving Agents",
-    lead: "自演化 Agent 可能已经生成正确候选，却因 verifier 落后而没有选中。RVD 用固定候选池把生成问题和选择问题分开。",
-    tags: ["Verifier", "Frozen-pool Replay", "Self-evolving Agents", "Pairwise LoRA"],
-    role: "三作 · 参与研究与实验验证",
-    image: { src: "./assets/paper-rvd-2027.png", alt: "When Solver Progress Outruns Selection 论文首页" },
-    background: "当 solver 继续提升而选择能力停滞时，端到端准确率会掩盖一类‘missed rather than missing’的失败：正确轨迹已经在候选池里，只是固定 selector 把它丢掉。",
-    flow: [
-      { title: "Frozen Pool", text: "冻结候选身份、顺序与 coverage" },
-      { title: "Replay Diagnosis", text: "只替换 verifier，隔离选择损失" },
-      { title: "Post-task Evidence", text: "工具、测试、状态证据；不确定则弃标" },
-      { title: "RVD Verifier", text: "池内偏好训练 + fresh-dev gate", accent: true }
-    ],
-    metrics: [
-      { value: "+3.2", label: "三基准平均 realized accuracy" },
-      { value: "+4.7", label: "AppWorld" },
-      { value: "+4.1", label: "LiveCodeBench" }
-    ],
-    contributions: [
-      "以 frozen-pool replay 保持 candidate pool 与 coverage 不变，把准确率变化归因到 selector。",
-      "将任务完成后的工具、测试、状态和执行证据转成保守标签；证据歧义时选择 abstain。",
-      "在同一候选池内构建偏好对，训练轻量 verifier，并用一次性 fresh-development gate 抑制过拟合。",
-      "在 AppWorld、LiveCodeBench 与 SWE-bench Verified 上报告主结果、消融、边界和统计不确定性。"
-    ],
-    approach: [
-      "Coverage C 表示池中至少一个候选正确，Realized accuracy R 表示最终选择正确。",
-      "候选池固定后，solver 不再变化；任何 R 的恢复都来自 selection。",
-      "证据质量与 selection-aligned ranking 比 gate 本身更关键。"
-    ],
-    star: {
-      S: "自演化 Agent 的端到端准确率会混合生成与选择两类问题，正确候选可能已经存在却被固定 selector 丢弃。",
-      T: "在不改变候选覆盖率的前提下，隔离并修复 verifier 滞后造成的 realized accuracy 损失。",
-      A: "冻结候选池进行 replay，以任务后工具、测试和状态证据构造保守偏好对，再训练轻量 verifier 并通过 fresh-development gate。",
-      R: "三项基准平均 realized accuracy 提升 3.2，其中 AppWorld 提升 4.7、LiveCodeBench 提升 4.1。"
-    },
-    tradeoff: "RVD 不能创造候选池里不存在的正确答案，也要求任务后证据足够可审计。SWE-bench Verified 上的增益不显著，因此论文把结论限定在 verification-limited regime。",
-    quote: "先确认正确候选是否存在，再决定应该继续进化 solver，还是修复 verifier。"
-  },
   evowork: {
     kind: "opensource",
     meta: "开源项目 · 核心作者",
