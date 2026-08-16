@@ -191,7 +191,8 @@ const details = {
       R: "三项未见基准 Zero-shot SSR 平均提升 12.2，组合泛化差距降低 5.4 倍，MemoryArena native success 提升 4.5。"
     },
     tradeoff: "一个无梯度架构没有获得收益，说明覆盖不是充分条件；记忆结构还必须能被控制器表示和学习。",
-    quote: "To train memory that transfers, evolve the world, not the dataset."
+    quote: "To train memory that transfers, evolve the world, not the dataset.",
+    link: { url: "./assets/mnemoworld-interview-deck.pdf", label: "查看研究汇报 · 加密 PDF" }
   },
   evowork: {
     kind: "opensource",
