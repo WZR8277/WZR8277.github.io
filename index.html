@@ -32,7 +32,7 @@
         <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span>求职作品集 · 2026</p>
         <h1 id="hero-title">王昭容</h1>
         <p class="hero-role">Agent 开发工程师 <span aria-hidden="true">×</span> 关注 Memory</p>
-        <p class="hero-intro">浙江大学电子信息硕士，曾任携程火车票研发部 Agent 开发工程师。具备 Agent Runtime、Memory、Agentic RAG 与 Tool Use 系统研发经验。</p>
+        <p class="hero-intro">浙江大学电子信息硕士，曾任携程火车票研发部后端开发工程师，聚焦 Agent Harness、Memory、Agentic RAG 与 Agent 工程评测。</p>
         <div class="hero-actions">
           <a class="button button-primary" href="#timeline">探索经历与作品 <span aria-hidden="true">↓</span></a>
           <a class="button button-secondary" href="#opensource">开源项目 <span aria-hidden="true">↓</span></a>
@@ -42,17 +42,17 @@
       <div class="proof-wrap" aria-label="代表性成果">
         <span class="trace-label" aria-hidden="true">EVIDENCE TRACE</span>
         <div class="proof-grid">
-          <article class="proof-card">
-            <small>出境订单排障 Agent</small>
-            <strong>78.3%</strong>
-            <span>根因诊断 Top-1</span>
-            <p>61.7% → 78.3% · 240 条工单</p>
-          </article>
-          <a class="proof-card proof-card-link" href="#opensource" aria-label="查看 EvoWork 开源项目">
-            <small>EvoWork · Skills Evolution</small>
+          <a class="proof-card proof-card-link" href="#work" aria-label="定位到出境火车票多跳检索 Agent">
+            <small>出境多跳 Agentic RAG</small>
+            <strong>77.9%</strong>
+            <span>Answer Correctness</span>
+            <p>60.8% → 77.9% · 480 道多跳 QA</p>
+          </a>
+          <a class="proof-card proof-card-link" href="#work" aria-label="定位到 EvoWork 公司项目">
+            <small>EvoWork · Agent Harness</small>
             <strong>52→80%</strong>
             <span>任务成功率</span>
-            <p>6 轮进化 · 60 Case 隔离门控 · 点击查看</p>
+            <p>6 轮技能进化 · 60 Case 隔离门控</p>
           </a>
           <article class="proof-card">
             <small>MemoWorld · AAAI 2027</small>
@@ -60,7 +60,7 @@
             <span>未见任务平均成功率</span>
             <p>Zero-shot SSR · 共一作者 / 在投</p>
           </article>
-          <a class="proof-card proof-card-link" href="#workbuddy" aria-label="定位到 learn-workbuddy 开源项目">
+          <a class="proof-card proof-card-link" href="#opensource" aria-label="定位到 learn-workbuddy 开源项目">
             <small>learn-workbuddy</small>
             <strong>3 层</strong>
             <span>Memory 作用域</span>
@@ -111,29 +111,32 @@
           </button>
         </li>
 
-        <li class="timeline-item reveal" data-kind="work" id="work">
+        <li class="timeline-item timeline-item-wide reveal" data-kind="work" id="work">
           <span class="timeline-dot" aria-hidden="true"></span>
           <article class="timeline-card company-card">
-            <div class="card-topline"><span>2025.05 起</span><span class="category-pill">公司经历</span></div>
+            <div class="card-topline"><span>2025.05—2026.08</span><span class="category-pill">公司经历</span></div>
             <h3>携程火车票研发部</h3>
-            <p class="card-subtitle">Agent 开发工程师</p>
-            <p>围绕同一出境业务语境，推进诊断、知识检索和跨仓调研三项 Agent 工程实践。</p>
-            <div class="company-projects">
-              <button class="company-project project-primary" type="button" data-detail="diagnosis" aria-label="查看出境订单排障 Agent 详情">
-                <span>主项目 · Production Agent</span>
-                <strong>出境订单排障 Agent</strong>
-                <p>多步规划、只读工具、Working Memory 与证据充分性验证。</p>
-                <div class="project-stats"><b>78.3% Top-1</b><b>86.4% Recall@5</b><b>7.1 min</b></div>
+            <p class="card-subtitle">后端开发工程师</p>
+            <p>围绕出境火车票业务开展 Agent Harness 与 Agentic RAG 工程实践，并将跨仓需求调研沉淀为可复用 Skill。</p>
+            <div class="company-projects company-project-grid">
+              <button class="company-project company-project-featured" type="button" data-detail="evowork" aria-label="查看 EvoWork 项目详情">
+                <span>主项目 · Self-improving Agent Harness</span>
+                <div class="project-visual"><img src="./assets/evowork-architecture.svg" alt="" loading="lazy"></div>
+                <strong>EvoWork</strong>
+                <p>Runtime、Memory、Skills 自进化、Eval 与安全五大子系统。</p>
+                <div class="project-stats"><b>−45% LLM 调用</b><b>−54.5% Token</b><b>+28pp 成功率</b></div>
               </button>
-              <button class="company-project" type="button" data-detail="knowledge" aria-label="查看出境业务与代码仓库知识库详情">
-                <span>相关实践 · Knowledge & Search</span>
-                <strong>业务与代码仓库知识库</strong>
-                <p>文档指南 → 多仓代码查找 → 代码证据链。</p>
+              <button class="company-project company-project-featured" type="button" data-detail="rag" aria-label="查看出境火车票多跳检索 Agent 详情">
+                <span>主项目 · Agentic RAG</span>
+                <div class="project-visual"><img src="./assets/rag-agent-architecture.svg" alt="" loading="lazy"></div>
+                <strong>出境火车票多跳检索 Agent</strong>
+                <p>Hybrid RAG 与 Planner–Executor–Verifier 闭环，面向条件依赖的 2–4 跳文档问答。</p>
+                <div class="project-stats"><b>77.9% Correctness</b><b>85.5% Evidence R@5</b><b>92.5% Router</b></div>
               </button>
-              <button class="company-project" type="button" data-detail="research-skill" aria-label="查看需求调研 Skill 详情">
-                <span>相关实践 · Multi-repo Skill</span>
-                <strong>需求调研 Skill</strong>
-                <p>L1→L2→L3 渐进检索与主—子 Agent 分仓协作。</p>
+              <button class="company-project company-project-secondary" type="button" data-detail="research-skill" aria-label="查看需求调研 Skill 详情">
+                <span>补充实践 · Multi-repo Skill</span>
+                <div><strong>需求调研 Skill</strong><p>L1→L2→L3 渐进检索与主—子 Agent 分仓协作，结论绑定代码证据链。</p></div>
+                <b aria-hidden="true">查看详情 ↗</b>
               </button>
             </div>
           </article>
@@ -153,23 +156,6 @@
         </li>
 
         <li class="timeline-item reveal" data-kind="opensource" id="opensource">
-          <span class="timeline-dot" aria-hidden="true"></span>
-          <button class="timeline-card opensource-timeline-card evowork-card" type="button" data-detail="evowork" aria-label="查看 EvoWork 开源项目详情">
-            <div class="card-topline"><span>开源项目</span><span class="category-pill">核心作者</span></div>
-            <h3>EvoWork</h3>
-            <p class="card-subtitle">Self-improving Agent Framework · Runtime / Memory / Skills / Eval / Safety</p>
-            <p>从零实现五大子系统，打通评测驱动、失败归因、技能进化与回归验证的 Agent 自改进闭环。</p>
-            <div class="evo-loop-mini" aria-label="EvoWork 自改进闭环">
-              <span><b>评测驱动</b>固定任务集</span><span><b>失败归因</b>轨迹分析</span>
-              <span><b>技能进化</b>生成提案</span><span><b>回归门控</b>沙箱验证</span>
-            </div>
-            <div class="compact-metrics compact-metrics-three"><span><b>−45%</b> LLM 轮次</span><span><b>−54%</b> Token</span><span><b>+28pp</b> 成功率</span></div>
-            <div class="topic-row"><span>Runtime</span><span>Memory</span><span>Skill Evolution</span><span>Eval & Safety</span></div>
-            <span class="entry-more">查看系统设计与评测结果 <span aria-hidden="true">↗</span></span>
-          </button>
-        </li>
-
-        <li class="timeline-item reveal" data-kind="opensource" id="workbuddy">
           <span class="timeline-dot" aria-hidden="true"></span>
           <button class="timeline-card opensource-timeline-card" type="button" data-detail="workbuddy" aria-label="查看 learn-workbuddy 开源贡献详情">
             <div class="card-topline"><span>持续维护</span><span class="category-pill">开源项目 · 核心作者</span></div>
@@ -229,7 +215,7 @@
     </section>
   </div>
 
-  <div class="image-viewer" id="image-viewer" hidden role="dialog" aria-modal="true" aria-label="论文首页大图">
+  <div class="image-viewer" id="image-viewer" hidden role="dialog" aria-modal="true" aria-label="项目或论文图片大图">
     <button class="viewer-close" type="button" aria-label="关闭大图">×</button>
     <img id="viewer-image" alt="">
   </div>

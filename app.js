@@ -36,83 +36,49 @@ const details = {
     ],
     quote: "算法基础、工程实现和研究表达，是后来进入 Agent 系统工作的三条底线。"
   },
-  diagnosis: {
+  rag: {
     kind: "project",
     meta: "公司项目 · 携程火车票研发部",
-    title: "出境订单排障 Agent",
-    subtitle: "多步诊断 · Working Memory · Evidence-first",
-    lead: "面向订单异常需要人工交叉核对多类数据的问题，把排障过程改造成可规划、可取证、可复核的 Agent 工作流。",
-    tags: ["LangGraph", "AgentState", "RAG", "Read-only Tools"],
-    role: "项目主导 / Agent 开发",
-    background: "人工排障需要在订单、供应商回调、调用链日志和历史工单之间反复切换。一次检索后直接生成结论，容易漏掉关键证据，也难以解释结论来源。",
+    title: "出境火车票多跳检索 Agent",
+    subtitle: "全仿真闭世界 · Hybrid RAG · Agentic Multi-hop",
+    lead: "面向拆票、改签子单、搜索优惠价、消息事件与规则版本冲突，构建纯文档的 2–4 跳 Agentic RAG，并用固定评测验证答案与证据链。",
+    tags: ["BM25 + BGE-M3 / FAISS", "Graph Search", "RRF + CrossEncoder", "LangGraph"],
+    role: "项目主导 / Agentic RAG 方案设计与评测",
+    images: [
+      { src: "./assets/rag-agent-architecture.svg", alt: "出境火车票多跳检索 Agent 的 LangGraph 控制闭环", label: "Agent 控制闭环" },
+      { src: "./assets/rag-retrieval-architecture.svg", alt: "出境火车票多跳检索 Agent 的 Hybrid RAG 检索链路", label: "Hybrid RAG 检索链路" }
+    ],
+    background: "项目基于 64 篇全仿真业务文档、1,920 个结构化 Chunk 与 480 道 2–4 跳 QA 构建闭世界 Benchmark。它只验证冻结文档上的检索与 Agentic Search，不连接生产接口、订单数据、代码仓库或 Elasticsearch。",
     flow: [
-      { title: "路由", text: "判断简单查询或多步诊断" },
-      { title: "规划与执行", text: "按假设调用只读工具" },
-      { title: "证据核验", text: "不足则带反馈重新规划" },
-      { title: "根因合成", text: "结论、证据链与建议", accent: true }
+      { title: "Query Router", text: "区分单跳、多文档合成与真正条件依赖的多跳问题" },
+      { title: "Planner–Executor", text: "按前跳新证据生成下一子问题并调用同一套 Hybrid RAG" },
+      { title: "Evidence Registry", text: "登记 doc、chunk、version、scope 与逐 Claim 支持关系" },
+      { title: "Verifier", text: "根据证据缺口决定 PASS、差异化 REPLAN 或 ABSTAIN" },
+      { title: "Synthesizer", text: "只基于通过校验的原文证据生成逐 Claim 引用答案", accent: true }
     ],
     metrics: [
-      { value: "61.7 → 78.3%", label: "根因 Top-1" },
-      { value: "68.9 → 86.4%", label: "关键证据 Recall@5" },
-      { value: "12.4 → 7.1 min", label: "人工平均排障时长" }
+      { value: "60.8 → 77.9%", label: "Answer Correctness · 292/480 → 374/480" },
+      { value: "68.5 → 85.5%", label: "Gold Evidence Slot Recall@5" },
+      { value: "111 / 120", label: "Router 控制题正确分流 · 92.5%" }
     ],
     contributions: [
-      "基于 LangGraph 组织 Router、Planner、Executor、Verifier 与 Synthesizer，并把查询能力封装为只读工具。",
-      "使用 AgentState 维护任务级 Working Memory，持续记录异常假设、已查证据、执行进度与重规划反馈。",
-      "从历史工单知识库召回相似案例；Verifier 判断证据是否充分或矛盾，不足时回到 Planner。",
-      "在 240 条脱敏异常工单上建立固定评测，对比一次混合检索后直接生成结论的 RAG 基线。"
+      "构造 64 篇全仿真业务文档、1,920 个结构化 Chunk、480 道 2–4 跳 QA 与 1,272 个 Gold Evidence Slot；用 single-span、删跳、反事实和 next-query dependency 排除伪多跳。",
+      "构建 BM25、BGE-M3 / FAISS 与有来源 Graph Search 的三路候选，经 RRF 融合、版本与范围过滤和 CrossEncoder 统一重排；通过 read_chunk 回读父级上下文。",
+      "基于 LangGraph 实现 Router 与 Planner–Executor–Evidence Registry–Verifier–Synthesizer 闭环；后续检索必须依赖前跳新发现的字段、对象、规则或版本。",
+      "在固定 Corpus、生成模型与评分器的五折 OOF 上，与强 single-shot Hybrid RAG 基线进行逐题配对评测。"
     ],
     approach: [
-      "复杂查询先拆成带依赖关系的子任务，单步结果作为后续检索上下文。",
-      "证据与工具调用进入 trace，最终答案只基于已收集证据生成。",
-      "工具预算与重规划次数有界，避免无止境检索和重复调用。"
+      "普通事实题和多文档合成题不进入 Agent 循环；只有后一跳必须使用前一跳新变量时才进入 Agentic Search。",
+      "Graph path 只用于发现候选，最终 Claim 必须由通过版本、范围与权威性校验后的原文 Chunk 支持。",
+      "最多 4 轮规划、8 次检索调用、16 次 read_chunk 与 5 条最终证据；关键证据缺失或版本冲突无法裁决时拒答。"
     ],
     star: {
-      S: "人工排障跨越多个系统，信息分散且结论缺少统一证据链。",
-      T: "在不扩大生产写权限的前提下，提高根因准确率并缩短排障时间。",
-      A: "构建多步诊断图、任务级状态、只读工具与证据充分性验证循环。",
-      R: "Top-1 提升 16.6 个百分点，Recall@5 提升 17.5 个百分点，平均耗时降至 7.1 分钟。"
+      S: "出境火车票文档中的字段、状态、事件和版本关系跨文档分散，single-shot 检索容易在证据未闭合时提前作答。",
+      T: "在不引入生产数据的前提下，构造可复现的困难多跳评测，并验证迭代检索能否提高答案和证据覆盖。",
+      A: "建立三路 Hybrid RAG、条件化 Router、最小一步规划、Evidence Registry、证据缺口驱动的 replan 与拒答机制。",
+      R: "Answer Correctness 提升 17.1 个百分点，Gold Evidence Slot Recall@5 提升 17.0 个百分点；Router 控制题 111/120 正确分流。"
     },
-    quote: "核心变化不是让模型多想几步，而是让每一步都留下可检查的证据。"
-  },
-  knowledge: {
-    kind: "project",
-    meta: "公司项目 · Knowledge & Search",
-    title: "出境业务与代码仓库知识库",
-    subtitle: "文档作指南 · 代码作证据",
-    lead: "先用业务文档建立查找方向，再进入多代码仓库寻找真实实现证据，避免把文档描述当作最终答案。",
-    tags: ["Elasticsearch", "doc_index", "chunk_index", "Agentic Search"],
-    role: "方案设计与实现",
-    background: "出境业务问题既需要理解规则和术语，也需要落到具体代码实现。仅做文档 RAG 容易停在说明层；为代码建立向量索引又会引入额外更新和准确性成本。",
-    flow: [
-      { title: "问题解析", text: "提炼业务实体与定位线索" },
-      { title: "文档指南", text: "chunk 命中；不足回退全文" },
-      { title: "多仓代码查找", text: "Agentic Search 调用命令行" },
-      { title: "证据链", text: "文件、符号与调用关系", accent: true }
-    ],
-    metrics: [
-      { value: "80%+", label: "常见定位场景准确率" },
-      { value: "2", label: "doc / chunk 文档索引" },
-      { value: "0", label: "代码向量索引" }
-    ],
-    contributions: [
-      "将文档知识定义为定位指南，将代码仓库中的文件、符号和调用关系定义为核心证据。",
-      "用 ES 的 doc_index 保存整篇文档、chunk_index 支撑局部语义召回；当分块信息不足时回退对应全文。",
-      "代码侧不建立 index，而是由 Agentic Search 调用命令行在多个仓库中逐步定位并拼接证据链。"
-    ],
-    approach: [
-      "文档阶段回答‘应该去哪里查、需要关注什么’。",
-      "代码阶段回答‘实现在哪里、调用如何发生、证据是否闭环’。",
-      "最终输出区分文档提示与代码事实，降低两类信息被混用的风险。"
-    ],
-    star: {
-      S: "业务规则分散在文档中，真实行为又落在多个代码仓库；只看其中一侧都容易得出不完整结论。",
-      T: "建立一条先理解业务语境、再用代码完成取证的检索链路，并在信息不足时保留可靠兜底。",
-      A: "用 doc_index 与 chunk_index 组织整篇文档和分块召回；文档先提供定位指南，再由 Agentic Search 调用命令行跨仓追踪文件、符号与调用关系。",
-      R: "常见定位场景准确率达到 80%+，输出能够明确区分文档提示与代码事实。"
-    },
-    tradeoff: "整篇文档回退提升上下文完整性，但只在分块信息不足时触发，以控制噪声和 token 成本。",
-    quote: "文档告诉 Agent 往哪里走，代码证据决定它能不能下结论。"
+    tradeoff: "Agentic RAG 将平均检索调用从 1.0 增至 3.1、相对延迟从 1.00 增至 1.76；因此通过 Router 仅把真正条件依赖的问题送入多跳闭环。"
   },
   "research-skill": {
     kind: "project",
@@ -195,14 +161,17 @@ const details = {
     link: { url: "./assets/mnemoworld-interview-deck.pdf", label: "查看研究汇报 · 加密 PDF" }
   },
   evowork: {
-    kind: "opensource",
-    meta: "开源项目 · 核心作者",
+    kind: "project",
+    meta: "公司项目 · 携程火车票研发部",
     title: "EvoWork",
-    subtitle: "Self-improving Agent Framework · Runtime / Memory / Skills / Eval / Safety",
-    lead: "从零实现 Runtime、Memory、Skills 自进化、Eval 与安全五大子系统，打通评测驱动、失败归因、技能进化与回归验证的 Agent 自改进闭环。",
+    subtitle: "自进化 Agent Harness · Runtime / Memory / Skills / Eval / Safety",
+    lead: "从零实现 Runtime、Memory、Skills 自进化、Eval 与安全五大子系统，以出境火车票订单状态核验与高噪日志证据定位为领域工作负载，打通 Agent 自改进闭环。",
     tags: ["Advanced Runtime", "Layered Memory", "Skill Evolution", "Eval & Safety"],
-    role: "核心作者 / 系统设计与独立实现",
-    background: "传统 Agent Loop 往往把工具调度、上下文、评测和权限揉进核心循环：新增工具需要改动主流程，长任务上下文持续膨胀，失败也难以沉淀成可验证的改进。EvoWork 将运行、记忆、进化、评测与安全拆成可独立演进的子系统。",
+    role: "项目主导 / 系统设计与独立实现",
+    images: [
+      { src: "./assets/evowork-architecture.svg", alt: "EvoWork 六层架构与领域只读边界", label: "六层架构与只读领域边界" }
+    ],
+    background: "传统 Agent Loop 往往把工具调度、上下文、评测和权限揉进核心循环，导致新增工具侵入主流程、长任务上下文膨胀，失败也难以转化为可验证改进。EvoWork 位于 C 端内部研发与订单运营侧，只编排已有授权的只读订单、中台状态与 C 端日志查询能力。",
     flow: [
       { title: "评测驱动", text: "固定任务集与隔离测试集暴露稳定失败" },
       { title: "失败归因", text: "分析轨迹并定位 Runtime、Memory 或 Skill 问题" },
@@ -211,16 +180,15 @@ const details = {
       { title: "确认集成", text: "用户确认后进入技能库并持续回归", accent: true }
     ],
     metrics: [
-      { value: "−45%", label: "多工具任务 LLM 交互轮次" },
+      { value: "−45%", label: "多工具任务 LLM 调用总量" },
       { value: "12.3k → 5.6k", label: "长程任务单任务 Token" },
       { value: "52% → 80%", label: "6 轮技能进化后任务成功率" }
     ],
     contributions: [
-      "系统设计：独立从零实现 Runtime、Memory、Skills 自进化、Eval 与安全五大子系统，形成从评测到回归验证的完整闭环。",
-      "Runtime 与工具调度：以 Dispatch Table 动态注册、Batch Tool Calling 和 Interrupt 中断恢复扩展 Agent Loop；新增工具平均约 30 行接入且不侵入核心循环。在 120 任务 × 3 轮评测中，LLM 交互轮次降低 45%，端到端耗时降低 38%。",
-      "Memory 与 Context Engineering：构建 Episodic JSONL + SemanticVector 双层记忆，以及 Context 四操作主动压缩策略。在 80 组平均 40+ 轮长程任务 × 5 次评测中，单任务 Token 从 12.3k 降至 5.6k，成功率从 71% 提升至 76%。",
+      "Runtime 与工具调度：设计 Dispatch Table 动态注册、Batch Tool Calling 与 Interrupt 中断恢复机制，新增工具平均约 30 行即可接入核心循环；在 120 任务 × 3 个固定 seed 的配对评测中，LLM 调用总量降低 45%，端到端耗时降低 38%。",
+      "Memory 与 Context Engineering：构建 Episodic JSONL + SemanticVector 双层记忆，并实现 Context 四操作（Write / Select / Compress / Isolate）与工具结果外部化；在 80 组多步骤任务 × 5 个固定 seed 的评测中，单任务 Token 从 12.3k 降至 5.6k，成功率从 71% 提升至 76%。",
       "Eval 驱动的技能自进化：搭建轨迹分析、失败归因、技能提案、沙箱回归与用户确认集成流程，以 60 Case 隔离测试集进行成功率门控。6 轮迭代后成功率从 52% 提升至 80%，失败自动归因覆盖率 85%，技能提案回归通过率 60%。",
-      "安全与权限：实现三级权限模型、Dry-run 副作用预览与成本守卫；拦截全部预设高危操作，单任务成本上限 $0.5，评测期间越权调用 0 次。"
+      "安全与权限：实现三级权限模型、Dry-run 副作用预览与成本守卫；预设高危操作 100% 被权限门禁拦截或转审批，单任务成本上限 $0.5，实际越权执行 0 次。"
     ],
     approach: [
       "Dispatch Table 将工具发现、Schema 与执行器从 Agent Loop 解耦；Batch Tool Calling 合并无依赖调用，Interrupt 保存可恢复状态。",
@@ -232,7 +200,7 @@ const details = {
       S: "传统 Agent Loop 扩展性差，工具调度、长上下文、失败归因和权限控制相互耦合，改进难以被稳定验证。",
       T: "构建可扩展、可恢复、可评测且受安全边界约束的 Agent Runtime，并让失败能够转化为可回归的技能改进。",
       A: "拆分五大子系统，以动态工具注册、批量调用、双层记忆、主动压缩、隔离评测和用户确认门控组成自改进闭环。",
-      R: "多工具交互轮次降低 45%、端到端耗时降低 38%、长任务 Token 降低 54%；6 轮技能进化后成功率提升 28 个百分点，并实现预设高危操作 100% 拦截。"
+      R: "多工具任务 LLM 调用总量降低 45%、端到端耗时降低 38%、长任务 Token 降低 54.5%；6 轮技能进化后成功率提升 28 个百分点。"
     },
     tradeoff: "技能进化不会直接自动写入生产技能库：沙箱回归与用户确认增加了一步延迟，但把错误提案和能力回退限制在隔离环境内。"
   },
@@ -315,9 +283,24 @@ function imageMarkup(image) {
   if (!image) return "";
   return `<figure class="detail-paper">
     <button type="button" data-full-image="${image.src}" data-full-alt="${image.alt}" aria-label="全屏查看${image.alt}">
-      <img src="${image.src}" alt="${image.alt}"><span><b>论文首页</b><small>点击全屏查看</small></span>
+      <img src="${image.src}" alt="${image.alt}" loading="lazy"><span><b>论文首页</b><small>点击全屏查看</small></span>
     </button>
   </figure>`;
+}
+
+function galleryMarkup(images = []) {
+  if (!images.length) return "";
+  return `<section class="detail-section detail-gallery" aria-label="项目架构图">
+    <h3>项目架构图</h3>
+    <div class="detail-gallery-grid">${images.map(image => `
+      <figure>
+        <button type="button" data-full-image="${image.src}" data-full-alt="${image.alt}" aria-label="全屏查看${image.alt}">
+          <img src="${image.src}" alt="${image.alt}" loading="lazy">
+          <span><b>${image.label}</b><small>项目文档架构 · 点击放大</small></span>
+        </button>
+      </figure>`).join("")}
+    </div>
+  </section>`;
 }
 
 function renderDetail(detail) {
@@ -326,7 +309,7 @@ function renderDetail(detail) {
   const intro = `<div class="detail-intro"><p>${detail.lead}</p>${tags}</div>`;
   const leadBlock = isPaper
     ? `<div class="detail-paper-overview">${imageMarkup(detail.image)}<div class="detail-paper-summary">${intro}${metricsMarkup(detail.metrics)}</div></div>`
-    : `${imageMarkup(detail.image)}${intro}${metricsMarkup(detail.metrics)}`;
+    : `${imageMarkup(detail.image)}${intro}${metricsMarkup(detail.metrics)}${galleryMarkup(detail.images)}`;
   const contextTitle = detail.kind === "education" ? "学习与研究" : isPaper ? "研究问题" : "背景与痛点";
   const context = detail.background ? `<article class="detail-context"><h3>${contextTitle}</h3><p>${detail.background}</p></article>` : "";
   const role = detail.role ? `<article class="detail-context detail-role"><h3>${isPaper ? "作者角色" : "我的角色"}</h3><strong>${detail.role}</strong></article>` : "";
@@ -363,8 +346,9 @@ function openDetail(id, trigger) {
   history.replaceState(null, "", `#detail=${id}`);
   modal.focus();
 
-  const fullImageButton = content.querySelector("[data-full-image]");
-  if (fullImageButton) fullImageButton.addEventListener("click", () => openViewer(fullImageButton.dataset.fullImage, fullImageButton.dataset.fullAlt));
+  content.querySelectorAll("[data-full-image]").forEach(fullImageButton => {
+    fullImageButton.addEventListener("click", () => openViewer(fullImageButton.dataset.fullImage, fullImageButton.dataset.fullAlt));
+  });
 }
 
 function closeDetail() {

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">出境火车票多跳检索 Agent 的 Hybrid RAG 检索链路</title>
+  <desc id="desc">查询进入 BM25、BGE-M3 FAISS 与有来源 Graph Search，经过 RRF、来源校验、去重、范围版本权限过滤、CrossEncoder 重排和父级上下文回读，形成 Evidence Registry top 5。</desc>
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="7" stdDeviation="10" flood-color="#18233c" flood-opacity=".07"/></filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#8290a8"/></marker>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f8faff"/><stop offset="1" stop-color="#f7fbfa"/></linearGradient>
+  </defs>
+  <rect width="1280" height="720" rx="28" fill="url(#bg)"/>
+  <text x="64" y="68" font-family="Inter, PingFang SC, sans-serif" font-size="26" font-weight="700" fill="#172036">Hybrid RAG · 从三路候选到可引用证据</text>
+  <text x="64" y="101" font-family="Inter, PingFang SC, sans-serif" font-size="15" fill="#667085">Graph 只发现候选；最终证据必须回读原始 chunk 并通过版本与范围校验</text>
+
+  <g fill="none" stroke="#8290a8" stroke-width="2.5" marker-end="url(#arrow)">
+    <path d="M222 347 C266 266 290 224 340 214"/><path d="M222 360 H340"/><path d="M222 373 C266 454 290 492 340 502"/>
+    <path d="M510 214 C556 238 578 262 610 294"/><path d="M510 360 H610"/><path d="M510 502 C552 502 578 488 610 482"/>
+    <path d="M766 482 C792 466 798 406 816 382"/><path d="M766 316 C790 316 798 338 816 346"/>
+    <path d="M972 360 H1010"/><path d="M1090 414 V480"/><path d="M1010 522 H972"/><path d="M816 522 C794 546 790 600 766 622"/>
+  </g>
+
+  <g filter="url(#shadow)" font-family="Inter, PingFang SC, sans-serif">
+    <g><rect x="54" y="300" width="168" height="118" rx="18" fill="#fff" stroke="#cfd8f8"/><rect x="54" y="300" width="8" height="118" rx="4" fill="#2d5bff"/><text x="82" y="344" font-size="16" font-weight="700" fill="#172036">Query + 已验证</text><text x="82" y="372" font-size="16" font-weight="700" fill="#172036">的前跳变量</text><text x="82" y="399" font-size="13" fill="#667085">scope · effective time</text></g>
+
+    <g><rect x="340" y="170" width="170" height="88" rx="17" fill="#fff" stroke="#cfd8f8"/><text x="425" y="208" text-anchor="middle" font-size="17" font-weight="700" fill="#172036">BM25 top 20</text><text x="425" y="234" text-anchor="middle" font-size="13" fill="#667085">字段 · 枚举 · 版本</text></g>
+    <g><rect x="340" y="316" width="170" height="88" rx="17" fill="#fff" stroke="#cfe8e5"/><text x="425" y="353" text-anchor="middle" font-size="17" font-weight="700" fill="#172036">BGE-M3 / FAISS</text><text x="425" y="380" text-anchor="middle" font-size="13" fill="#667085">语义 top 20</text></g>
+    <g><rect x="340" y="458" width="170" height="88" rx="17" fill="#fff" stroke="#e5d9c7"/><text x="425" y="495" text-anchor="middle" font-size="17" font-weight="700" fill="#172036">Graph seeds / BFS</text><text x="425" y="522" text-anchor="middle" font-size="13" fill="#667085">有来源关系候选</text></g>
+
+    <g><rect x="610" y="272" width="156" height="88" rx="17" fill="#fff" stroke="#cfd8f8"/><text x="688" y="309" text-anchor="middle" font-size="17" font-weight="700" fill="#172036">RRF 融合</text><text x="688" y="336" text-anchor="middle" font-size="13" fill="#667085">仅 BM25 + Dense</text></g>
+    <g><rect x="610" y="438" width="156" height="88" rx="17" fill="#fff" stroke="#e5d9c7"/><text x="688" y="475" text-anchor="middle" font-size="16" font-weight="700" fill="#172036">Graph source_chunk</text><text x="688" y="502" text-anchor="middle" font-size="13" fill="#667085">来源校验</text></g>
+
+    <g><rect x="816" y="306" width="156" height="108" rx="18" fill="#fff" stroke="#d8deea"/><text x="894" y="345" text-anchor="middle" font-size="16" font-weight="700" fill="#172036">候选池去重</text><text x="894" y="373" text-anchor="middle" font-size="14" fill="#667085">chunk_id</text><text x="894" y="397" text-anchor="middle" font-size="13" fill="#667085">保留多路 provenance</text></g>
+    <g><rect x="1010" y="306" width="160" height="108" rx="18" fill="#fff" stroke="#e3d2cf"/><text x="1090" y="344" text-anchor="middle" font-size="16" font-weight="700" fill="#172036">硬过滤</text><text x="1090" y="373" text-anchor="middle" font-size="14" fill="#667085">scope · effective_at</text><text x="1090" y="398" text-anchor="middle" font-size="14" fill="#667085">authority</text></g>
+
+    <g><rect x="1010" y="480" width="160" height="84" rx="17" fill="#fff" stroke="#cfe8e5"/><text x="1090" y="516" text-anchor="middle" font-size="16" font-weight="700" fill="#172036">CrossEncoder</text><text x="1090" y="542" text-anchor="middle" font-size="13" fill="#667085">rerank top 8</text></g>
+    <g><rect x="816" y="480" width="156" height="84" rx="17" fill="#fff" stroke="#cfd8f8"/><text x="894" y="516" text-anchor="middle" font-size="16" font-weight="700" fill="#172036">read_chunk</text><text x="894" y="542" text-anchor="middle" font-size="13" fill="#667085">回读父级上下文</text></g>
+    <g><rect x="600" y="580" width="166" height="84" rx="17" fill="#fff" stroke="#cfe8e5"/><rect x="600" y="580" width="8" height="84" rx="4" fill="#0f857b"/><text x="683" y="615" text-anchor="middle" font-size="16" font-weight="700" fill="#172036">Evidence Registry</text><text x="683" y="642" text-anchor="middle" font-size="13" fill="#667085">最多 5 条证据</text></g>
+  </g>
+</svg>
