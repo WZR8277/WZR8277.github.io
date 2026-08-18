@@ -168,6 +168,9 @@ const details = {
     lead: "从零实现面向可验收交付物的通用自进化 Agent Harness，打通 Runtime、Memory、Skills 路由与进化、Eval 和安全治理，使 Agent 能执行长任务、管理上下文并通过评测持续改进。",
     tags: ["Craft / Plan / Ask", "Context Engineering", "Skill Evolution", "Eval & Safety"],
     role: "项目主导 / 系统设计与独立实现",
+    images: [
+      { src: "./assets/evowork-six-layer-crop.svg", alt: "EvoWork 六层架构总览", label: "项目原始画板 · 六层架构总览", embed: true }
+    ],
     background: "传统对话产品以回复质量为中心，难以稳定完成报告、文件、代码修改和结构化结果等可验收交付。EvoWork 将 Runtime、Context、Skills、Multi-Agent、评测与权限收敛为通用 Harness，目标是让 Agent 能把一句话任务真正做完，同时让过程可回放、能力可量化、版本可回滚。",
     flow: [
       { title: "评测驱动", text: "固定任务集与隔离测试集暴露稳定失败" },

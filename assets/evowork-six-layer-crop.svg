@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2560 1850" role="img" aria-labelledby="title desc">
+  <title id="title">EvoWork 六层架构总览</title>
+  <desc id="desc">来自 EvoWork 架构文档的原始六层总览画板，展示 UI、Agent、Tool、Extension、Memory 与 Security 六层。</desc>
+  <image href="evowork-six-layer.jpg" x="0" y="0" width="2560" height="2560"/>
+</svg>
