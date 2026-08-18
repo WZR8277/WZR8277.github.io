@@ -121,14 +121,14 @@
             <div class="company-projects company-project-grid">
               <button class="company-project company-project-featured" type="button" data-detail="evowork" aria-label="查看 EvoWork 项目详情">
                 <span>主项目 · Self-improving Agent Harness</span>
-                <div class="project-visual"><img src="./assets/evowork-architecture.svg" alt="" loading="lazy"></div>
+                <div class="project-visual project-visual-portrait"><object data="./assets/evowork-source-architecture.svg" type="image/svg+xml" aria-hidden="true"></object></div>
                 <strong>EvoWork</strong>
                 <p>Runtime、Memory、Skills 自进化、Eval 与安全五大子系统。</p>
                 <div class="project-stats"><b>−45% LLM 调用</b><b>−54.5% Token</b><b>+28pp 成功率</b></div>
               </button>
               <button class="company-project company-project-featured" type="button" data-detail="rag" aria-label="查看出境火车票多跳检索 Agent 详情">
                 <span>主项目 · Agentic RAG</span>
-                <div class="project-visual"><img src="./assets/rag-agent-architecture.svg" alt="" loading="lazy"></div>
+                <div class="project-visual project-visual-wide"><object data="./assets/rag-source-agent.svg" type="image/svg+xml" aria-hidden="true"></object></div>
                 <strong>出境火车票多跳检索 Agent</strong>
                 <p>Hybrid RAG 与 Planner–Executor–Verifier 闭环，面向条件依赖的 2–4 跳文档问答。</p>
                 <div class="project-stats"><b>77.9% Correctness</b><b>85.5% Evidence R@5</b><b>92.5% Router</b></div>
@@ -158,13 +158,12 @@
         <li class="timeline-item reveal" data-kind="opensource" id="opensource">
           <span class="timeline-dot" aria-hidden="true"></span>
           <button class="timeline-card opensource-timeline-card" type="button" data-detail="workbuddy" aria-label="查看 learn-workbuddy 开源贡献详情">
-            <div class="card-topline"><span>持续维护</span><span class="category-pill">开源项目 · 核心作者</span></div>
+            <div class="card-topline"><span>500+ Stars · 100+ Forks</span><span class="category-pill">开源项目 · 核心作者</span></div>
             <h3>learn-workbuddy</h3>
             <p class="card-subtitle">adongwanai / learn-workbuddy</p>
             <p>主导 Agent Harness、分层 Memory 与 RAG/Context 关键章节设计与实现。</p>
-            <div class="architecture-mini" aria-hidden="true">
-              <span><b>Loop</b>有界运行</span><i></i><span><b>Memory</b>分层恢复</span><i></i><span><b>RAG</b>检索回归</span>
-            </div>
+            <div class="opensource-visual"><img src="./assets/workbuddy-architecture.svg" alt="" loading="lazy"><span>项目架构 · 点击查看</span></div>
+            <p class="opensource-evidence">离线回归：Recall@K / MRR = 1.00 · Scope / Permission Leak = 0</p>
             <div class="topic-row"><span>Harness</span><span>Memory</span><span>RAG / Context</span></div>
             <span class="entry-more">查看我的贡献与仓库链接 <span aria-hidden="true">↗</span></span>
           </button>
@@ -217,7 +216,7 @@
 
   <div class="image-viewer" id="image-viewer" hidden role="dialog" aria-modal="true" aria-label="项目或论文图片大图">
     <button class="viewer-close" type="button" aria-label="关闭大图">×</button>
-    <img id="viewer-image" alt="">
+    <div class="viewer-stage" id="viewer-stage"></div>
   </div>
 
   <script src="./app.js" defer></script>

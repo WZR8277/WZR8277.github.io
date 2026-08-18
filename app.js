@@ -45,8 +45,8 @@ const details = {
     tags: ["BM25 + BGE-M3 / FAISS", "Graph Search", "RRF + CrossEncoder", "LangGraph"],
     role: "项目主导 / Agentic RAG 方案设计与评测",
     images: [
-      { src: "./assets/rag-agent-architecture.svg", alt: "出境火车票多跳检索 Agent 的 LangGraph 控制闭环", label: "Agent 控制闭环" },
-      { src: "./assets/rag-retrieval-architecture.svg", alt: "出境火车票多跳检索 Agent 的 Hybrid RAG 检索链路", label: "Hybrid RAG 检索链路" }
+      { src: "./assets/rag-source-agent.svg", alt: "出境火车票多跳检索 Agent 项目文档中的控制闭环", label: "项目原始白板 · Agent 控制闭环", embed: true },
+      { src: "./assets/rag-source-retrieval.svg", alt: "出境火车票多跳检索 Agent 项目文档中的 Hybrid RAG 检索链路", label: "项目原始白板 · Hybrid RAG 检索链路", embed: true }
     ],
     background: "项目基于 64 篇全仿真业务文档、1,920 个结构化 Chunk 与 480 道 2–4 跳 QA 构建闭世界 Benchmark。它只验证冻结文档上的检索与 Agentic Search，不连接生产接口、订单数据、代码仓库或 Elasticsearch。",
     flow: [
@@ -169,7 +169,8 @@ const details = {
     tags: ["Advanced Runtime", "Layered Memory", "Skill Evolution", "Eval & Safety"],
     role: "项目主导 / 系统设计与独立实现",
     images: [
-      { src: "./assets/evowork-architecture.svg", alt: "EvoWork 六层架构与领域只读边界", label: "六层架构与只读领域边界" }
+      { src: "./assets/evowork-source-architecture.svg", alt: "EvoWork 项目文档中的分层架构图", label: "项目原始白板 · 分层架构", embed: true },
+      { src: "./assets/evowork-source-runtime.svg", alt: "EvoWork 项目文档中的领域证据核验链路", label: "项目原始白板 · 证据核验链路", embed: true }
     ],
     background: "传统 Agent Loop 往往把工具调度、上下文、评测和权限揉进核心循环，导致新增工具侵入主流程、长任务上下文膨胀，失败也难以转化为可验证改进。EvoWork 位于 C 端内部研发与订单运营侧，只编排已有授权的只读订单、中台状态与 C 端日志查询能力。",
     flow: [
@@ -209,9 +210,12 @@ const details = {
     meta: "开源项目 · 核心作者",
     title: "learn-workbuddy",
     subtitle: "Agent Harness · 分层 Memory · RAG / Context",
-    lead: "主导 learn-workbuddy 中 Agent Harness、分层 Memory 与 RAG/Context 关键章节设计与实现。",
+    lead: "主导 learn-workbuddy 中 Agent Harness、分层 Memory 与 RAG / Context 关键章节设计，负责机制设计、可运行参考实现及离线评测。",
     tags: ["Agent Harness", "Layered Memory", "RAG / Context", "Regression Evaluation"],
     role: "核心作者 / 章节设计与实现",
+    images: [
+      { src: "./assets/workbuddy-architecture.svg", alt: "learn-workbuddy 的 WorkBuddy 架构全景", label: "项目原始架构图 · WorkBuddy 架构全景" }
+    ],
     background: "项目以可运行章节拆解桌面 Agent 的工程边界。我的贡献集中在运行循环与工具协议、跨会话记忆，以及可解释检索和回归评测。",
     flow: [
       { title: "Agent Harness", text: "有界 Loop、工具注册、权限、错误与 Replay" },
@@ -220,14 +224,14 @@ const details = {
       { title: "Regression", text: "Recall@K、MRR 与稳定回归", accent: true }
     ],
     metrics: [
-      { value: "有界", label: "Agent Loop / Transcript Replay" },
-      { value: "3 层", label: "user / workspace / session" },
-      { value: "2 项", label: "Recall@K / MRR 回归指标" }
+      { value: "500+ / 100+", label: "GitHub Stars / Forks" },
+      { value: "1.00 / 1.00", label: "Recall@K / MRR · 10 候选 / 6 用例" },
+      { value: "0 / 0", label: "Scope / Permission Leak Rate" }
     ],
     contributions: [
-      "Agent Harness：设计并实现有界 Agent Loop，统一工具注册与参数校验、权限决策、结构化错误及 Transcript Replay。",
-      "Memory：设计并实现 user / workspace / session 分层记忆体系，覆盖作用域隔离、持久化、跨重启恢复和泄漏防护。",
-      "RAG / Context：设计并实现可解释检索与上下文组装，呈现召回来源、作用域、评分及入选原因，并以 Recall@K、MRR 建立检索回归。"
+      "Agent Harness：实现最大轮次约束的 Tool-use Loop；以统一 ToolRegistry 管理工具 Schema 与执行路由，完成参数校验和 allow / ask / deny 权限决策；将未知工具、非法参数及执行异常归一为结构化错误，并通过 append-only JSONL Transcript 支持会话回放与崩溃恢复。",
+      "Memory：划分 session transcript、workspace log / curated view、user profile / preferences 的所有权与生命周期；基于稳定 Scope ID、追加写与原子持久化实现跨会话、跨重启恢复，并通过跨用户文件复制、跨 workspace 召回等负例验证作用域隔离和泄漏防护。",
+      "RAG / Context：实现 Markdown 结构化切块、增量索引、BM25 召回、来源校验、安全门禁及预算化上下文组装；为候选保留来源行号、作用域、评分、匹配词及入选 / 拒绝原因。在 10 个异构候选、6 条离线路由用例上取得 Recall@K=1.00、MRR=1.00，Scope / Permission Leak Rate 均为 0。"
     ],
     approach: [
       "将工具注册、Schema 校验、权限判断和错误结构收敛到统一调用边界。",
@@ -238,7 +242,7 @@ const details = {
       S: "桌面 Agent 的运行循环、权限、记忆与上下文往往被揉成一个整体，学习者难以单独理解和验证。",
       T: "把关键工程边界拆成可运行章节，并让每一章都能被测试、回放和逐步扩展。",
       A: "主导 Agent Harness、分层 Memory 与 RAG/Context 章节，统一工具协议和错误结构，建立三层记忆作用域及检索回归。",
-      R: "形成覆盖有界 Loop、Transcript Replay、跨重启记忆恢复与 Recall@K / MRR 的可运行教学实现。"
+      R: "形成覆盖有界 Loop、Transcript Replay、跨重启记忆恢复与检索回归的可运行教学实现；离线评测中 Recall@K 与 MRR 均为 1.00，Scope / Permission Leak Rate 均为 0。"
     },
     link: { label: "在 GitHub 查看 learn-workbuddy", url: "https://github.com/adongwanai/learn-workbuddy" }
   }
@@ -249,7 +253,7 @@ const modal = document.querySelector("#detail-modal");
 const content = document.querySelector("#detail-content");
 const closeButton = document.querySelector(".modal-close");
 const viewer = document.querySelector("#image-viewer");
-const viewerImage = document.querySelector("#viewer-image");
+const viewerStage = document.querySelector("#viewer-stage");
 const viewerClose = document.querySelector(".viewer-close");
 
 let returnFocus = null;
@@ -292,13 +296,18 @@ function galleryMarkup(images = []) {
   if (!images.length) return "";
   return `<section class="detail-section detail-gallery" aria-label="项目架构图">
     <h3>项目架构图</h3>
-    <div class="detail-gallery-grid">${images.map(image => `
+    <div class="detail-gallery-grid">${images.map(image => {
+      const visual = image.embed
+        ? `<object data="${image.src}" type="image/svg+xml" aria-label="${image.alt}"></object>`
+        : `<img src="${image.src}" alt="${image.alt}" loading="lazy">`;
+      return `
       <figure>
-        <button type="button" data-full-image="${image.src}" data-full-alt="${image.alt}" aria-label="全屏查看${image.alt}">
-          <img src="${image.src}" alt="${image.alt}" loading="lazy">
+        <button type="button" data-full-image="${image.src}" data-full-alt="${image.alt}" data-full-embed="${image.embed ? "true" : "false"}" aria-label="全屏查看${image.alt}">
+          ${visual}
           <span><b>${image.label}</b><small>项目文档架构 · 点击放大</small></span>
         </button>
-      </figure>`).join("")}
+      </figure>`;
+    }).join("")}
     </div>
   </section>`;
 }
@@ -347,7 +356,11 @@ function openDetail(id, trigger) {
   modal.focus();
 
   content.querySelectorAll("[data-full-image]").forEach(fullImageButton => {
-    fullImageButton.addEventListener("click", () => openViewer(fullImageButton.dataset.fullImage, fullImageButton.dataset.fullAlt));
+    fullImageButton.addEventListener("click", () => openViewer(
+      fullImageButton.dataset.fullImage,
+      fullImageButton.dataset.fullAlt,
+      fullImageButton.dataset.fullEmbed === "true"
+    ));
   });
 }
 
@@ -359,9 +372,20 @@ function closeDetail() {
   if (returnFocus instanceof HTMLElement) returnFocus.focus();
 }
 
-function openViewer(src, alt) {
-  viewerImage.src = src;
-  viewerImage.alt = alt;
+function openViewer(src, alt, embed = false) {
+  viewerStage.replaceChildren();
+  if (embed) {
+    const object = document.createElement("object");
+    object.data = src;
+    object.type = "image/svg+xml";
+    object.setAttribute("aria-label", alt);
+    viewerStage.append(object);
+  } else {
+    const image = document.createElement("img");
+    image.src = src;
+    image.alt = alt;
+    viewerStage.append(image);
+  }
   viewer.hidden = false;
   viewerClose.focus();
 }
@@ -369,7 +393,7 @@ function openViewer(src, alt) {
 function closeViewer() {
   if (viewer.hidden) return;
   viewer.hidden = true;
-  viewerImage.src = "";
+  viewerStage.replaceChildren();
   modal.focus();
 }
 

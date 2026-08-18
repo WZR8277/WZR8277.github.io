@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2560" height="310" viewBox="0 0 2560 310" role="img" aria-labelledby="title desc">
+  <title id="title">EvoWork 领域证据核验链路</title>
+  <desc id="desc">来自 EvoWork 项目文档白板的原始流程图，展示从订单引用与现象开始，经订单快照、中台统一状态、状态关系判断、C 端日志查询和受控检索，到证据报告与内部交接。</desc>
+  <image href="evowork-runtime-original.jpg" x="0" y="0" width="2560" height="2560"/>
+</svg>

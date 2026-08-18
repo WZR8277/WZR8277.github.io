@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1720" height="1290" viewBox="420 0 1720 1290" role="img" aria-labelledby="title desc">
+  <title id="title">EvoWork 分层架构</title>
+  <desc id="desc">来自 EvoWork 项目文档白板的原始架构图，展示交互与任务层、Agent 推理与状态门控层、Runtime 与工具调度层、领域只读扩展层、Context Memory Artifact 层以及 Eval Safety Trajectory 治理层。</desc>
+  <image href="evowork-original.jpg" x="0" y="0" width="2560" height="2560"/>
+</svg>

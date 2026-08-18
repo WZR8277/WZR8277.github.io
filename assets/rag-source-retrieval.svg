@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2560" height="520" viewBox="0 0 2560 520" role="img" aria-labelledby="title desc">
+  <title id="title">出境火车票多跳检索 Agent 的 Hybrid RAG 检索链路</title>
+  <desc id="desc">来自项目文档白板的原始检索架构图，展示 BM25、BGE-M3 FAISS、Graph Search、RRF、来源校验、去重、范围版本过滤、CrossEncoder、父级回读与 Evidence Registry。</desc>
+  <image href="rag-retrieval-original.jpg" x="0" y="0" width="2560" height="2560"/>
+</svg>

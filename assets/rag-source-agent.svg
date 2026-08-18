@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2560" height="700" viewBox="0 0 2560 700" role="img" aria-labelledby="title desc">
+  <title id="title">出境火车票多跳检索 Agent 控制闭环</title>
+  <desc id="desc">来自项目文档白板的原始 Agent 架构图，展示 Query Router 对 single-hop、multi-source 与 agentic multi-hop 的分流，以及 Planner、Executor、Evidence Registry、Verifier、Synthesizer、replan 与 abstain 链路。</desc>
+  <image href="rag-agent-original.jpg" x="0" y="0" width="2560" height="2560"/>
+</svg>
