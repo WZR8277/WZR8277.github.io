@@ -162,17 +162,13 @@ const details = {
   },
   evowork: {
     kind: "project",
-    meta: "公司项目 · 携程火车票研发部",
+    meta: "公司项目 · 通用 Agent Harness",
     title: "EvoWork",
-    subtitle: "自进化 Agent Harness · Runtime / Memory / Skills / Eval / Safety",
-    lead: "从零实现 Runtime、Memory、Skills 自进化、Eval 与安全五大子系统，以出境火车票订单状态核验与高噪日志证据定位为领域工作负载，打通 Agent 自改进闭环。",
-    tags: ["Advanced Runtime", "Layered Memory", "Skill Evolution", "Eval & Safety"],
+    subtitle: "通用自进化 Agent Harness · Runtime / Memory / Skills / Eval / Safety",
+    lead: "从零实现面向可验收交付物的通用自进化 Agent Harness，打通 Runtime、Memory、Skills 路由与进化、Eval 和安全治理，使 Agent 能执行长任务、管理上下文并通过评测持续改进。",
+    tags: ["Craft / Plan / Ask", "Context Engineering", "Skill Evolution", "Eval & Safety"],
     role: "项目主导 / 系统设计与独立实现",
-    images: [
-      { src: "./assets/evowork-source-architecture.svg", alt: "EvoWork 项目文档中的分层架构图", label: "项目原始白板 · 分层架构", embed: true },
-      { src: "./assets/evowork-source-runtime.svg", alt: "EvoWork 项目文档中的领域证据核验链路", label: "项目原始白板 · 证据核验链路", embed: true }
-    ],
-    background: "传统 Agent Loop 往往把工具调度、上下文、评测和权限揉进核心循环，导致新增工具侵入主流程、长任务上下文膨胀，失败也难以转化为可验证改进。EvoWork 位于 C 端内部研发与订单运营侧，只编排已有授权的只读订单、中台状态与 C 端日志查询能力。",
+    background: "传统对话产品以回复质量为中心，难以稳定完成报告、文件、代码修改和结构化结果等可验收交付。EvoWork 将 Runtime、Context、Skills、Multi-Agent、评测与权限收敛为通用 Harness，目标是让 Agent 能把一句话任务真正做完，同时让过程可回放、能力可量化、版本可回滚。",
     flow: [
       { title: "评测驱动", text: "固定任务集与隔离测试集暴露稳定失败" },
       { title: "失败归因", text: "分析轨迹并定位 Runtime、Memory 或 Skill 问题" },
@@ -186,24 +182,26 @@ const details = {
       { value: "52% → 80%", label: "6 轮技能进化后任务成功率" }
     ],
     contributions: [
-      "Runtime 与工具调度：设计 Dispatch Table 动态注册、Batch Tool Calling 与 Interrupt 中断恢复机制，新增工具平均约 30 行即可接入核心循环；在 120 任务 × 3 个固定 seed 的配对评测中，LLM 调用总量降低 45%，端到端耗时降低 38%。",
+      "Runtime 与工具调度：设计 Dispatch Table 动态注册、Batch Tool Calling 与 Interrupt 中断恢复机制，提供 Craft / Plan / Ask 三种工作模式与多模型 Provider 抽象；新增工具平均约 30 行即可接入核心循环。在 120 任务 × 3 个固定 seed 的配对评测中，LLM 调用总量降低 45%，端到端耗时降低 38%。",
       "Memory 与 Context Engineering：构建 Episodic JSONL + SemanticVector 双层记忆，并实现 Context 四操作（Write / Select / Compress / Isolate）与工具结果外部化；在 80 组多步骤任务 × 5 个固定 seed 的评测中，单任务 Token 从 12.3k 降至 5.6k，成功率从 71% 提升至 76%。",
-      "Eval 驱动的技能自进化：搭建轨迹分析、失败归因、技能提案、沙箱回归与用户确认集成流程，以 60 Case 隔离测试集进行成功率门控。6 轮迭代后成功率从 52% 提升至 80%，失败自动归因覆盖率 85%，技能提案回归通过率 60%。",
+      "Skills 路由与评测驱动进化：以 priority、category、exclusive 与可选语义召回构建可解释路由；搭建轨迹分析、失败归因、技能提案、沙箱回归与用户确认集成流程，以 60 Case 隔离测试集进行成功率门控。6 轮迭代后成功率从 52% 提升至 80%，失败自动归因覆盖率 85%，技能提案回归通过率 60%。",
+      "Multi-Agent 协作：为子 Agent 配置最小工具集与隔离上下文，通过可观察的共享任务状态回传结构化结果，降低主上下文污染与子任务之间的相互干扰。",
       "安全与权限：实现三级权限模型、Dry-run 副作用预览与成本守卫；预设高危操作 100% 被权限门禁拦截或转审批，单任务成本上限 $0.5，实际越权执行 0 次。"
     ],
     approach: [
-      "Dispatch Table 将工具发现、Schema 与执行器从 Agent Loop 解耦；Batch Tool Calling 合并无依赖调用，Interrupt 保存可恢复状态。",
-      "Episodic JSONL 保留可回放事件，SemanticVector 负责语义召回；Context 四操作按任务阶段主动控制上下文规模。",
-      "所有技能提案先进入隔离沙箱，只有通过固定回归集且得到用户确认后才集成，避免自进化直接污染生产技能。",
-      "权限、Dry-run 与成本守卫位于统一执行边界，在工具真正产生副作用前完成校验。"
+      "以 Craft、Plan、Ask 区分直接执行、计划确认与只回答；Dispatch Table、Provider 与执行器彼此解耦，Batch Tool Calling 合并无依赖调用，Interrupt 保存可恢复状态。",
+      "Episodic JSONL 保留可回放事件，SemanticVector 负责语义召回；Write / Select / Compress / Isolate 与结果外部化共同控制上下文规模。",
+      "Skill Router 的优先级、类别、互斥与语义选择均写入轨迹；子 Agent 使用最小权限和隔离上下文，并以共享任务状态回传结果。",
+      "技能提案先进入隔离沙箱，经 source / test 拆分的固定回归集验证并由用户确认后集成；版本化结果支持回滚。",
+      "权限、Dry-run 与 CostGuard 位于统一执行边界，在工具产生副作用前完成校验。"
     ],
     star: {
-      S: "传统 Agent Loop 扩展性差，工具调度、长上下文、失败归因和权限控制相互耦合，改进难以被稳定验证。",
-      T: "构建可扩展、可恢复、可评测且受安全边界约束的 Agent Runtime，并让失败能够转化为可回归的技能改进。",
-      A: "拆分五大子系统，以动态工具注册、批量调用、双层记忆、主动压缩、隔离评测和用户确认门控组成自改进闭环。",
+      S: "Agent 产品若只追求回复质量，难以稳定交付报告、文件、代码修改等结果；工具、上下文、技能与权限混在核心循环，也让长任务和能力迭代不可控。",
+      T: "从零构建以可验收交付物为目标的通用 Harness，使 Runtime 可扩展、Context 可治理、能力可验证进化且操作受权限约束。",
+      A: "实现三种工作模式、动态工具与多模型 Provider、双层记忆和主动压缩、可解释 Skill 路由、隔离 Multi-Agent，以及由隔离测试集与安全门禁约束的进化闭环。",
       R: "多工具任务 LLM 调用总量降低 45%、端到端耗时降低 38%、长任务 Token 降低 54.5%；6 轮技能进化后成功率提升 28 个百分点。"
     },
-    tradeoff: "技能进化不会直接自动写入生产技能库：沙箱回归与用户确认增加了一步延迟，但把错误提案和能力回退限制在隔离环境内。"
+    tradeoff: "EvoWork 当前是可运行工程原型与自进化实验平台，并非完整消费级产品；Plan / 确认、沙箱回归和隔离测试集增加了执行延迟，但换来交付、进化与高风险操作的可验证性和可回滚性。"
   },
   workbuddy: {
     kind: "opensource",

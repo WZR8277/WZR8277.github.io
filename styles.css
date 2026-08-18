@@ -302,8 +302,17 @@ button.timeline-card:hover { transform: translateY(-4px); border-color: color-mi
 .company-project-featured { display: flex; min-height: 430px; flex-direction: column; border-color: color-mix(in srgb, var(--project-accent) 15%, var(--line)); background: color-mix(in srgb, var(--project-soft) 45%, #fff); }
 .project-visual { aspect-ratio: 16 / 9; margin: 14px 0 5px; overflow: hidden; border: 1px solid color-mix(in srgb, var(--project-accent) 12%, var(--line)); border-radius: 11px; background: #fff; }
 .project-visual :is(img, object) { width: 100%; height: 100%; padding: 8px; object-fit: contain; pointer-events: none; }
-.project-visual-portrait :is(img, object) { padding: 6px 32px; }
 .project-visual-wide :is(img, object) { padding: 20px 8px; }
+.harness-preview { margin: 14px 0 5px; padding: 14px; border: 1px solid color-mix(in srgb, var(--project-accent) 13%, var(--line)); border-radius: 11px; background: rgba(255, 255, 255, .88); }
+.harness-preview-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+.harness-preview-head b { color: var(--project-accent); font-family: var(--mono); font-size: 12px; letter-spacing: .03em; }
+.harness-preview-head em { color: var(--muted); font-family: var(--mono); font-size: 9.5px; font-style: normal; letter-spacing: .01em; }
+.harness-preview-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; margin-top: 10px; }
+.company-project .harness-preview-grid > span { min-height: 59px; display: flex; flex-direction: column; justify-content: center; padding: 9px 10px; border: 1px solid color-mix(in srgb, var(--tile-accent, var(--accent)) 13%, var(--line)); border-radius: 8px; color: var(--muted); background: color-mix(in srgb, var(--tile-soft, var(--accent-soft)) 45%, #fff); font-family: var(--sans); font-size: 10px; font-weight: 550; letter-spacing: 0; line-height: 1.35; }
+.harness-preview-grid > span:nth-child(2) { --tile-accent: var(--teal); --tile-soft: var(--teal-soft); }
+.harness-preview-grid > span:nth-child(3) { --tile-accent: var(--amber); --tile-soft: var(--amber-soft); }
+.harness-preview-grid > span:nth-child(4) { --tile-accent: var(--coral); --tile-soft: var(--coral-soft); }
+.harness-preview-grid > span b { margin-bottom: 3px; color: var(--tile-accent, var(--accent)); font-family: var(--mono); font-size: 10.5px; }
 .company-project-featured .project-stats { margin-top: auto; padding-top: 15px; }
 .project-primary { padding: 20px; border-color: color-mix(in srgb, var(--project-accent) 18%, var(--line)); background: color-mix(in srgb, var(--project-soft) 68%, #fff); }
 .project-stats { display: flex; flex-wrap: wrap; gap: 8px 14px; margin-top: 14px; }
